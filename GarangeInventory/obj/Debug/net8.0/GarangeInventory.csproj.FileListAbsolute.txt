@@ -1,0 +1,14 @@
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\bin\Debug\net8.0\GarangeInventory.exe
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\bin\Debug\net8.0\GarangeInventory.deps.json
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\bin\Debug\net8.0\GarangeInventory.runtimeconfig.json
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\bin\Debug\net8.0\GarangeInventory.dll
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\bin\Debug\net8.0\GarangeInventory.pdb
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.AssemblyInfoInputs.cache
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.AssemblyInfo.cs
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.csproj.CoreCompileInputs.cache
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.dll
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\refint\GarangeInventory.dll
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.pdb
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.genruntimeconfig.cache
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\ref\GarangeInventory.dll
