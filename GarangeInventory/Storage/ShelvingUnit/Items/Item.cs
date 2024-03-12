@@ -1,6 +1,6 @@
 ﻿using GarangeInventory.Common;
 
-namespace GarangeInventory.Items
+namespace GarangeInventory.Storage.ShelvingUnit.Items
 {
     public class Item
     {
@@ -20,9 +20,9 @@ namespace GarangeInventory.Items
             set { _quantity = value; }
         }
 
-        private float _cost;
+        private decimal _cost;
 
-        public float Cost
+        public decimal Cost
         {
             get { return _cost; }
             set { _cost = value; }

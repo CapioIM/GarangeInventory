@@ -1,4 +1,4 @@
-﻿namespace GarangeInventory.Items
+﻿namespace GarangeInventory.Storage.ShelvingUnit.Items
 {
     public enum Category
     {
