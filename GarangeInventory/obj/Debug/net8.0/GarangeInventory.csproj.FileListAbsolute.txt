@@ -12,3 +12,4 @@ C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\r
 C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.pdb
 C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.genruntimeconfig.cache
 C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\ref\GarangeInventory.dll
+C:\Users\Capio\source\repos\GarangeInventory\GarangeInventory\obj\Debug\net8.0\GarangeInventory.sourcelink.json

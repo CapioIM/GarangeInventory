@@ -1,9 +1,9 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory.Storage.ShelvingUnit;
 
-namespace GarangeInventory.StorageUnit
+namespace GarangeInventory.Storage
 {
-    public class StorageUnit
+    public class Storage
     {
 		private int _idNumber;
 
@@ -20,9 +20,9 @@ namespace GarangeInventory.StorageUnit
 			get { return _name; }
 			set { _name = value; }
 		}
-		private List<ShelvingUnit> _shelfs;
+		private List<ShelvingUnit.ShelvingUnit> _shelfs;
 
-		public List<ShelvingUnit> Shelfs
+		public List<ShelvingUnit.ShelvingUnit> Shelfs
         {
 			get { return _shelfs; }
 			set { _shelfs = value; }
@@ -35,5 +35,9 @@ namespace GarangeInventory.StorageUnit
             get { return _containsUsers; }
             set { _containsUsers = value; }
         }
+		public Storage(string name)
+		{
+			Name = name;
+		}
     }
 }
