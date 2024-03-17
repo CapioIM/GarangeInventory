@@ -1,6 +1,6 @@
 ﻿using GarangeInventory.Common;
 
-namespace GarangeInventory.Storage.ShelvingUnit.Items
+namespace GarangeInventory.Storage.Shelf.Items
 {
     public class Item
     {

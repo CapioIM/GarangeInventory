@@ -1,9 +1,9 @@
 ﻿using GarangeInventory.Common;
-using GarangeInventory.Storage.ShelvingUnit.Boxes;
-using GarangeInventory.Storage.ShelvingUnit.Items;
+using GarangeInventory.Storage.Shelf.Boxes;
+using GarangeInventory.Storage.Shelf.Items;
 
 
-namespace GarangeInventory.Storage.ShelvingUnit
+namespace GarangeInventory.Storage.Shelf
 {
     public class TierLevel
     {

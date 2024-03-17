@@ -1,4 +1,4 @@
-﻿namespace GarangeInventory.Storage.ShelvingUnit.Boxes
+﻿namespace GarangeInventory.Storage.Shelf.Boxes
 {
     internal enum Category
     {
