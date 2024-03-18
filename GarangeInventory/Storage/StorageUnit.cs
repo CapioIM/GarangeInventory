@@ -2,7 +2,7 @@
 
 namespace GarangeInventory.Storage
 {
-    public class Storage
+    public class StorageUnit
     {
 		private int _idNumber;
 
@@ -19,12 +19,12 @@ namespace GarangeInventory.Storage
 			get { return _name; }
 			set { _name = value; }
 		}
-		private List<ShelvingUnit> _shelfs;
+		private List<ShelvingUnit> _shelfsInStorage;
 
-		public List<ShelvingUnit> Shelfs
+		public List<ShelvingUnit> ShelfsInStorage
         {
-			get { return _shelfs; }
-			set { _shelfs = value; }
+			get { return _shelfsInStorage; }
+			set { _shelfsInStorage = value; }
 		}
 
         private List<UserName> _containsUsers;
@@ -34,7 +34,7 @@ namespace GarangeInventory.Storage
             get { return _containsUsers; }
             set { _containsUsers = value; }
         }
-		public Storage(string name)
+		public StorageUnit(string name)
 		{
 			Name = name;
 		}

@@ -12,20 +12,20 @@ namespace GarangeInventory.Storage.Shelf
             set { _id = value; }
         }
 
-        private int _quantityOfTiers;
+        private int _shelfLevels;
 
-        public int QuantityOfTiers
+        public int ShelfLevels
         {
-            get { return _quantityOfTiers; }
-            set { _quantityOfTiers = value; }
+            get { return _shelfLevels; }
+            set { _shelfLevels = value; }
         }
 
-        private List<TierLevel> _containsTiers;
+        private List<TierLevel> _containsLevels;
 
-        public List<TierLevel> ContainsTiers
+        public List<TierLevel> ContainsLevels
         {
-            get { return _containsTiers; }
-            set { _containsTiers = value; }
+            get { return _containsLevels; }
+            set { _containsLevels = value; }
         }
 
         private string _user;

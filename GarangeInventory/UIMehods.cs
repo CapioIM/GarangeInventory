@@ -9,10 +9,10 @@ namespace GarangeInventory
         /// Creates storage object and returns storage object
         /// </summary>
         /// <returns> Returns new storage object </returns>
-        public static Storage.Storage MakeNewStorage(List<Storage.Storage> storageList)
+        public static Storage.StorageUnit MakeNewStorage(List<Storage.StorageUnit> storageList)
         {
             Console.WriteLine("Please type name of storage");
-            var storage = new Storage.Storage(Console.ReadLine());
+            var storage = new Storage.StorageUnit(Console.ReadLine());
             storageList.Add(storage);
             return storage;
         }

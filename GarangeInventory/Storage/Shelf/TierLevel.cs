@@ -7,6 +7,7 @@ namespace GarangeInventory.Storage.Shelf
 {
     public class TierLevel
     {
+
         private int _tierLevelId;
 
         public int TierLevelId

@@ -12,8 +12,8 @@ namespace GarangeInventory
                               "2 - Choose Storage Unit");
 
             var optionChoicePicked = UIMehods.GetUserOptionChoice();
-            List<Storage.Storage> storages = new List<Storage.Storage>();
-            var storageList = new List<Storage.Storage>();
+            List<Storage.StorageUnit> storages = new List<Storage.StorageUnit>();
+            var storageList = new List<Storage.StorageUnit>();
             if (optionChoicePicked == 1)
             {
                 UIMehods.MakeNewStorage(storageList);
