@@ -77,7 +77,11 @@ namespace GarangeInventory.Storage.Shelf.Items
             get { return _path; }
             set { _path = value; }
         }
-
+        public Item(string name,int quantity)
+        {
+            _quantity = quantity;
+            _name = name;
+        }
 
     }
 }

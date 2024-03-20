@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using GarangeInventory.Storage.Shelf.Items;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GarangeInventory
 {
@@ -6,6 +7,8 @@ namespace GarangeInventory
     {
         static void Main(string[] args)
         {
+
+            /*
             Console.WriteLine("Welcome to Garage Inventory System ! \n" +
                               "Please choose storage unit from list or create new storage unit\n" +
                               "1 - Create New Storage Unit\n" +
@@ -18,6 +21,7 @@ namespace GarangeInventory
             {
                 UIMehods.MakeNewStorage(storageList);
             }
+            */
 
         }
     }

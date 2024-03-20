@@ -32,11 +32,19 @@ namespace GarangeInventory
                     }
                 }
             }
+
             TierLevel tierLevel1 = shelfUnitOne.ContainsLevels[0];
             Box box = new Box("Blue stackable box");
             tierLevel1.ContainsBoxes.Add(box);
-            
 
+            Item item1 = new Item("4 pin A and B connectors", 3);
+            box.ItemsList.Add(item1);
+
+            Item item2 = new Item("3 pin A and B connectors", 2);
+            box.ItemsList.Add(item2);
+
+            Item item3 = new Item("2 pin A and B connectors", 2);
+            box.ItemsList.Add(item3);
 
             throw new NotImplementedException();
         }
