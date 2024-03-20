@@ -10,18 +10,18 @@ namespace GarangeInventory
             List<StorageUnit> storageList = new List<StorageUnit>();
             StorageUnit storageOne = new StorageUnit("2nd Floor left room");
             storageList.Add(storageOne);
-            ShelvingUnit shelfOne = new ShelvingUnit("Floor");
-            ShelvingUnit shelfTwo = new ShelvingUnit("wooden shelving on right");
-            shelfOne.ShelfLevels = 1;
-            shelfTwo.ShelfLevels = 5;
+            ShelvingUnit shelfUnitOne = new ShelvingUnit("Floor");
+            ShelvingUnit shelfUnitTwo = new ShelvingUnit("wooden shelving on right");
+            shelfUnitOne.ShelfLevels = 1;
+            shelfUnitTwo.ShelfLevels = 5;
             List<TierLevel> levelListShelfOne = new List<TierLevel>();
 
-            storageOne.ShelfsInStorage.Add(shelfOne);
-            storageOne.ShelfsInStorage.Add(shelfTwo);
+            storageOne.ShelfUnitsInStorage.Add(shelfUnitOne);
+            storageOne.ShelfUnitsInStorage.Add(shelfUnitTwo);
           
-            foreach (ShelvingUnit c in storageOne.ShelfsInStorage)
+            foreach (ShelvingUnit shelfUnit in storageOne.ShelfUnitsInStorage)
             {
-                for (int i = 0; i <= c.ShelfLevels; i++)
+                for (int i = 0; i < shelfUnit.ShelfLevels; i++)
                 {
                     TierLevel tierLevel = new TierLevel();
                     levelListShelfOne.Add(tierLevel);
