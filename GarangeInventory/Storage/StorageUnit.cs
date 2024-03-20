@@ -19,9 +19,9 @@ namespace GarangeInventory.Storage
 			get { return _name; }
 			set { _name = value; }
 		}
-		private List<ShelvingUnit> _shelfUnitsInStorage;
+		private List<ShelfUnit> _shelfUnitsInStorage;
 
-		public List<ShelvingUnit> ShelfUnitsInStorage
+		public List<ShelfUnit> ShelfUnitsInStorage
         {
 			get { return _shelfUnitsInStorage; }
 			set { _shelfUnitsInStorage = value; }

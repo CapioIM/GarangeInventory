@@ -1,4 +1,5 @@
 ﻿using GarangeInventory.Common;
+using GarangeInventory.Storage.Shelf.Items;
 
 namespace GarangeInventory.Storage.Shelf.Boxes
 {
@@ -41,6 +42,19 @@ namespace GarangeInventory.Storage.Shelf.Boxes
             get { return _path; }
             set { _path = value; }
         }
+        public Box(string name)
+        {
+            _name = name;
+        }
+
+        private List<Item> _itemsList;
+
+        public List<Item> ItemsList
+        {
+            get { return _itemsList; }
+            set { _itemsList = value; }
+        }
+
 
     }
 }

@@ -2,7 +2,7 @@
 
 namespace GarangeInventory.Storage.Shelf
 {
-    public class ShelvingUnit
+    public class ShelfUnit
     {
         private string _name;
 
@@ -52,8 +52,9 @@ namespace GarangeInventory.Storage.Shelf
             get { return _note; }
             set { _note = value; }
         }
-        public ShelvingUnit(string name)
+        public ShelfUnit(string name)
         {
+
             _name = name;
         }
     }

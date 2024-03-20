@@ -1,38 +1,41 @@
 ﻿using GarangeInventory.Storage.Shelf.Items;
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.Storage;
+using GarangeInventory.Storage.Shelf.Boxes;
 namespace GarangeInventory
 {
     public class TestData
     {
         public List<Item> GenerateItems()
         {
-            List<StorageUnit> storageList = new List<StorageUnit>();
+            List<StorageUnit> storageUnitList = new List<StorageUnit>();
             StorageUnit storageOne = new StorageUnit("2nd Floor left room");
-            storageList.Add(storageOne);
-            ShelvingUnit shelfUnitOne = new ShelvingUnit("Floor");
-            ShelvingUnit shelfUnitTwo = new ShelvingUnit("wooden shelving on right");
-            shelfUnitOne.ShelfLevels = 1;
-            shelfUnitTwo.ShelfLevels = 5;
-            List<TierLevel> levelListShelfOne = new List<TierLevel>();
+            storageUnitList.Add(storageOne);
 
+            ShelfUnit shelfUnitOne = new ShelfUnit("Floor");
+            shelfUnitOne.ShelfLevels = 1;
             storageOne.ShelfUnitsInStorage.Add(shelfUnitOne);
+
+            ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right");
+            shelfUnitTwo.ShelfLevels = 5;
             storageOne.ShelfUnitsInStorage.Add(shelfUnitTwo);
-          
-            foreach (ShelvingUnit shelfUnit in storageOne.ShelfUnitsInStorage)
+
+            foreach (StorageUnit storageUnit in storageUnitList)
             {
-                for (int i = 0; i < shelfUnit.ShelfLevels; i++)
+                foreach (ShelfUnit rack in storageUnit.ShelfUnitsInStorage)
                 {
-                    TierLevel tierLevel = new TierLevel();
-                    levelListShelfOne.Add(tierLevel);
-                    tierLevel.TierLevelId = i;
+                    for (int i = 0; i < rack.ShelfLevels; i++)
+                    {
+                        TierLevel tierLevel = new TierLevel();
+                        tierLevel.TierLevelId = i;
+                        rack.ContainsLevels.Add(tierLevel);
+                    }
                 }
             }
-
-
-
+            TierLevel tierLevel1 = shelfUnitOne.ContainsLevels[0];
+            Box box = new Box("Blue stackable box");
+            tierLevel1.ContainsBoxes.Add(box);
             
-
 
 
             throw new NotImplementedException();
