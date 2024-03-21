@@ -46,6 +46,8 @@ namespace GarangeInventory
             Item item3 = new Item("2 pin A and B connectors", 2);
             box.ItemsList.Add(item3);
 
+
+
             throw new NotImplementedException();
         }
     }
