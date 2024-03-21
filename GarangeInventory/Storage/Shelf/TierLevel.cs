@@ -16,7 +16,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _tierLevelId = value; }
         }
 
-        private List<Box> _containsBoxes;
+        private List<Box> _containsBoxes = new();
 
         public List<Box> ContainsBoxes
         {

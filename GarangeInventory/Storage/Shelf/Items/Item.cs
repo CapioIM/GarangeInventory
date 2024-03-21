@@ -62,15 +62,15 @@ namespace GarangeInventory.Storage.Shelf.Items
             get { return _size; }
             set { _size = value; }
         }
-        private Notes _note;
+        private Notes _note = new();
 
-        public Notes Note
+        public Notes Notes
         {
             get { return _note; }
             set { _note = value; }
         }
 
-        private PictureFilePath _path;
+        private PictureFilePath _path = new();
 
         public PictureFilePath Path
         {
@@ -81,6 +81,13 @@ namespace GarangeInventory.Storage.Shelf.Items
         {
             _quantity = quantity;
             _name = name;
+        }
+        private Category _itemCategory;
+
+        public Category ItemCategory
+        {
+            get { return _itemCategory; }
+            set { _itemCategory = value; }
         }
 
     }

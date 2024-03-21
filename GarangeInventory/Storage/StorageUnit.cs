@@ -19,7 +19,7 @@ namespace GarangeInventory.Storage
 			get { return _name; }
 			set { _name = value; }
 		}
-		private List<ShelfUnit> _shelfUnitsInStorage;
+		private List<ShelfUnit> _shelfUnitsInStorage = new();
 
 		public List<ShelfUnit> ShelfUnitsInStorage
         {
@@ -27,9 +27,9 @@ namespace GarangeInventory.Storage
 			set { _shelfUnitsInStorage = value; }
 		}
 
-        private List<UserName> _containsUsers;
+        private List<UserName> _containsUsers = new();
 
-        public List<UserName> ContainsUsers
+        public List<UserName> ContainsUsers 
         {
             get { return _containsUsers; }
             set { _containsUsers = value; }

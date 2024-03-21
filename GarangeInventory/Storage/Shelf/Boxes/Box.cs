@@ -47,7 +47,7 @@ namespace GarangeInventory.Storage.Shelf.Boxes
             _name = name;
         }
 
-        private List<Item> _itemsList;
+        private List<Item> _itemsList = new();
 
         public List<Item> ItemsList
         {

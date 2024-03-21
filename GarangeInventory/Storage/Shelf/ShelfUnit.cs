@@ -29,7 +29,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _shelfLevels = value; }
         }
 
-        private List<TierLevel> _containsLevels;
+        private List<TierLevel> _containsLevels = new();
 
         public List<TierLevel> ContainsLevels
         {
@@ -45,7 +45,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _user = value; }
         }
 
-        private Notes _note;
+        private Notes _note = new();
 
         public Notes Notes
         {

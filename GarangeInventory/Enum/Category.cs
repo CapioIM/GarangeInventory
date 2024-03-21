@@ -3,6 +3,7 @@
     public enum Category
     {
         CarParts,
+        CarElecticalEquipment,
         ElectricTools,
         ElectricalEquipment,
         SpecialTools,
