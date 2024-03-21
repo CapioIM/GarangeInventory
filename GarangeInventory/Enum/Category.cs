@@ -4,7 +4,9 @@
     {
         CarParts,
         ElectricTools,
+        ElectricalEquipment,
         SpecialTools,
-        Food
+        Food,
+        Other
     }
 }
