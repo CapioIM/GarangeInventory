@@ -23,7 +23,7 @@ namespace GarangeInventory.Storage.Shelf
             get { return _containsBoxes; }
             set { _containsBoxes = value; }
         }
-        private List<Item> _containsItem;
+        private List<Item> _containsItem = new();
 
         public List<Item> ContainsItem
         {

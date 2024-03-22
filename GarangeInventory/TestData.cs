@@ -67,6 +67,7 @@ namespace GarangeInventory
             tierLevel2.ContainsBoxes.Add(boxOrange);
 
             Item item9 = new Item("crocodile wire clamps", 15);
+            item9.ItemCategory = Category.ElectricalEquipment;
             boxOrange.ItemsList.Add(item9);
 
             var box3 = new Box("Transparent box");
@@ -101,6 +102,8 @@ namespace GarangeInventory
             item16.ItemCategory = Category.CarElecticalEquipment;
             box3.ItemsList.Add(item16);
 
+            Item Item17 = new Item("Old Laptop", 1);
+            tierLevel2.ContainsItem.Add(Item17);
 
             throw new NotImplementedException();
         }
