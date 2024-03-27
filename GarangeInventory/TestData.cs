@@ -56,22 +56,22 @@ namespace GarangeInventory
             Item item6 = new Item("5cm some kind rubbish tape", 1);
             box.ItemsList.Add(item6);
 
-            Item item7 = new Item("1mm solder wire with flux",1);
+            Item item7 = new Item("1mm solder wire with flux", 1);
             box.ItemsList.Add(item7);
 
             Item item8 = new Item("sponges to clean solder tip", 4);
             box.ItemsList.Add(item8);
 
-            var tierLevel2 = shelfUnitTwo.ContainsLevels[4];
+            var shelfTwoTierFour = shelfUnitTwo.ContainsLevels[4];
             var boxOrange = new Box("Orange box");
-            tierLevel2.ContainsBoxes.Add(boxOrange);
+            shelfTwoTierFour.ContainsBoxes.Add(boxOrange);
 
             Item item9 = new Item("crocodile wire clamps", 15);
             item9.ItemCategory = Category.ElectricalEquipment;
             boxOrange.ItemsList.Add(item9);
 
             var box3 = new Box("Transparent box");
-            tierLevel2.ContainsBoxes.Add(box3);
+            shelfTwoTierFour.ContainsBoxes.Add(box3);
 
             Item item10 = new Item("270 green o-ring assortment set", 1);
             box3.ItemsList.Add(item10);
@@ -102,8 +102,38 @@ namespace GarangeInventory
             item16.ItemCategory = Category.CarElecticalEquipment;
             box3.ItemsList.Add(item16);
 
-            Item Item17 = new Item("Old Laptop", 1);
-            tierLevel2.ContainsItem.Add(Item17);
+            Item item17 = new Item("Old Laptop", 1);
+            shelfTwoTierFour.ContainsItem.Add(item17);
+
+            Item item18 = new Item("Pickled gerkins", 2);
+            shelfTwoTierFour.ContainsItem.Add(item18);
+            item18.ItemCategory = Category.Food;
+            item18.Expiry = new DateTime(2025, 12, 30);
+
+            Box box4 = new Box("carton box");
+            tierLevel1.ContainsBoxes.Add(box4);
+
+            Item item19 = new Item("wire split connector (1 in to 3)", 9);
+            item19.ItemCategory = Category.SolderingAccessories;
+            box4.ItemsList.Add(item19);
+
+            Item item20 = new Item("wire split connector (1 in to 4)", 9);
+            item20.ItemCategory = Category.SolderingAccessories;
+            box4.ItemsList.Add(item20);
+
+            Item item21 = new Item("wire split connector (2 in to 4", 2);
+            item21.ItemCategory = Category.SolderingAccessories;
+            box4.ItemsList.Add(item21);
+
+            Item item22 = new Item("wire split connector(2 in to 6)", 2);
+            item21.ItemCategory = Category.SolderingAccessories;
+            box4.ItemsList.Add(item22);
+
+            Item item23 = new Item("box of small alligator clips", 1);
+            item23.ItemCategory = Category.SolderingAccessories;
+            box4.ItemsList.Add(item23);
+
+
 
             throw new NotImplementedException();
         }

@@ -6,6 +6,7 @@
         CarElecticalEquipment,
         ElectricTools,
         ElectricalEquipment,
+        SolderingAccessories,
         SpecialTools,
         Food,
         Other
