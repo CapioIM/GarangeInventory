@@ -1,5 +1,5 @@
 ﻿
-namespace GarangeInventory.Storage.Shelf.Items
+namespace GarangeInventory.Storage.Shelf
 {
     public class ItemIdCounter
     {

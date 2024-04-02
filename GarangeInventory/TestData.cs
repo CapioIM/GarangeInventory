@@ -1,13 +1,13 @@
-﻿using GarangeInventory.Storage.Shelf.Items;
+﻿
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.Storage;
-using GarangeInventory.Storage.Shelf.Boxes;
+
 using GarangeInventory.Common;
 namespace GarangeInventory
 {
     public class TestData
     {
-        public List<Item> GenerateItems()
+        public List<StorageUnit> GenerateItems()
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
             StorageUnit storageOne = new StorageUnit("2nd Floor left room");
@@ -39,7 +39,8 @@ namespace GarangeInventory
             tierLevel1.ContainsBoxes.Add(box);
 
             Item item1 = new Item("4 pin A and B connectors", 3);
-            box.ItemsList.Add(item1);
+            item1.ItemCategory = Enum.Category.CarElecticalEquipment;
+            box.Items.Add(item1);
 
             Item item2 = new Item("3 pin A and B connectors", 2);
             box.ItemsList.Add(item2);

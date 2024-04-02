@@ -21,12 +21,10 @@ namespace GarangeInventory.Storage.Shelf
             set { _id = value; }
         }
 
-        private int _shelfLevels;
-
-        public int ShelfLevels
+        public int ShelfLevelCount
         {
-            get { return _shelfLevels; }
-            set { _shelfLevels = value; }
+            get { return _containsLevels.Count; }
+
         }
 
         private List<TierLevel> _containsLevels = new();
@@ -37,14 +35,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _containsLevels = value; }
         }
 
-        private string _user;
-
-        public string User
-        {
-            get { return _user; }
-            set { _user = value; }
-        }
-
+ 
         private Notes _note = new();
 
         public Notes Notes
@@ -54,7 +45,6 @@ namespace GarangeInventory.Storage.Shelf
         }
         public ShelfUnit(string name)
         {
-
             _name = name;
         }
     }

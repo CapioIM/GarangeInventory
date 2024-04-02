@@ -1,7 +1,8 @@
 ﻿using GarangeInventory.Common;
-using GarangeInventory.Storage.Shelf.Items;
+using GarangeInventory.Enum;
 
-namespace GarangeInventory.Storage.Shelf.Boxes
+
+namespace GarangeInventory.Storage.Shelf
 {
     public class Box
     {
@@ -47,12 +48,12 @@ namespace GarangeInventory.Storage.Shelf.Boxes
             _name = name;
         }
 
-        private List<Item> _itemsList = new();
+        private List<Item> _items = new();
 
-        public List<Item> ItemsList
+        public List<Item> Items
         {
-            get { return _itemsList; }
-            set { _itemsList = value; }
+            get { return _items; }
+            set { _items = value; }
         }
 
 

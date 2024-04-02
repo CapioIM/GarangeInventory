@@ -1,4 +1,4 @@
-﻿namespace GarangeInventory.Storage.Shelf.Items
+﻿namespace GarangeInventory.Enum
 {
     public enum Category
     {

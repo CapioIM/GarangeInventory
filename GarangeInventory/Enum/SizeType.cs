@@ -1,4 +1,4 @@
-﻿namespace GarangeInventory.Common
+﻿namespace GarangeInventory.Enum
 {
     public enum SizeType
     {

@@ -1,6 +1,4 @@
 ﻿using GarangeInventory.Common;
-using GarangeInventory.Storage.Shelf.Boxes;
-using GarangeInventory.Storage.Shelf.Items;
 
 
 namespace GarangeInventory.Storage.Shelf
@@ -8,12 +6,12 @@ namespace GarangeInventory.Storage.Shelf
     public class TierLevel
     {
 
-        private int _tierLevelId;
+        private int _id;
 
-        public int TierLevelId
+        public int ID
         {
-            get { return _tierLevelId; }
-            set { _tierLevelId = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         private List<Box> _containsBoxes = new();
@@ -23,12 +21,13 @@ namespace GarangeInventory.Storage.Shelf
             get { return _containsBoxes; }
             set { _containsBoxes = value; }
         }
-        private List<Item> _containsItem = new();
+        private List<Item> _items = new();
 
-        public List<Item> ContainsItem
+        public List<Item> Items
+
         {
-            get { return _containsItem; }
-            set { _containsItem = value; }
+            get { return _items; }
+            set { _items = value; }
         }
         private Notes _note;
 
