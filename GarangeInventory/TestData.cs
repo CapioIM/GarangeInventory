@@ -77,12 +77,10 @@ namespace GarangeInventory
             box3.Items.Add(item14);
 
             Item item15 = new Item("Blank remote car key", 7, Category.CarElecticalEquipment);
-            item15.ItemCategory = Category.CarElecticalEquipment;
             item15.Note.Text = "universal remote, no chip, no blade";
             box3.Items.Add(item15);
 
             Item item16 = new Item("Various car interior Led Lights bag", 1, Category.CarElecticalEquipment);
-            item16.ItemCategory = Category.CarElecticalEquipment;
             box3.Items.Add(item16);
 
             Item item17 = new Item("Old Laptop", 1, Category.ElectricalEquipment);
@@ -116,7 +114,17 @@ namespace GarangeInventory
 
             Item item24 = new Item("Apples", 6, Category.Food);
             box5.Items.Add(item24);
-            item24.Expiry = new DateTime(2024,5,1);
+            item24.Expiry = new DateTime(2024, 5, 1);
+
+            Box box6 = new Box("Bag With Tools");
+            shelfUnitOne.Boxes.Add(box6);
+            Item item25 = new Item("Volvo s80 Wishbone(both sides)", 1, Category.CarParts);
+            box6.Items.Add(item25);
+            Item item26 = new Item("Electric Ratchet Power Tool 12V", 1, Category.ElectricTools);
+            box6.Items.Add(item26);
+            Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools);
+            box6.Items.Add(Item27);
+
 
             throw new NotImplementedException();
         }
