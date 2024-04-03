@@ -3,7 +3,7 @@
 
 namespace GarangeInventory.Storage.Shelf
 {
-    public class TierLevel
+    public class Shelf
     {
 
         private int _id;
@@ -14,12 +14,12 @@ namespace GarangeInventory.Storage.Shelf
             set { _id = value; }
         }
 
-        private List<Box> _containsBoxes = new();
+        private List<Box> _boxes = new();
 
-        public List<Box> ContainsBoxes
+        public List<Box> Boxes
         {
-            get { return _containsBoxes; }
-            set { _containsBoxes = value; }
+            get { return _boxes; }
+            set { _boxes = value; }
         }
         private List<Item> _items = new();
 
@@ -29,9 +29,9 @@ namespace GarangeInventory.Storage.Shelf
             get { return _items; }
             set { _items = value; }
         }
-        private Notes _note;
+        private Note _note;
 
-        public Notes Notes
+        public Note Notes
         {
             get { return _note; }
             set { _note = value; }

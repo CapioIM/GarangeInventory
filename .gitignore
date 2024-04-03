@@ -3,5 +3,6 @@
 ################################################################################
 
 /.vs
-/GarangeInventory/obj
-/GarangeInventory/obj/Debug/net8.0
+*/obj
+*/vs
+*/bin

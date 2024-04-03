@@ -27,13 +27,7 @@ namespace GarangeInventory.Storage.Shelf
             get { return _cost; }
             set { _cost = value; }
         }
-        private WeightType _type;
 
-        public WeightType Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
         private float _weight;
 
         public float Weight
@@ -55,7 +49,6 @@ namespace GarangeInventory.Storage.Shelf
             get { return _purchaseDate; }
             set { _purchaseDate = value; }
         }
-        private SizeType _size;
 
         private DateTime _itemCreationDate;
 
@@ -64,15 +57,16 @@ namespace GarangeInventory.Storage.Shelf
             get { return _itemCreationDate; }
         }
 
+        private SizeType _size;
 
         public SizeType Size
         {
             get { return _size; }
             set { _size = value; }
         }
-        private Notes _note = new();
+        private Note _note = new();
 
-        public Notes Notes
+        public Note Note
         {
             get { return _note; }
             set { _note = value; }
@@ -93,14 +87,23 @@ namespace GarangeInventory.Storage.Shelf
             set { _itemCategory = value; }
         }
 
+        private WeightType weightType;
+
+        public WeightType WeightType
+        {
+            get { return weightType; }
+            set { weightType = value; }
+        }
 
 
-        public Item(string name, int quantity)
+        public Item(string name, int quantity, Category category)
         {
             _quantity = quantity;
             _name = name;
             _itemCreationDate = DateTime.Now;
+            _itemCategory = category;
         }
+
 
     }
 }

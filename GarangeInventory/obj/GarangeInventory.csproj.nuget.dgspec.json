@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Source\\Repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj": {}
+    "C:\\Users\\user\\source\\repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Source\\Repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj": {
+    "C:\\Users\\user\\source\\repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Source\\Repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj",
         "projectName": "GarangeInventory",
-        "projectPath": "C:\\Users\\user\\Source\\Repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\CapioIM\\GarangeInventory\\GarangeInventory\\GarangeInventory.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Source\\Repos\\CapioIM\\GarangeInventory\\GarangeInventory\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\CapioIM\\GarangeInventory\\GarangeInventory\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

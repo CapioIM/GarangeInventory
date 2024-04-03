@@ -20,9 +20,9 @@ namespace GarangeInventory.Storage.Shelf
             get { return _type; }
             set { _type = value; }
         }
-        private Notes _note;
+        private Note _note;
 
-        public Notes Note
+        public Note Note
         {
             get { return _note; }
             set { _note = value; }

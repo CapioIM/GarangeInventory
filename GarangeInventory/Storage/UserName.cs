@@ -2,12 +2,12 @@
 {
     public class UserName
     {
-        private string _userNameId;
+        private string _user;
 
-        public string UserNameId
+        public string User
         {
-            get { return _userNameId; }
-            set { _userNameId = value; }
+            get { return _user; }
+            set { _user = value; }
         }
 
     }
