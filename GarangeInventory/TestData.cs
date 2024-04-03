@@ -1,8 +1,8 @@
 ﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.Storage;
-
 using GarangeInventory.Common;
+
 namespace GarangeInventory
 {
     public class TestData
@@ -18,7 +18,6 @@ namespace GarangeInventory
 
             ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right");
             storageOne.ShelfUnits.Add(shelfUnitTwo);
-
 
             Shelf tierLevel1 = shelfUnitOne.Shelfs[0];
             Box box = new Box("Blue stackable box");
@@ -114,7 +113,7 @@ namespace GarangeInventory
 
             Item item24 = new Item("Apples", 6, Category.Food);
             box5.Items.Add(item24);
-            item24.Expiry = new DateTime(2024, 5, 1);
+            item24.Expiry = new DateTime(2024, 4, 1);
 
             Box box6 = new Box("Bag With Tools");
             shelfUnitOne.Boxes.Add(box6);
