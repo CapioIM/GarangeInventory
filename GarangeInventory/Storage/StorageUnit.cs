@@ -27,12 +27,12 @@ namespace GarangeInventory.Storage
 			set { _shelfUnits = value; }
 		}
 
-        private List<UserName> _containsUsers = new();
+        private List<UserName> _users = new();
 
-        public List<UserName> ContainsUsers 
+        public List<UserName> Users 
         {
-            get { return _containsUsers; }
-            set { _containsUsers = value; }
+            get { return _users; }
+            set { _users = value; }
         }
 		public StorageUnit(string name)
 		{

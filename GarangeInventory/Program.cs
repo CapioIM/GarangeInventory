@@ -10,7 +10,7 @@ namespace GarangeInventory
         {
 
             var testDataList = TestData.GenerateItems();
-            List<Item> expiredItems = Expiry.GetExpiredItems(testDataList);
+            List<Item> expiredItems = Expiry.GetExpiryItemsLinq(testDataList);
 
             foreach (Item item in expiredItems)
             {

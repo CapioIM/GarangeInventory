@@ -11,12 +11,33 @@ namespace GarangeInventory
         check for items with expiry date < now 
 
         List of items has:
-        ShelfUnit
-        Shelf
-        Box
+
+        ShelfUnit => Item
+        ShelfUnit => box => item
+        ShelfUnit => shelf => Item
+        ShelfUnit => Shelf => Box => item
         
          */
 
+        
+        public static List<Item> GetExpiryItemsLinq(List<StorageUnit> storages)
+        {
+          return  storages
+                 .SelectMany(storageUnit => storageUnit.ShelfUnits)
+                 .SelectMany(shelfUnit => shelfUnit.Boxes)
+                 .SelectMany(box => box.Items)
+                 .Concat(storages
+                                 .SelectMany(storageUnit => storageUnit.ShelfUnits)
+                                 .SelectMany(shelfUnit => shelfUnit.Shelfs)
+                                 .SelectMany(shelf => shelf.Boxes)
+                                 .SelectMany(box => box.Items)
+
+                 .Where(expCheck => expCheck?.Expiry < DateTime.Now))
+                 .ToList();
+             
+        }
+
+        
 
 
         public static List<Item> GetExpiredItems(List<StorageUnit> storages)
@@ -27,6 +48,10 @@ namespace GarangeInventory
                 foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
                 {
                     result.AddRange(GetItems(shelfUnit.Items));
+                    foreach (Shelf shelf in shelfUnit.Shelfs)
+                    {
+
+                    }
                     foreach (Box box in shelfUnit.Boxes)
                     {
                         result.AddRange(GetItems(box.Items));
@@ -36,6 +61,7 @@ namespace GarangeInventory
             }
             return result;
         }
+
 
         private static List<Item> GetItems(List<Item> items)
         {
