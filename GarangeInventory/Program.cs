@@ -1,4 +1,7 @@
 ﻿
+using GarangeInventory.Storage;
+using GarangeInventory.Storage.Shelf;
+
 namespace GarangeInventory
 {
     internal class Program
@@ -7,13 +10,14 @@ namespace GarangeInventory
         {
 
             var testDataList = TestData.GenerateItems();
-            Expiry.GetExpiredItems(testDataList);
-            foreach (var item in testDataList)
+            List<Item> expiredItems = Expiry.GetExpiredItems(testDataList);
+
+            foreach (Item item in expiredItems)
             {
-                Console.WriteLine(item);  
+                Console.WriteLine(expiredItems.IndexOf(item) + " " + item.Name);
             }
 
-
+            Console.ReadLine();
         }
     }
 }

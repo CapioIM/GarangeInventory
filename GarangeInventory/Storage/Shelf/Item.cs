@@ -102,6 +102,7 @@ namespace GarangeInventory.Storage.Shelf
             _name = name;
             _itemCreationDate = DateTime.Now;
             _itemCategory = category;
+            _expiry = new DateTime(2099, 12, 30);
         }
 
 
