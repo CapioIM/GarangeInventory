@@ -42,7 +42,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _note = value; }
         }
 
-        private List<Box> _boxes;
+        private List<Box> _boxes = new();
 
         public List<Box> Boxes
         {
@@ -58,9 +58,14 @@ namespace GarangeInventory.Storage.Shelf
             set { _items = value; }
         }
 
-        public ShelfUnit(string name)
+        public ShelfUnit(string name,int amountOfShelfs)
         {
             _name = name;
+            for (int i = 0; i < amountOfShelfs; i++)
+            {
+                Shelf shelf = new Shelf();
+                Shelfs.Add(shelf);
+            }
         }
 
     }

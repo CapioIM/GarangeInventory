@@ -7,21 +7,19 @@ namespace GarangeInventory
 {
     public class TestData
     {
-        public List<StorageUnit> GenerateItems()
+        public static List<StorageUnit> GenerateItems()
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
-            StorageUnit storageOne = new StorageUnit("2nd Floor left room");
-            storageUnitList.Add(storageOne);
+            StorageUnit storageOne = MakeStorageUnit("2nd Floor left room",storageUnitList);
 
-            ShelfUnit shelfUnitOne = new ShelfUnit("Floor");
+            ShelfUnit shelfUnitOne = new ShelfUnit("Floor",1);
             storageOne.ShelfUnits.Add(shelfUnitOne);
 
-            ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right");
+            ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right",5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);
 
-            Shelf tierLevel1 = shelfUnitOne.Shelfs[0];
             Box box = new Box("Blue stackable box");
-            tierLevel1.Boxes.Add(box);
+            shelfUnitOne.Boxes.Add(box);
 
             Item item1 = new Item("4 pin A and B connectors", 3, Category.SolderingAccessories);
             box.Items.Add(item1);
@@ -90,7 +88,7 @@ namespace GarangeInventory
             item18.Expiry = new DateTime(2025, 12, 30);
 
             Box box4 = new Box("carton box");
-            tierLevel1.Boxes.Add(box4);
+            shelfUnitOne.Boxes.Add(box4);
 
             Item item19 = new Item("wire split connector (1 in to 3)", 9, Category.SolderingAccessories);
             box4.Items.Add(item19);
@@ -125,7 +123,15 @@ namespace GarangeInventory
             box6.Items.Add(Item27);
 
 
-            throw new NotImplementedException();
+            return storageUnitList;
         }
+
+        private static StorageUnit MakeStorageUnit(string name,List<StorageUnit> storages)
+        {
+            StorageUnit newUnit = new StorageUnit(name);
+            storages.Add(newUnit);
+            return newUnit;
+        }
+
     }
 }

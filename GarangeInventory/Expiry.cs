@@ -19,17 +19,21 @@ namespace GarangeInventory
 
 
 
-        public List<Item> ExpiredItems(List<StorageUnit> storages)
+        public static List<Item> GetExpiredItems(List<StorageUnit> storages)
         {
             List<Item> result = new List<Item>();
 
-            for (int i = 0; i <= storages.Count; i++)
+            for (int i = 0; i < storages.Count; i++)
             {
                 for (int j = 0; j < storages[i].ShelfUnits.Count; j++)
                 {
                     for (int k = 0; k < storages[i].ShelfUnits[j].Shelfs.Count; k++)
                     {
-
+                        var shelfexpired = GetItems(storages[i].ShelfUnits[j].Shelfs[k].Items);
+                        foreach (var item in shelfexpired)
+                        {
+                            result.Add(item);
+                        }
 
                         for (int l = 0; l < storages[i].ShelfUnits[j].Shelfs[j].Boxes.Count; l++)
                         {
@@ -41,7 +45,7 @@ namespace GarangeInventory
             return result;
         }
 
-        private List<Item> GetItems(List<Item> items)
+        private static List<Item> GetItems(List<Item> items)
         {
             List<Item> result = new List<Item>();
             foreach (Item item in items)

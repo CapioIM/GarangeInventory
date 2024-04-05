@@ -6,6 +6,14 @@ namespace GarangeInventory
         static void Main(string[] args)
         {
 
+            var testDataList = TestData.GenerateItems();
+            Expiry.GetExpiredItems(testDataList);
+            foreach (var item in testDataList)
+            {
+                Console.WriteLine(item);  
+            }
+
+
         }
     }
 }
