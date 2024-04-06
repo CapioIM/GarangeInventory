@@ -1,6 +1,6 @@
-﻿
+﻿using GarangeInventory.Storage.Shelf;
+using GarangeInventory.Enum;
 using GarangeInventory.Storage;
-using GarangeInventory.Storage.Shelf;
 
 namespace GarangeInventory
 {
@@ -8,36 +8,28 @@ namespace GarangeInventory
     {
         static void Main(string[] args)
         {
-            var testDataList = TestData.GenerateItems();
-            /*
+            Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
+            int choice = UiMethods.GetUserInt();
+            SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
 
-            List<Item> expiredItems = Expiry.GetExpiredItems(testDataList);
-
-            foreach (Item item in expiredItems)
+            List<StorageUnit> storages = new List<StorageUnit>();
+            storages = TestData.GenerateItems();
+            switch (searchOptions)
             {
-                Console.WriteLine(expiredItems.IndexOf(item) + " " + item.Name + " " + item.Expiry);
+                case SearchOptions.ExpiryDate:
+                    {
+                        Expiry.DisplayExpiredItems(storages);
+                        break;
+                    }
+                    case SearchOptions.ContainsName:
+                    {
+                        Search.DisplaySearchResult(storages);
+                        break;
+                    }
             }
 
-            var allItems = new List<Item>();
-            allItems = TestData.GetAllItems(testDataList);
-            foreach (Item item in allItems)
-            {
-                Console.WriteLine(allItems.IndexOf(item) + 1 + " " + item.Name);
-            }
-            */
-
-            List<Item> allItemsLinq = new List<Item>();
-            allItemsLinq = Expiry.GetAlltemsLinq(testDataList);
-
-            List<Item> allExpiredItems = new List<Item>();
-            allExpiredItems = Expiry.GetAllExpiredItems(allItemsLinq);
-            foreach (Item item in allExpiredItems)
-            {
-                Console.WriteLine(allExpiredItems.IndexOf(item) + 1 + " " + item.Name);
-            }
-
-            Console.WriteLine(DateTime.Now);
-            Console.ReadLine();
+            Console.WriteLine("End of programm , press any key");
+            Console.ReadKey();
         }
     }
 }

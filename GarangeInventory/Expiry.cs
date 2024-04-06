@@ -6,6 +6,11 @@ namespace GarangeInventory
 {
     internal class Expiry
     {
+        /// <summary>
+        /// get items using foreach loops , check if expired , return list of expired items
+        /// </summary>
+        /// <param name="storages"> List of storages to check items in </param>
+        /// <returns> List of Expired items </returns>
         public static List<Item> GetExpiredItems(List<StorageUnit> storages)
         {
             List<Item> result = new List<Item>();
@@ -31,25 +36,38 @@ namespace GarangeInventory
             return result;
         }
 
+        /// <summary>
+        /// Get all items (LINQ)from ShelfUnit=>items ,ShelfUnit=> shelf =>items, shelfUnit=>shelf=>box=>items , ShelfUnit=>box=>items.
+        /// </summary>
+        /// <param name="storages"> Top Level of List of storage</param>
+        /// <returns> List with all Items </returns>
         public static List<Item> GetAlltemsLinq(List<StorageUnit> storages)
         {
-            return storages
-                  .SelectMany(storage => storage.ShelfUnits)
+            List<ShelfUnit> shelfUnit = new List<ShelfUnit>(GetShelfUnits(storages));
+            return shelfUnit
                   .SelectMany(shelfUnit => shelfUnit.Shelfs)
                   .SelectMany(shelf => shelf.Items)
-                  .Concat(storages
-                      .SelectMany(storage => storage.ShelfUnits)
+                  .Concat(shelfUnit
                       .SelectMany(shelfUnit => shelfUnit.Shelfs)
                       .SelectMany(shelf => shelf.Boxes)
                       .SelectMany(box => box.Items)
-                      .Concat(storages
-                          .SelectMany(storage => storage.ShelfUnits)
+                      .Concat(shelfUnit
                           .SelectMany(shelfUnit => shelfUnit.Boxes)
                           .SelectMany(box => box.Items)
-                          .Concat(storages
-                                .SelectMany(storage => storage.ShelfUnits)
+                          .Concat(shelfUnit
                                 .SelectMany(shelfUnit => shelfUnit.Items))))
                   .ToList();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="storages"></param>
+        /// <returns></returns>
+        private static List<ShelfUnit> GetShelfUnits(List<StorageUnit> storages)
+        {
+            return storages
+                .SelectMany(storage => storage.ShelfUnits)
+                .ToList();
         }
 
         public static List<Item> GetAllExpiredItems(List<Item> items)
@@ -74,6 +92,17 @@ namespace GarangeInventory
                 }
             }
             return result;
+        }
+
+        public static void DisplayExpiredItems(List<StorageUnit> storages)
+        {
+            Console.WriteLine("Heres list of expired items");
+            List<Item> items = new List<Item>();
+            items = GetAllExpiredItems(GetAlltemsLinq(storages));
+            foreach (Item item in items)
+            {
+                Console.WriteLine(items.IndexOf(item) + 1 + " " + item.Name);
+            }
         }
     }
 }
