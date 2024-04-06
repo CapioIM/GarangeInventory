@@ -12,58 +12,62 @@ namespace GarangeInventory
 
         List of items has:
 
-        ShelfUnit => Item
-        ShelfUnit => box => item
-        ShelfUnit => shelf => Item
-        ShelfUnit => Shelf => Box => item
-        
+        storages => storage => shelfUnits => shelfUnit =>
+
+      1  shelfs => shelf => boxes => box => items => item
+      2  boxes => box => items => item
+      3  items => item
+
          */
-
-        
-        public static List<Item> GetExpiryItemsLinq(List<StorageUnit> storages)
-        {
-          return  storages
-                 .SelectMany(storageUnit => storageUnit.ShelfUnits)
-                 .SelectMany(shelfUnit => shelfUnit.Boxes)
-                 .SelectMany(box => box.Items)
-                 .Concat(storages
-                                 .SelectMany(storageUnit => storageUnit.ShelfUnits)
-                                 .SelectMany(shelfUnit => shelfUnit.Shelfs)
-                                 .SelectMany(shelf => shelf.Boxes)
-                                 .SelectMany(box => box.Items)
-
-                 .Where(expCheck => expCheck?.Expiry < DateTime.Now))
-                 .ToList();
-             
-        }
-
-        
-
 
         public static List<Item> GetExpiredItems(List<StorageUnit> storages)
         {
             List<Item> result = new List<Item>();
-            foreach (StorageUnit storageUnit in storages)
+            foreach (StorageUnit storage in storages)
             {
-                foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+                foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
                 {
-                    result.AddRange(GetItems(shelfUnit.Items));
+                    result.AddRange(GetItemsExpiryCheck(shelfUnit.Items));
                     foreach (Shelf shelf in shelfUnit.Shelfs)
                     {
-
+                        result.AddRange(GetItemsExpiryCheck(shelf.Items));
+                        foreach (Box box in shelf.Boxes)
+                        {
+                            result.AddRange(GetItemsExpiryCheck(box.Items));
+                        }
                     }
                     foreach (Box box in shelfUnit.Boxes)
                     {
-                        result.AddRange(GetItems(box.Items));
+                        result.AddRange(GetItemsExpiryCheck(box.Items));
                     }
                 }
-
             }
             return result;
         }
 
+        public static List<Item> GetAlltemsLinq(List<StorageUnit> storages)
+        {
+            return storages
+                  .SelectMany(storage => storage.ShelfUnits)
+                  .SelectMany(shelfUnit => shelfUnit.Shelfs)
+                  .SelectMany(shelf => shelf.Items)
+                  .Concat(storages
+                      .SelectMany(storage => storage.ShelfUnits)
+                      .SelectMany(shelfUnit => shelfUnit.Shelfs)
+                      .SelectMany(shelf => shelf.Boxes)
+                      .SelectMany(box => box.Items)
+                      .Concat(storages
+                          .SelectMany(storage => storage.ShelfUnits)
+                          .SelectMany(shelfUnit => shelfUnit.Boxes)
+                          .SelectMany(box => box.Items)
+                          .Concat(storages
+                                .SelectMany(storage => storage.ShelfUnits)
+                                .SelectMany(shelfUnit => shelfUnit.Items)
+                  )))
+                  .ToList();
+        }
 
-        private static List<Item> GetItems(List<Item> items)
+        private static List<Item> GetItemsExpiryCheck(List<Item> items)
         {
             List<Item> result = new List<Item>();
             if (items != null)

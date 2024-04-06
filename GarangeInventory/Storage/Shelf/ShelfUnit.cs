@@ -50,7 +50,7 @@ namespace GarangeInventory.Storage.Shelf
             set { _boxes = value; }
         }
 
-        private List<Item> _items;
+        private List<Item> _items = new();
 
         public List<Item> Items
         {

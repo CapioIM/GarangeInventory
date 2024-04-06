@@ -122,6 +122,9 @@ namespace GarangeInventory
             Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools);
             box6.Items.Add(Item27);
 
+            Item item28 = new Item("Shelf Unit Level Item 28",1,Category.Other);
+            item28.Expiry = new DateTime(2020,1,1);
+            shelfUnitOne.Items.Add(item28);
 
             return storageUnitList;
         }
@@ -131,6 +134,47 @@ namespace GarangeInventory
             StorageUnit newUnit = new StorageUnit(name);
             storages.Add(newUnit);
             return newUnit;
+        }
+
+        public static List<Item> GetAllItems(List<StorageUnit> storages)
+        {
+            List<Item> result = new List<Item>();
+            foreach (StorageUnit storage in storages)
+            {
+                foreach (ShelfUnit shelfUnits in storage.ShelfUnits)
+                {
+                    result.AddRange(AddItems(shelfUnits.Items));
+                    foreach (Shelf shelf in shelfUnits.Shelfs)
+                    {
+                        result.AddRange(AddItems(shelf.Items));
+                        foreach (Box box in shelf.Boxes)
+                        {
+                            result.AddRange(AddItems(box.Items));
+                        }
+                    }
+                    foreach (Box box in shelfUnits.Boxes)
+                    {
+                        result.AddRange(AddItems(box.Items));
+                    }
+                }
+            }
+            return result;
+        }
+
+        private static List<Item> AddItems(List<Item> items)
+        {
+            List<Item> result = new List<Item>();
+            if (items != null)
+            {
+                foreach (Item item in items)
+                {
+                    if (item != null)
+                    {
+                        result.Add(item);
+                    }
+                }
+            }
+            return result;
         }
 
     }
