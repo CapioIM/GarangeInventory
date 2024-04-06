@@ -6,10 +6,7 @@ namespace GarangeInventory
 {
     internal class Expiry
     {
-        /*  // provide list with expired items
-          take storageUnit list > check for items > take all shelfUnits > check for items > take all shelfs > check for items > take all boxes > check for items
-        check for items with expiry date < now 
-
+        /*  
         List of items has:
 
         storages => storage => shelfUnits => shelfUnit =>
@@ -62,9 +59,13 @@ namespace GarangeInventory
                           .SelectMany(box => box.Items)
                           .Concat(storages
                                 .SelectMany(storage => storage.ShelfUnits)
-                                .SelectMany(shelfUnit => shelfUnit.Items)
-                  )))
+                                .SelectMany(shelfUnit => shelfUnit.Items))))
                   .ToList();
+        }
+
+        public static List<Item> GetAllExpiredItems(List<Item> items)
+        {
+            return items.Where(item => item.Expiry.Date < DateTime.Now).ToList();
         }
 
         private static List<Item> GetItemsExpiryCheck(List<Item> items)

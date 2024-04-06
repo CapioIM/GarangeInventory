@@ -28,9 +28,12 @@ namespace GarangeInventory
 
             List<Item> allItemsLinq = new List<Item>();
             allItemsLinq = Expiry.GetAlltemsLinq(testDataList);
-            foreach (Item item in allItemsLinq)
+
+            List<Item> allExpiredItems = new List<Item>();
+            allExpiredItems = Expiry.GetAllExpiredItems(allItemsLinq);
+            foreach (Item item in allExpiredItems)
             {
-                Console.WriteLine(allItemsLinq.IndexOf(item) + 1 + " " + item.Name);
+                Console.WriteLine(allExpiredItems.IndexOf(item) + 1 + " " + item.Name);
             }
 
             Console.WriteLine(DateTime.Now);
