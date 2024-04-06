@@ -6,17 +6,6 @@ namespace GarangeInventory
 {
     internal class Expiry
     {
-        /*  
-        List of items has:
-
-        storages => storage => shelfUnits => shelfUnit =>
-
-      1  shelfs => shelf => boxes => box => items => item
-      2  boxes => box => items => item
-      3  items => item
-
-         */
-
         public static List<Item> GetExpiredItems(List<StorageUnit> storages)
         {
             List<Item> result = new List<Item>();
