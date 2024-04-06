@@ -43,26 +43,40 @@ namespace GarangeInventory
         /// <returns> List with all Items </returns>
         public static List<Item> GetAlltemsLinq(List<StorageUnit> storages)
         {
-            List<ShelfUnit> shelfUnit = new List<ShelfUnit>(GetShelfUnits(storages));
-            return shelfUnit
-                  .SelectMany(shelfUnit => shelfUnit.Shelfs)
-                  .SelectMany(shelf => shelf.Items)
-                  .Concat(shelfUnit
+            if (storages == null)
+            {
+                return new List<Item>();
+            }
+
+            try
+            {
+                List<ShelfUnit> shelfUnit = new List<ShelfUnit>(GetShelfUnits(storages));
+                return shelfUnit
                       .SelectMany(shelfUnit => shelfUnit.Shelfs)
-                      .SelectMany(shelf => shelf.Boxes)
-                      .SelectMany(box => box.Items)
-                      .Concat(shelfUnit
-                          .SelectMany(shelfUnit => shelfUnit.Boxes)
-                          .SelectMany(box => box.Items)
+                      .SelectMany(shelf => shelf.Items)
                           .Concat(shelfUnit
-                                .SelectMany(shelfUnit => shelfUnit.Items))))
-                  .ToList();
+                          .SelectMany(shelfUnit => shelfUnit.Shelfs)
+                          .SelectMany(shelf => shelf.Boxes)
+                          .SelectMany(box => box.Items)
+                              .Concat(shelfUnit
+                              .SelectMany(shelfUnit => shelfUnit.Boxes)
+                              .SelectMany(box => box.Items)
+                                    .Concat(shelfUnit
+                                    .SelectMany(shelfUnit => shelfUnit.Items))))
+                      .ToList();
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return new List<Item>();
+            }
         }
         /// <summary>
-        /// 
+        /// shortens 3 lines from GetAllItemsLinq method
         /// </summary>
-        /// <param name="storages"></param>
-        /// <returns></returns>
+        /// <param name="storages"> List of storages </param>
+        /// <returns> returns List of ShelfUnits in storages </returns>
         private static List<ShelfUnit> GetShelfUnits(List<StorageUnit> storages)
         {
             return storages

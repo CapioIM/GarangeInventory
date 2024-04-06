@@ -10,7 +10,7 @@ namespace GarangeInventory
         public static List<StorageUnit> GenerateItems()
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
-            StorageUnit storageOne = MakeStorageUnit("2nd Floor left room",storageUnitList);
+            StorageUnit storageOne = CreateStorageUnit("2nd Floor left room",storageUnitList);
 
             ShelfUnit shelfUnitOne = new ShelfUnit("Floor",1);
             storageOne.ShelfUnits.Add(shelfUnitOne);
@@ -105,7 +105,6 @@ namespace GarangeInventory
             Item item23 = new Item("box of small alligator clips", 1, Category.SolderingAccessories);
             box4.Items.Add(item23);
 
-
             Box box5 = new Box("AppleBox");
             shelfUnitOne.Boxes.Add(box5);
 
@@ -122,14 +121,14 @@ namespace GarangeInventory
             Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools);
             box6.Items.Add(Item27);
 
-            Item item28 = new Item("Shelf Unit Level Item 28",1,Category.Other);
+            Item item28 = new Item("Shelf Unit Level Item 28 for test data",1,Category.Other);
             item28.Expiry = new DateTime(2020,1,1);
             shelfUnitOne.Items.Add(item28);
 
             return storageUnitList;
         }
 
-        private static StorageUnit MakeStorageUnit(string name,List<StorageUnit> storages)
+        private static StorageUnit CreateStorageUnit(string name,List<StorageUnit> storages)
         {
             StorageUnit newUnit = new StorageUnit(name);
             storages.Add(newUnit);
