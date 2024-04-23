@@ -7,23 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\WelcomePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GarangeInventory\GarangeInventory.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\WelcomePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\WelcomePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\WelcomePage.razor" />
   </ItemGroup>
 
 </Project>
