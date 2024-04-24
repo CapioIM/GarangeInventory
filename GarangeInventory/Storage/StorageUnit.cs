@@ -27,9 +27,9 @@ namespace GarangeInventory.Storage
 			set { _shelfUnits = value; }
 		}
 
-        private List<UserName> _users = new();
+        private List<User> _users = new();
 
-        public List<UserName> Users 
+        public List<User> Users 
         {
             get { return _users; }
             set { _users = value; }

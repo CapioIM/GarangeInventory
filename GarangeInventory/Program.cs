@@ -1,5 +1,4 @@
-﻿using GarangeInventory.Storage.Shelf;
-using GarangeInventory.Enum;
+﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage;
 
 namespace GarangeInventory
@@ -11,6 +10,8 @@ namespace GarangeInventory
             Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
             int choice = UiMethods.GetUserInt();
             SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
+
+            List<User> users = TestData.Users();
 
             List<StorageUnit> storages = new List<StorageUnit>();
             storages = TestData.GenerateItems();
