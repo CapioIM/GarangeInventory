@@ -134,11 +134,6 @@ namespace GarangeInventory
             users.Add(AddUser("Jurijs"));
             users.Add(AddUser("Igor"));
 
-            foreach (User user in users)
-            {
-                Console.WriteLine(user);
-            }
-
             return users;
         }
 

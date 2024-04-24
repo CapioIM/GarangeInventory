@@ -4,4 +4,14 @@
 <p>Welcome to the new page!</p>
 
 <h3>Enter your Username</h3>
-<input />
+<input @bind=UsernameInput/>
+<p2>@UsernameInput</p2>
+@code{
+    private string UsernameInput { get; set; }
+
+    private string InputUserName(ChangeEventArgs text)
+    {
+        UsernameInput = (string)text.Value!;
+        return UsernameInput;
+    }
+}
