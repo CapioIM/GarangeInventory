@@ -1,14 +1,19 @@
 ﻿@page "/welcomepage"
+@using Data
+@inject DataService UserData
 
 <PageTitle>Welcome</PageTitle>
 <p>Welcome to the new page!</p>
 
 <h3>Enter your Username</h3>
-<input @bind=UsernameInput/>
+<input @bind=UsernameInput />
 <br />
-<p2>@UsernameInput</p2>
+<button @onclick=GetUserCheckMessage>Don't Click me</button>
+<br />
+<p1>@UserCheckMessage</p1>
 
-@code{
+
+@code {
     private string UsernameInput { get; set; }
 
     private string InputUserName(ChangeEventArgs text)
@@ -16,4 +21,12 @@
         UsernameInput = (string)text.Value!;
         return UsernameInput;
     }
+
+    private string UserCheckMessage { get; set; }
+
+    private void GetUserCheckMessage()
+    {
+        UserCheckMessage = UserData.GetUserCheck(UsernameInput);
+    }
+
 }
