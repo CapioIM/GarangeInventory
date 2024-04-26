@@ -6,7 +6,14 @@ namespace GarangeInventory
 {
     public class TestData
     {
-        public static List<StorageUnit> GenerateItems()
+
+        public static List<StorageUnit> TestDataStorageUnits()
+        {
+            List<StorageUnit> storageUnits = new List<StorageUnit>();
+            return storageUnits = GenerateItems();
+        }
+
+        private static List<StorageUnit> GenerateItems()
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
             StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
@@ -127,7 +134,7 @@ namespace GarangeInventory
             return storageUnitList;
         }
 
-        public static List<User> Users()
+        public static List<User> TestDataUsers()
         {
             List<User> users = new List<User>();
             users.Add(AddUser("Jurijs"));

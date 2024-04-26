@@ -11,7 +11,6 @@ namespace BlazorGI.Data
         {
             get { return _users; }
         }
-
         private string UserNameSucess(bool userAccess)
         {
             string message;
@@ -28,7 +27,7 @@ namespace BlazorGI.Data
 
         private bool GetUserAccess(string userName)
         {
-            _users = TestData.Users();
+            _users = TestData.TestDataUsers();
             bool sucess = false;
             foreach (User u in _users)
             {
