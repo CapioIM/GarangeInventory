@@ -17,7 +17,7 @@ namespace BlazorGI.Data
             string message;
             if (userAccess)
             {
-                message = "Sucess";
+                message = "Yess";
             }
             else
             {
@@ -40,10 +40,10 @@ namespace BlazorGI.Data
             return sucess;
         }
 
-        public string GetUserCheck(string someName)
+        public string GetUserCheck(string userTypedName)
         {
             bool isUser = false;
-            return UserNameSucess(isUser = GetUserAccess(someName));
+            return UserNameSucess(isUser = GetUserAccess(userTypedName));
         }
 
     }
