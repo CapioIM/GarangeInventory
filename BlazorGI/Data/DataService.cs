@@ -25,7 +25,7 @@ namespace BlazorGI.Data
             return message;
         }
 
-        private bool GetUserAccess(string userName)
+        public bool GetUserAccess(string userName)
         {
             _users = TestData.TestDataUsers();
             bool sucess = false;

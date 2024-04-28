@@ -1,6 +1,6 @@
 ﻿@page "/login"
 @using Data
-@inject DataService UserData
+@inject Data.DataService UserData
 
 <PageTitle>Garage Inventory Login</PageTitle>
 <h3>Enter your Username</h3>
@@ -9,7 +9,6 @@
 <button class="btn btn-outline-primary" @onclick=GetUserCheckMessage>Don't Click me</button>
 <br />
 <p1>@UserCheckMessage</p1>
-
 
 @code {
     private string UsernameInput { get; set; }
