@@ -1,5 +1,4 @@
-﻿using GarangeInventory.Storage.Shelf;
-using GarangeInventory.Enum;
+﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage;
 
 namespace GarangeInventory
@@ -12,8 +11,10 @@ namespace GarangeInventory
             int choice = UiMethods.GetUserInt();
             SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
 
+            List<User> users = TestData.TestDataUsers();
+
             List<StorageUnit> storages = new List<StorageUnit>();
-            storages = TestData.GenerateItems();
+            storages = TestData.TestDataStorageUnits();
             switch (searchOptions)
             {
                 case SearchOptions.ExpiryDate:

@@ -11,68 +11,31 @@ namespace GarangeInventory
         /// </summary>
         /// <param name="storages"> List of storages to check items in </param>
         /// <returns> List of Expired items </returns>
-        public static List<Item> GetExpiredItems(List<StorageUnit> storages)
+        public static List<Item> GetAllItems(List<StorageUnit> storages)
         {
             List<Item> result = new List<Item>();
             foreach (StorageUnit storage in storages)
             {
                 foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
                 {
-                    result.AddRange(GetItemsExpiryCheck(shelfUnit.Items));
+                    result.AddRange((shelfUnit.Items));
                     foreach (Shelf shelf in shelfUnit.Shelfs)
                     {
-                        result.AddRange(GetItemsExpiryCheck(shelf.Items));
+                        result.AddRange((shelf.Items));
                         foreach (Box box in shelf.Boxes)
                         {
-                            result.AddRange(GetItemsExpiryCheck(box.Items));
+                            result.AddRange((box.Items));
                         }
                     }
                     foreach (Box box in shelfUnit.Boxes)
                     {
-                        result.AddRange(GetItemsExpiryCheck(box.Items));
+                        result.AddRange((box.Items));
                     }
                 }
             }
             return result;
         }
 
-        /// <summary>
-        /// Get all items (LINQ)from ShelfUnit=>items ,ShelfUnit=> shelf =>items, shelfUnit=>shelf=>box=>items , ShelfUnit=>box=>items.
-        /// </summary>
-        /// <param name="storages"> Top Level of List of storage</param>
-        /// <returns> List with all Items </returns>
-        public static List<Item> GetAlltemsLinq(List<StorageUnit> storages)
-        {
-            if (storages == null)
-            {
-                return new List<Item>();
-            }
-
-
-            try
-            {
-                List<ShelfUnit> shelfUnit = new List<ShelfUnit>(GetShelfUnits(storages));
-                return shelfUnit
-                      .SelectMany(shelfUnit => shelfUnit.Shelfs)
-                      .SelectMany(shelf => shelf.Items)
-                          .Concat(shelfUnit
-                          .SelectMany(shelfUnit => shelfUnit.Shelfs)
-                          .SelectMany(shelf => shelf.Boxes)
-                          .SelectMany(box => box.Items)
-                              .Concat(shelfUnit
-                              .SelectMany(shelfUnit => shelfUnit.Boxes)
-                              .SelectMany(box => box.Items)
-                                    .Concat(shelfUnit
-                                    .SelectMany(shelfUnit => shelfUnit.Items))))
-                      .ToList();
-            }
-
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return new List<Item>();
-            }
-        }
         /// <summary>
         /// shortens 3 lines from GetAllItemsLinq method
         /// </summary>
@@ -113,7 +76,7 @@ namespace GarangeInventory
         {
             Console.WriteLine("Heres list of expired items");
             List<Item> items = new List<Item>();
-            items = GetAllExpiredItems(GetAlltemsLinq(storages));
+            items = GetAllExpiredItems(GetAllItems(storages));
             foreach (Item item in items)
             {
                 Console.WriteLine(items.IndexOf(item) + 1 + " " + item.Name);

@@ -1,21 +1,27 @@
 ﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.Storage;
-using GarangeInventory.Common;
 
 namespace GarangeInventory
 {
     public class TestData
     {
-        public static List<StorageUnit> GenerateItems()
+
+        public static List<StorageUnit> TestDataStorageUnits()
+        {
+            List<StorageUnit> storageUnits = new List<StorageUnit>();
+            return storageUnits = GenerateItems();
+        }
+
+        private static List<StorageUnit> GenerateItems()
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
-            StorageUnit storageOne = CreateStorageUnit("2nd Floor left room",storageUnitList);
+            StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
 
-            ShelfUnit shelfUnitOne = new ShelfUnit("Floor",1);
+            ShelfUnit shelfUnitOne = new ShelfUnit("Floor", 1);
             storageOne.ShelfUnits.Add(shelfUnitOne);
 
-            ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right",5);
+            ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right", 5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);
 
             Box box = new Box("Blue stackable box");
@@ -121,14 +127,30 @@ namespace GarangeInventory
             Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools);
             box6.Items.Add(Item27);
 
-            Item item28 = new Item("Shelf Unit Level Item 28 for test data",1,Category.Other);
-            item28.Expiry = new DateTime(2020,1,1);
+            Item item28 = new Item("Shelf Unit Level Item 28 for test data", 1, Category.Other);
+            item28.Expiry = new DateTime(2020, 1, 1);
             shelfUnitOne.Items.Add(item28);
 
             return storageUnitList;
         }
 
-        private static StorageUnit CreateStorageUnit(string name,List<StorageUnit> storages)
+        public static List<User> TestDataUsers()
+        {
+            List<User> users = new List<User>();
+            users.Add(AddUser("Jurijs"));
+            users.Add(AddUser("Igor"));
+
+            return users;
+        }
+
+        private static User AddUser(string name)
+        {
+            User user = new User();
+            user.Name = name;
+            return user;
+        }
+
+        private static StorageUnit CreateStorageUnit(string name, List<StorageUnit> storages)
         {
             StorageUnit newUnit = new StorageUnit(name);
             storages.Add(newUnit);
