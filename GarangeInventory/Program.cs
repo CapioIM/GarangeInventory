@@ -15,6 +15,7 @@ namespace GarangeInventory
 
             List<StorageUnit> storages = new List<StorageUnit>();
             storages = TestData.TestDataStorageUnits();
+            storages[0].Users = users;
             switch (searchOptions)
             {
                 case SearchOptions.ExpiryDate:
