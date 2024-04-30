@@ -10,8 +10,8 @@ namespace GarangeInventory
         {
             Console.WriteLine("Good Luck Searching");
             string searchTerm = Console.ReadLine();
-            List<Item> foundResult = Search.SearchItemsByName(Expiry.GetAlltemsLinq(storages), searchTerm);
-            foreach (Item foundItem in foundResult)
+            List<Item> foundResults = Search.SearchItemsByName(Expiry.GetAlltemsLinq(storages), searchTerm);
+            foreach (Item foundItem in foundResults)
             {
                 Console.WriteLine(foundItem.Name);
             }
