@@ -9,13 +9,13 @@ namespace GarangeInventory
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
-            int choice = UiMethods.GetUserInt();
-            SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
-
             List<StorageUnit> storages = new List<StorageUnit>();
             storages = TestData.TestDataStorageUnits();
             Serialize.SaveData(storages); 
+
+            Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
+            int choice = UiMethods.GetUserInt();
+            SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
             switch (searchOptions)
             {
                 case SearchOptions.ExpiryDate:

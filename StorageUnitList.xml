@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStorageUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StorageUnit>
+    <IdNumber>0</IdNumber>
+    <Name>2nd Floor left room</Name>
+    <ShelfUnits>
+      <ShelfUnit>
+        <Name>Floor</Name>
+        <ID>0</ID>
+        <Shelfs>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes />
+            <Items />
+          </Shelf>
+        </Shelfs>
+        <Note />
+        <Boxes>
+          <Box>
+            <Name>Blue stackable box</Name>
+            <Type>Large</Type>
+            <Items>
+              <Item>
+                <Name>4 pin A and B connectors</Name>
+                <Quantity>3</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>3 pin A and B connectors</Name>
+                <Quantity>2</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>2 pin A and B connectors</Name>
+                <Quantity>2</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>1.5cm width double sided tape</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>2cm width masking tape</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>Other</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>5cm width some kind rubbish tape</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>Other</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>1mm solder wire with flux</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>sponges to clean solder tip</Name>
+                <Quantity>4</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+            </Items>
+          </Box>
+          <Box>
+            <Name>carton box</Name>
+            <Type>Large</Type>
+            <Items>
+              <Item>
+                <Name>wire split connector (1 in to 3)</Name>
+                <Quantity>9</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>wire split connector (1 in to 4)</Name>
+                <Quantity>9</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>wire split connector (2 in to 4</Name>
+                <Quantity>2</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>wire split connector(2 in to 6)</Name>
+                <Quantity>2</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>box of small alligator clips</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>SolderingAccessories</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+            </Items>
+          </Box>
+          <Box>
+            <Name>AppleBox</Name>
+            <Type>Large</Type>
+            <Items>
+              <Item>
+                <Name>Apples</Name>
+                <Quantity>6</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2024-04-01T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>Food</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+            </Items>
+          </Box>
+          <Box>
+            <Name>Bag With Tools</Name>
+            <Type>Large</Type>
+            <Items>
+              <Item>
+                <Name>Volvo s80 Wishbone(both sides)</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>CarParts</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>Electric Ratchet Power Tool 12V</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>ElectricTools</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>Impact Driver 20v</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>ElectricTools</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+            </Items>
+          </Box>
+        </Boxes>
+        <Items>
+          <Item>
+            <Name>Shelf Unit Level Item 28 for test data</Name>
+            <Quantity>1</Quantity>
+            <Cost>0</Cost>
+            <Weight>0</Weight>
+            <Expiry>2020-01-01T00:00:00</Expiry>
+            <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+            <Size>Large</Size>
+            <Note />
+            <Path />
+            <ItemCategory>Other</ItemCategory>
+            <WeightType>Kilograms</WeightType>
+          </Item>
+        </Items>
+      </ShelfUnit>
+      <ShelfUnit>
+        <Name>wooden shelf unit on right</Name>
+        <ID>0</ID>
+        <Shelfs>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes />
+            <Items />
+          </Shelf>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes />
+            <Items />
+          </Shelf>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes />
+            <Items />
+          </Shelf>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes />
+            <Items />
+          </Shelf>
+          <Shelf>
+            <ID>0</ID>
+            <Boxes>
+              <Box>
+                <Name>Orange box</Name>
+                <Type>Large</Type>
+                <Items>
+                  <Item>
+                    <Name>crocodile wire clamps</Name>
+                    <Quantity>15</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note />
+                    <Path />
+                    <ItemCategory>ElectricalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                </Items>
+              </Box>
+              <Box>
+                <Name>Transparent box</Name>
+                <Type>Large</Type>
+                <Items>
+                  <Item>
+                    <Name>270 green o-ring assortment set</Name>
+                    <Quantity>1</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note />
+                    <Path />
+                    <ItemCategory>Other</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>18650 VTC6 3000 mah Li-ion batteries</Name>
+                    <Quantity>9</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note />
+                    <Path />
+                    <ItemCategory>Other</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>Blank remote car key</Name>
+                    <Quantity>4</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note>
+                      <Text>no chip,no blade,no battery</Text>
+                    </Note>
+                    <Path />
+                    <ItemCategory>CarElecticalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>Volvo rear Number Plate Light with camera</Name>
+                    <Quantity>1</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note />
+                    <Path />
+                    <ItemCategory>CarElecticalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>remote car key tool</Name>
+                    <Quantity>1</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note>
+                      <Text>Device generates remote keys</Text>
+                    </Note>
+                    <Path />
+                    <ItemCategory>CarElecticalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>Blank remote car key</Name>
+                    <Quantity>7</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note>
+                      <Text>universal remote, no chip, no blade</Text>
+                    </Note>
+                    <Path />
+                    <ItemCategory>CarElecticalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                  <Item>
+                    <Name>Various car interior Led Lights bag</Name>
+                    <Quantity>1</Quantity>
+                    <Cost>0</Cost>
+                    <Weight>0</Weight>
+                    <Expiry>2099-12-30T00:00:00</Expiry>
+                    <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                    <Size>Large</Size>
+                    <Note />
+                    <Path />
+                    <ItemCategory>CarElecticalEquipment</ItemCategory>
+                    <WeightType>Kilograms</WeightType>
+                  </Item>
+                </Items>
+              </Box>
+            </Boxes>
+            <Items>
+              <Item>
+                <Name>Old Laptop</Name>
+                <Quantity>1</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2099-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>ElectricalEquipment</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+              <Item>
+                <Name>Pickled gerkins</Name>
+                <Quantity>2</Quantity>
+                <Cost>0</Cost>
+                <Weight>0</Weight>
+                <Expiry>2025-12-30T00:00:00</Expiry>
+                <PurchaseDate>0001-01-01T00:00:00</PurchaseDate>
+                <Size>Large</Size>
+                <Note />
+                <Path />
+                <ItemCategory>Food</ItemCategory>
+                <WeightType>Kilograms</WeightType>
+              </Item>
+            </Items>
+          </Shelf>
+        </Shelfs>
+        <Note />
+        <Boxes />
+        <Items />
+      </ShelfUnit>
+    </ShelfUnits>
+    <Users>
+      <User>
+        <Name>Jurijs</Name>
+      </User>
+      <User>
+        <Name>Igor</Name>
+      </User>
+    </Users>
+  </StorageUnit>
+</ArrayOfStorageUnit>
