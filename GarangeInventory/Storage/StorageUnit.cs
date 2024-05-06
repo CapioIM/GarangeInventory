@@ -4,6 +4,8 @@ namespace GarangeInventory.Storage
 {
     public class StorageUnit
     {
+		public StorageUnit() { }
+
 		private int _idNumber;
 
 		public int IdNumber

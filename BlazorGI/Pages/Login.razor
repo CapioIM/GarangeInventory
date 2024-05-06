@@ -1,6 +1,6 @@
 ﻿@page "/login"
 @using Data
-@inject Data.UserData UserData
+@inject Data.UserService UserData
 @inject NavigationManager MyNavigationManager
 
 <PageTitle>Garage Inventory Login</PageTitle>
@@ -15,15 +15,8 @@
 
 
 @code {
-    private string UsernameInput { get; set; }
-
-    private string InputUserName(ChangeEventArgs text)
-    {
-        UsernameInput = (string)text.Value!;
-        return UsernameInput;
-    }
-
-    private string userCheckMessage { get; set; }
+    public string UsernameInput { get; set; } = "";
+    private string userCheckMessage { get; set; } = "";
     private bool isUser { get; set; }
     private string notValidLogin = "";
 
@@ -33,11 +26,13 @@
         isUser = UserData.GetUserCheck(UsernameInput);
         if(isUser)
         {
-            MyNavigationManager.NavigateTo("/");
+            MyNavigationManager.NavigateTo($"/storageunits");
+
         }
         else
         {
             notValidLogin = "Login not valid!";
         }
+
     }
 }

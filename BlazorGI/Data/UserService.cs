@@ -3,7 +3,7 @@ using GarangeInventory;
 
 namespace BlazorGI.Data
 {
-    public class UserData
+    public class UserService
     {
         private List<User> _users = new List<User>();
 
@@ -12,9 +12,9 @@ namespace BlazorGI.Data
             get { return _users; }
         }
 
-        private User _user;
+        private  User? _user ;
 
-        public User User
+        public  User User
         {
             get { return _user; }
             set { _user = value; }

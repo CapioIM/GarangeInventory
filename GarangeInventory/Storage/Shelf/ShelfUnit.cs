@@ -4,6 +4,7 @@ namespace GarangeInventory.Storage.Shelf
 {
     public class ShelfUnit
     {
+        public ShelfUnit() { }
         private string _name;
 
         public string Name

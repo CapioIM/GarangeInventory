@@ -5,7 +5,7 @@ namespace GarangeInventory.Storage.Shelf
 {
     public class Shelf
     {
-
+        public Shelf() { }
         private int _id;
 
         public int ID
