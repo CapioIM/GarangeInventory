@@ -11,21 +11,9 @@ namespace BlazorGI.Data
         {
             get { return _users; }
         }
-        private string UserNameSucess(bool userAccess)
-        {
-            string message;
-            if (userAccess)
-            {
-                message = "Yess";
-            }
-            else
-            {
-                message = "Try Again";
-            }
-            return message;
-        }
 
-        public bool GetUserAccess(string userName)
+
+        private bool GetUserAccess(string userName)
         {
             _users = TestData.TestDataUsers();
             bool sucess = false;
@@ -39,10 +27,11 @@ namespace BlazorGI.Data
             return sucess;
         }
 
-        public string GetUserCheck(string userTypedName)
+        public bool GetUserCheck(string userTypedName)
         {
             bool isUser = false;
-            return UserNameSucess(isUser = GetUserAccess(userTypedName));
+            isUser = GetUserAccess(userTypedName);
+            return isUser;
         }
 
     }

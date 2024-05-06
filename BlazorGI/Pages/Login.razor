@@ -1,6 +1,7 @@
 ﻿@page "/login"
 @using Data
 @inject Data.DataService UserData
+@inject NavigationManager MyNavigationManager
 
 <PageTitle>Garage Inventory Login</PageTitle>
 <h3>Enter your Username</h3>
@@ -8,7 +9,10 @@
 <br />
 <button class="btn btn-outline-primary" @onclick=GetUserCheckMessage>Don't Click me</button>
 <br />
-<p1>@UserCheckMessage</p1>
+<p>@notValidLogin</p>
+<p1>@userCheckMessage</p1>
+
+
 
 @code {
     private string UsernameInput { get; set; }
@@ -19,10 +23,22 @@
         return UsernameInput;
     }
 
-    private string UserCheckMessage { get; set; }
+    private string userCheckMessage { get; set; }
+    private bool isUser { get; set; }
+    private string notValidLogin = "";
+
 
     private void GetUserCheckMessage()
     {
-        UserCheckMessage = UserData.GetUserCheck(UsernameInput);
+        isUser = UserData.GetUserCheck(UsernameInput);
+        if(isUser)
+        {
+            MyNavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            MyNavigationManager.NavigateTo("/login");
+            notValidLogin = "Login not valid!";
+        }
     }
 }
