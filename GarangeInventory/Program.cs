@@ -1,5 +1,7 @@
 ﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage;
+using GarangeInventory.XmlData;
+using System.Runtime.Serialization.Json;
 
 namespace GarangeInventory
 {
@@ -7,14 +9,13 @@ namespace GarangeInventory
     {
         static void Main(string[] args)
         {
+            List<StorageUnit> storages = new List<StorageUnit>();
+            storages = TestData.TestDataStorageUnits();
+            Serialize.SaveData(storages); 
+
             Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
             int choice = UiMethods.GetUserInt();
             SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
-
-            List<User> users = TestData.TestDataUsers();
-
-            List<StorageUnit> storages = new List<StorageUnit>();
-            storages = TestData.TestDataStorageUnits();
             switch (searchOptions)
             {
                 case SearchOptions.ExpiryDate:

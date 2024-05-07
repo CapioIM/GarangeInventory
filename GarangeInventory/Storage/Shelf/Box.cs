@@ -6,6 +6,7 @@ namespace GarangeInventory.Storage.Shelf
 {
     public class Box
     {
+        public Box() { }
         private string _name;
 
         public string Name

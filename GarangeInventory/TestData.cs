@@ -17,6 +17,8 @@ namespace GarangeInventory
         {
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
             StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
+            storageOne.Users.Add(AddUser("Jurijs"));
+            storageOne.Users.Add(AddUser("Igor"));
 
             ShelfUnit shelfUnitOne = new ShelfUnit("Floor", 1);
             storageOne.ShelfUnits.Add(shelfUnitOne);
@@ -139,7 +141,6 @@ namespace GarangeInventory
             List<User> users = new List<User>();
             users.Add(AddUser("Jurijs"));
             users.Add(AddUser("Igor"));
-
             return users;
         }
 

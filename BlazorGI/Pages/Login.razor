@@ -1,28 +1,37 @@
 ﻿@page "/login"
 @using Data
-@inject Data.DataService UserData
+@inject Data.UserService UserData
+@inject NavigationManager MyNavigationManager
 
 <PageTitle>Garage Inventory Login</PageTitle>
 <h3>Enter your Username</h3>
 <input @bind=UsernameInput />
 <br />
-<button class="btn btn-outline-primary" @onclick=GetUserCheckMessage>Don't Click me</button>
+<button class="btn btn-outline-primary" @onclick=GetUserCheckMessage title="Let's log in.">Don't Click me</button>
 <br />
-<p1>@UserCheckMessage</p1>
+<p>@notValidLogin</p>
+<p1>@userCheckMessage</p1>
+
+
 
 @code {
-    private string UsernameInput { get; set; }
+    public string UsernameInput { get; set; } = "";
+    private string userCheckMessage { get; set; } = "";
+    private bool isUser { get; set; }
+    private string notValidLogin = "";
 
-    private string InputUserName(ChangeEventArgs text)
-    {
-        UsernameInput = (string)text.Value!;
-        return UsernameInput;
-    }
-
-    private string UserCheckMessage { get; set; }
 
     private void GetUserCheckMessage()
     {
-        UserCheckMessage = UserData.GetUserCheck(UsernameInput);
+        isUser = UserData.GetUserCheck(UsernameInput);
+        if(isUser)
+        {
+            MyNavigationManager.NavigateTo($"/storageunits");
+        }
+        else
+        {
+            notValidLogin = "Login not valid!";
+        }
+
     }
 }
