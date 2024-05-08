@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GarangeInventory\GarangeInventory.csproj" />
+    <Compile Remove="Components\**" />
+    <Content Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
+    <ProjectReference Include="..\GarangeInventory\GarangeInventory.csproj" />
   </ItemGroup>
 
 </Project>
