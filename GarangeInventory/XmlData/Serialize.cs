@@ -18,19 +18,19 @@ namespace GarangeInventory.XmlData
         {
             try
             {
-            CreateDataFolder(Directory.Exists(_DATA_FOLDER_PATH));
-            XmlSerializer writer = new XmlSerializer(typeof(List<StorageUnit>));
-            string path = _DATA_FILE_PATH;
-            using (FileStream file = File.Create(path))
-            {
-                writer.Serialize(file, storageUnits);
+                CreateDataFolder(Directory.Exists(_DATA_FOLDER_PATH));
+                XmlSerializer writer = new XmlSerializer(typeof(List<StorageUnit>));
+                string path = _DATA_FILE_PATH;
+                using (FileStream file = File.Create(path))
+                {
+                    writer.Serialize(file, storageUnits);
+                }
             }
-            }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-            } 
-      
+            }
+
         }
 
         /// <summary>
@@ -44,17 +44,31 @@ namespace GarangeInventory.XmlData
                 Directory.CreateDirectory(_DATA_FOLDER_PATH);
             }
         }
-
+        /// <summary>
+        /// Deserialize file as List<StorageUnit>
+        /// </summary>
+        /// <param name="path"> string for relative path of file </param>
+        /// <returns> List<StorageUnit> </returns>
+        public static List<StorageUnit> DeserializeStorageUnitList(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<StorageUnit>));
+            List<StorageUnit> storageUnit = new List<StorageUnit>();
+            using (FileStream file = File.OpenRead(path))
+            {
+                storageUnit = serializer.Deserialize(file) as List<StorageUnit>;
+            }
+            return storageUnit;
+        }
         /// <summary>
         /// Deserialize file as List<StorageUnit>
         /// </summary>
         /// <returns> List<StorageUnit> </returns>
         public static List<StorageUnit> DeserializeStorageUnitList()
         {
+            string path = _DATA_FILE_PATH;
             XmlSerializer serializer = new XmlSerializer(typeof(List<StorageUnit>));
             List<StorageUnit> storageUnit = new List<StorageUnit>();
-            string path = _DATA_FILE_PATH;
-            using(FileStream file = File.OpenRead(path))
+            using (FileStream file = File.OpenRead(path))
             {
                 storageUnit = serializer.Deserialize(file) as List<StorageUnit>;
             }

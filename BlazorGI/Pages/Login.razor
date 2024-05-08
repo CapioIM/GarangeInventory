@@ -15,16 +15,16 @@
 
 
 @code {
-
     public string UsernameInput { get; set; } = "";
     private string notValidLogin = "";
     private bool isUser { get; set; }
     private void GetUserCheckMessage()
+
     {
         isUser = UserData.GetUserCheck(UsernameInput);
         if (isUser)
         {
-            MyNavigationManager.NavigateTo($"/storageunits");
+            MyNavigationManager.NavigateTo($"/storageunits/{UserData.User.Name}");
         }
         else
         {

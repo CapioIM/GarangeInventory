@@ -12,13 +12,12 @@ namespace BlazorGI.Data
         public List<User> Users
         {
             get { return _users; }
-            set { _users = GetListOfUsersFromXml(); }
-
+            set { _users = value; }
         }
 
-        private User _user;
+        private  User _user;
 
-        public User User
+        public  User User
         {
             get { return _user; }
             set { _user = value; }
@@ -26,13 +25,15 @@ namespace BlazorGI.Data
 
         private bool GetUserAccess(string userName)
         {
-            _users = TestData.TestDataUsers();
+            Users = GetListOfUsersFromXml();
             bool sucess = false;
             foreach (User u in _users)
             {
                 if (u.Name == userName)
                 {
                     sucess = true;
+                    User = u;
+                    break;
                 }
             }
             return sucess;
@@ -51,7 +52,7 @@ namespace BlazorGI.Data
 
         public List<User> GetListOfUsersFromXml()
         {
-            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList();
+            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(@"..\TestData\StorageUnitList.xml");
             foreach (StorageUnit storageUnit in storageUnits)
             {
                 foreach (User user in storageUnit.Users)
