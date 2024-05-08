@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace GarangeInventory.XmlData
 {
-    internal class Serialize
+    public class Serialize
     {
         private const string _DATA_FOLDER_PATH = @"..\..\..\..\TestData";
         private const string _DATA_FILE_NAME = @"\StorageUnitList.xml";
@@ -52,7 +52,7 @@ namespace GarangeInventory.XmlData
         public static List<StorageUnit> DeserializeStorageUnitList()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<StorageUnit>));
-            List<StorageUnit> storageUnit;
+            List<StorageUnit> storageUnit = new List<StorageUnit>();
             string path = _DATA_FILE_PATH;
             using(FileStream file = File.OpenRead(path))
             {
@@ -60,6 +60,5 @@ namespace GarangeInventory.XmlData
             }
             return storageUnit;
         }
-
     }
 }

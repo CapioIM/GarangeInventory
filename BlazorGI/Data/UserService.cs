@@ -1,5 +1,7 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory;
+using GarangeInventory.XmlData;
+using System.Xml.Serialization;
 
 namespace BlazorGI.Data
 {
@@ -10,16 +12,17 @@ namespace BlazorGI.Data
         public List<User> Users
         {
             get { return _users; }
+            set { _users = GetListOfUsersFromXml(); }
+
         }
 
-        private  User? _user ;
+        private User _user;
 
-        public  User User
+        public User User
         {
             get { return _user; }
             set { _user = value; }
         }
-
 
         private bool GetUserAccess(string userName)
         {
@@ -41,9 +44,22 @@ namespace BlazorGI.Data
             isUser = GetUserAccess(userTypedName);
             if (isUser)
             {
-                
+
             }
             return isUser;
+        }
+
+        public List<User> GetListOfUsersFromXml()
+        {
+            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList();
+            foreach (StorageUnit storageUnit in storageUnits)
+            {
+                foreach (User user in storageUnit.Users)
+                {
+                    Users.Add(user);
+                }
+            }
+            return Users;
         }
 
     }
