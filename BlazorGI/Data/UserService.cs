@@ -1,7 +1,6 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory;
 using GarangeInventory.XmlData;
-using System.Xml.Serialization;
 
 namespace BlazorGI.Data
 {
@@ -16,7 +15,6 @@ namespace BlazorGI.Data
         }
 
         private  User _user;
-
         public  User User
         {
             get { return _user; }
@@ -62,6 +60,5 @@ namespace BlazorGI.Data
             }
             return Users;
         }
-
     }
 }

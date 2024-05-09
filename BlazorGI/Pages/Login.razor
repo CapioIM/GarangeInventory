@@ -12,24 +12,22 @@
 
 <p>@notValidLogin</p>
 
-
-
 @code {
-    public string UsernameInput { get; set; } = "";
-    private string notValidLogin = "";
+    [Parameter]
+    public string UsernameInput { get; set; }
+    private string notValidLogin { get; set; }
     private bool isUser { get; set; }
     private void GetUserCheckMessage()
-
     {
-        isUser = UserData.GetUserCheck(UsernameInput);
-        if (isUser)
-        {
-            MyNavigationManager.NavigateTo($"/storageunits/{UserData.User.Name}");
-        }
-        else
+        if (UsernameInput == null)
         {
             notValidLogin = "Login not valid!";
         }
-
+        isUser = UserData.GetUserCheck(UsernameInput);
+        if (isUser)
+        {
+            notValidLogin = "";
+            MyNavigationManager.NavigateTo($"/dashboard/{UserData.User.Name}");
+        }
     }
 }
