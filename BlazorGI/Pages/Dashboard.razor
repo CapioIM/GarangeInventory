@@ -1,9 +1,10 @@
-﻿@page "/storageunits"
+﻿@page "/dashboard/{userName}"
 @using Data
 @inject Data.UserService UserData
+
 
 <PageTitle>Your Warehouse!</PageTitle>
 
 @code {
-
+    public string userName { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿@page "/login"
 @using Data
+@using GarangeInventory.Storage
 @inject Data.UserService UserData
 @inject NavigationManager MyNavigationManager
 
@@ -8,30 +9,25 @@
 <input @bind=UsernameInput />
 <br />
 <button class="btn btn-outline-primary" @onclick=GetUserCheckMessage title="Let's log in.">Don't Click me</button>
-<br />
+
 <p>@notValidLogin</p>
-<p1>@userCheckMessage</p1>
-
-
 
 @code {
-    public string UsernameInput { get; set; } = "";
-    private string userCheckMessage { get; set; } = "";
+    [Parameter]
+    public string UsernameInput { get; set; }
+    private string notValidLogin { get; set; }
     private bool isUser { get; set; }
-    private string notValidLogin = "";
-
-
     private void GetUserCheckMessage()
     {
-        isUser = UserData.GetUserCheck(UsernameInput);
-        if(isUser)
-        {
-            MyNavigationManager.NavigateTo($"/storageunits");
-        }
-        else
+        if (UsernameInput == null)
         {
             notValidLogin = "Login not valid!";
         }
-
+        isUser = UserData.GetUserCheck(UsernameInput);
+        if (isUser)
+        {
+            notValidLogin = "";
+            MyNavigationManager.NavigateTo($"/dashboard/{UserData.User.Name}");
+        }
     }
 }
