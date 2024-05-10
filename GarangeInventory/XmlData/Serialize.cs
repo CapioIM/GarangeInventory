@@ -30,7 +30,6 @@ namespace GarangeInventory.XmlData
             {
                 Console.WriteLine(ex.ToString());
             }
-
         }
 
         /// <summary>
