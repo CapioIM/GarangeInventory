@@ -41,10 +41,6 @@ namespace BlazorGI.Data
         {
             bool isUser = false;
             isUser = GetUserAccess(userTypedName);
-            if (isUser)
-            {
-
-            }
             return isUser;
         }
 
