@@ -1,10 +1,25 @@
 ﻿@page "/dashboard/{userName}"
 @using Data
+@using GarangeInventory.Storage
 @inject Data.UserService UserData
 
 
 <PageTitle>Your Warehouse!</PageTitle>
 
 @code {
- //   public string userName = UserData.User.Name;
+    public string userName;
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            userName = UserData.User.Name;
+            base.OnInitialized();
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine("Override OnInitialized Failed to assign user name to string variable!");
+            Console.WriteLine(e);
+        }
+    }
 }
