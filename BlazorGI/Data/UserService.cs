@@ -14,10 +14,17 @@ namespace BlazorGI.Data
             set { _users = value; }
         }
 
-        private  User _user;
-        public  User User
+        private User? _user;
+        public User User
         {
-            get { return _user; }
+            get
+            {
+                if (_user != null)
+                {
+                    return _user;
+                }
+                return _user = new User();
+            }
             set { _user = value; }
         }
 
@@ -25,12 +32,12 @@ namespace BlazorGI.Data
         {
             Users = GetListOfUsersFromXml();
             bool sucess = false;
-            foreach (User u in _users)
+            foreach (User userInputCheckForExistingUser in _users)
             {
-                if (u.Name == userName)
+                if (userInputCheckForExistingUser.Name == userName)
                 {
                     sucess = true;
-                    User = u;
+                    User = userInputCheckForExistingUser;
                     break;
                 }
             }

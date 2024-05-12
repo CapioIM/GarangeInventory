@@ -6,7 +6,6 @@ namespace GarangeInventory
 {
     public class TestData
     {
-
         public static List<StorageUnit> TestDataStorageUnits()
         {
             List<StorageUnit> storageUnits = new List<StorageUnit>();
