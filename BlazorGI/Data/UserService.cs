@@ -1,5 +1,4 @@
 ﻿using GarangeInventory.Storage;
-using GarangeInventory;
 using GarangeInventory.XmlData;
 
 namespace BlazorGI.Data
@@ -53,7 +52,7 @@ namespace BlazorGI.Data
 
         public List<User> GetListOfUsersFromXml()
         {
-            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(@"..\TestData\StorageUnitList.xml");
+            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList                                                                           (GarangeInventory.Enum.AppFilePath.BlazorGI);
             foreach (StorageUnit storageUnit in storageUnits)
             {
                 foreach (User user in storageUnit.Users)

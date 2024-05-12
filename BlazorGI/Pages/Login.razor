@@ -27,7 +27,7 @@
                 MyNavigationManager.NavigateTo($"/dashboard/{UsernameInput}");
             }
         }
-        else
+        if (UsernameInput == null || UsernameInput != UserData.User.Name)
         {
             notValidLogin = "Login not valid!";
         }

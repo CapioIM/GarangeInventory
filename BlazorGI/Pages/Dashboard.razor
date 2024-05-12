@@ -1,16 +1,45 @@
 ﻿@page "/dashboard/{userName}"
 @using GarangeInventory.Storage
 @inject Data.UserService UserData
+@inject Data.DataService DataStorages
 
-<PageTitle>Your Warehouse!</PageTitle>
+@inject NavigationManager MyNavigationManager
 
+@if (userName != UserData.User.Name)
+{
+        MyNavigationManager.NavigateTo("/login");
+}
+else
+{
+    <PageTitle>Your Warehouse!</PageTitle>
+    <h3>List of accessible containers:</h3>
+    <table class="table-warning">
+        <thead>
+            <tr>
+                <th>Containers</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach (StorageUnit storage in storages)
+            {
+                <tr>
+                    <td>@storage.Name</td>
+                </tr>
+            }
+        </tbody>
 
+    </table>
 
-<p>@userName</p>
-<p>@UserData.User.Name</p>
+}
 @code {
     [Parameter]
     public string? userName { get; set; }
 
+    private List<StorageUnit>? storages;
 
+    protected override void OnInitialized()
+    {
+        storages = DataStorages.Storages;
+    }
 }
