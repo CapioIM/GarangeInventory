@@ -5,16 +5,24 @@ namespace BlazorGI.Data
 {
     public class UserService
     {
-        private List<User> _users = new List<User>();
+        private List<User>? _users;
 
-        public List<User> Users
+        public List<User>? Users
         {
-            get { return _users; }
+            get
+            {
+                if (_users == null)
+                {
+                    _users = new List<User>();
+                    GetUsersFromFile();
+                }
+                return _users;
+            }
             set { _users = value; }
         }
 
         private User? _user;
-        public User User
+        public User? User
         {
             get
             {
@@ -29,9 +37,8 @@ namespace BlazorGI.Data
 
         private bool GetUserAccess(string userName)
         {
-            Users = GetListOfUsersFromXml();
             bool sucess = false;
-            foreach (User userInputCheckForExistingUser in _users)
+            foreach (User userInputCheckForExistingUser in Users)
             {
                 if (userInputCheckForExistingUser.Name == userName)
                 {
@@ -50,9 +57,9 @@ namespace BlazorGI.Data
             return isUser;
         }
 
-        public List<User> GetListOfUsersFromXml()
+        public void GetUsersFromFile()
         {
-            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList                                                                           (GarangeInventory.Enum.AppFilePath.BlazorGI);
+            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.AppFilePath.BlazorGI);
             foreach (StorageUnit storageUnit in storageUnits)
             {
                 foreach (User user in storageUnit.Users)
@@ -60,7 +67,6 @@ namespace BlazorGI.Data
                     Users.Add(user);
                 }
             }
-            return Users;
         }
     }
 }
