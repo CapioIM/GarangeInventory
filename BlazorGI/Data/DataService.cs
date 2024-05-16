@@ -5,7 +5,7 @@ namespace BlazorGI.Data
 {
     public class DataService
     {
-        private List<StorageUnit>? _storages ;
+        private List<StorageUnit>? _storages;
 
         public List<StorageUnit>? Storages
         {
@@ -20,26 +20,19 @@ namespace BlazorGI.Data
             }
         }
 
-        private StorageUnit? _storage;
-
-        public StorageUnit? Storage
-        {
-            get
-            {
-                if (_storage == null)
-                {
-                    return _storage;
-                }
-                return _storage;
-            }
-            set { _storage = value; }
-        }
-
-        private void LoadStoragesFromFile()
+        public void LoadStoragesFromFile()
         {
             _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.AppFilePath.BlazorGI);
         }
 
-    }
+        public void AddStorageUnit(string storageUnitName, User user)
+        {
+            StorageUnit storageUnit = new StorageUnit();
+            storageUnit.Name = storageUnitName;
+            storageUnit.Users.Add(user);
+            Storages.Add(storageUnit);
+        }
 
+
+    }
 }

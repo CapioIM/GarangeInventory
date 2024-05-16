@@ -70,6 +70,5 @@ namespace GarangeInventory.XmlData
             }
             return storageUnit;
         }
-    }    /// <summary>
-         /// </summary>
+    }  
 }

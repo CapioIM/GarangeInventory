@@ -1,0 +1,27 @@
+﻿@using GarangeInventory.Storage
+@inject Data.UserService UserData
+@inject Data.DataService DataStorages
+
+
+
+<ul>
+    @foreach (StorageUnit storage in storages)
+    {
+        foreach (User u in storage.Users)
+        {
+            if (u.Name == UserData.User.Name)
+            {
+                <li>@storage.Name</li>
+            }
+        }
+    }
+</ul>
+
+@code {
+    public List<StorageUnit>? storages { get; set; }
+
+    protected override void OnInitialized()
+    {
+        storages = DataStorages.Storages;
+    }
+}
