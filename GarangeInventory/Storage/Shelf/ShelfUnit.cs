@@ -82,6 +82,5 @@ namespace GarangeInventory.Storage.Shelf
                 Shelfs.Add(shelf);
             }
         }
-
     }
 }
