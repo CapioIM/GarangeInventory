@@ -59,7 +59,7 @@ namespace BlazorGI.Data
 
         public void GetUsersFromFile()
         {
-            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.AppFilePath.BlazorGI);
+            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
             foreach (StorageUnit storageUnit in storageUnits)
             {
                 foreach (User user in storageUnit.Users)

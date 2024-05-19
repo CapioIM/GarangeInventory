@@ -22,8 +22,9 @@ namespace BlazorGI.Data
 
         public void LoadStoragesFromFile()
         {
-            _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.AppFilePath.BlazorGI);
+            _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
         }
+
 
         public void AddStorageUnit(string storageUnitName, User user)
         {

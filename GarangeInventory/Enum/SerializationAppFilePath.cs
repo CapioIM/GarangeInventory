@@ -1,7 +1,7 @@
 ﻿
 namespace GarangeInventory.Enum
 {
-    public enum AppFilePath
+    public enum SerializationAppFilePath
     {
         BlazorGI,
         GarageInventory
