@@ -11,7 +11,7 @@
     {
         navigation.NavigateTo("/login");
     }
-    catch(Exception e)
+    catch (Exception e)
     {
         Console.WriteLine(e.ToString());
     }
@@ -20,26 +20,19 @@ else
 {
     <PageTitle>Your Warehouse!</PageTitle>
     <h3>List of accessible containers:</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Containers</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (StorageUnit storage in storages)
+    <th>Containers</th>
+    <tbody>
+        @foreach (StorageUnit storage in storages)
+        {
+            foreach (User u in storage.Users)
             {
-                foreach(User u in storage.Users)
+                if (u.Name == UserData.User.Name)
                 {
-                    if(u.Name == UserData.User.Name)
-                    {
                     <a href="">@storage.Name</a>
-                    }
                 }
             }
-        </tbody>
-
-    </table>
+        }
+    </tbody>
 
 }
 @code {
