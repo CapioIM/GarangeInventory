@@ -59,15 +59,28 @@ namespace GarangeInventory.Storage.Shelf
             set { _items = value; }
         }
 
+        /// <summary>
+        /// Constructor adds shelfs to Unit
+        /// </summary>
+        /// <param name="name"> ShelfUnit name </param>
+        /// <param name="amountOfShelfs"> How many shelfs in ShelfUnit </param>
         public ShelfUnit(string name,int amountOfShelfs)
         {
             _name = name;
             for (int i = 0; i < amountOfShelfs; i++)
             {
-                Shelf shelf = new Shelf();
+                string shelfNumber = i.ToString();
+                if (i == 0)
+                {
+                    shelfNumber = "Bottom/Floor Shelf";
+                }
+                if (i == amountOfShelfs - 1)
+                {
+                    shelfNumber = "Top Shelf";
+                }
+                Shelf shelf = new Shelf(shelfNumber);
                 Shelfs.Add(shelf);
             }
         }
-
     }
 }

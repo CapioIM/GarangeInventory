@@ -19,17 +19,24 @@
 
     private void GetUserCheckMessage()
     {
-        if (UsernameInput != null)
+        try
         {
-            isUser = UserData.GetUserCheck(UsernameInput);
-            if (isUser && UsernameInput == UserData.User.Name)
+            if (UsernameInput != null)
             {
-                MyNavigationManager.NavigateTo($"/dashboard/{UsernameInput}");
+                isUser = UserData.GetUserCheck(UsernameInput);
+                if (isUser && UsernameInput == UserData.User.Name)
+                {
+                    MyNavigationManager.NavigateTo($"/dashboard/{UsernameInput}");
+                }
+            }
+            if (UsernameInput == null || UsernameInput != UserData.User.Name || UserData.User.Name == null)
+            {
+                notValidLogin = "Login not valid!";
             }
         }
-        if (UsernameInput == null || UsernameInput != UserData.User.Name)
+        catch(Exception e)
         {
-            notValidLogin = "Login not valid!";
+           Console.WriteLine(e.ToString());
         }
     }
 }

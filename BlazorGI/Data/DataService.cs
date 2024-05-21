@@ -1,11 +1,12 @@
 ﻿using GarangeInventory.Storage;
+using GarangeInventory.Storage.Shelf;
 using GarangeInventory.XmlData;
 
 namespace BlazorGI.Data
 {
     public class DataService
     {
-        private List<StorageUnit>? _storages ;
+        private List<StorageUnit>? _storages;
 
         public List<StorageUnit>? Storages
         {
@@ -20,26 +21,37 @@ namespace BlazorGI.Data
             }
         }
 
-        private StorageUnit? _storage;
-
-        public StorageUnit? Storage
+        public void LoadStoragesFromFile()
         {
-            get
-            {
-                if (_storage == null)
-                {
-                    return _storage;
-                }
-                return _storage;
-            }
-            set { _storage = value; }
+            _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
         }
 
-        private void LoadStoragesFromFile()
+        /// <summary>
+        /// Add new storageUnit to list of _storages
+        /// </summary>
+        /// <param name="storageUnitName">What you want to name this storage unit</param>
+        /// <param name="user"> User who have access to this storage unit </param>
+        public void AddStorageUnit(string storageUnitName, User user)
         {
-            _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.AppFilePath.BlazorGI);
+            StorageUnit storageUnit = new StorageUnit();
+            storageUnit.Name = storageUnitName;
+            storageUnit.Users.Add(user);
+            Storages.Add(storageUnit);
         }
+
+        /// <summary>
+        /// Add new ShelfUnit 
+        /// </summary>
+        /// <param name="shelfUnitName"> What is Name of ShelfUnit ( wooden rack on left) </param>
+        /// <param name="storageUnit"> In which StorageUnit shelfUnit is located </param>
+        /// <param name="amountOfShelfsInShelfUnit"> How many shelfs Unit has </param>
+        public void AddShelfUnit(string shelfUnitName,StorageUnit storageUnit,int amountOfShelfsInShelfUnit)
+        {
+            ShelfUnit shelfUnit = new ShelfUnit(shelfUnitName, amountOfShelfsInShelfUnit);
+            storageUnit.ShelfUnits.Add(shelfUnit);
+        }
+
+
 
     }
-
 }

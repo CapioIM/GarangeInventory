@@ -1,9 +1,9 @@
 ﻿@page "/dashboard/{userName}"
-@using GarangeInventory.Storage
-@inject Data.UserService UserData
-@inject Data.DataService DataStorages
-
+@using BlazorGI.Components
 @inject NavigationManager navigation
+@inject Data.UserService UserData
+@using GarangeInventory.Storage
+
 
 @if (userName == null || UserData.User.Name == null || userName != UserData.User.Name)
 {
@@ -20,29 +20,10 @@ else
 {
     <PageTitle>Your Warehouse!</PageTitle>
     <h3>List of accessible containers:</h3>
-    <th>Containers</th>
-    <tbody>
-        @foreach (StorageUnit storage in storages)
-        {
-            foreach (User u in storage.Users)
-            {
-                if (u.Name == UserData.User.Name)
-                {
-                    <a href="">@storage.Name</a>
-                }
-            }
-        }
-    </tbody>
+    <ContainerList></ContainerList>
 
 }
 @code {
     [Parameter]
     public string? userName { get; set; }
-
-    private List<StorageUnit>? storages;
-
-    protected override void OnInitialized()
-    {
-        storages = DataStorages.Storages;
-    }
 }

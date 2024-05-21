@@ -11,7 +11,7 @@ namespace GarangeInventory
         {
             List<StorageUnit> storages = new List<StorageUnit>();
             storages = TestData.TestDataStorageUnits();
-            Serialize.SaveData(storages); 
+            Serialize.SaveData(storages,SerializationAppFilePath.GarageInventory); 
 
             Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
             int choice = UiMethods.GetUserInt();
