@@ -4,7 +4,7 @@
 
 
 
-<ul>
+<ol>
     @foreach (StorageUnit storage in storages)
     {
         foreach (User u in storage.Users)
@@ -15,7 +15,7 @@
             }
         }
     }
-</ul>
+</ol>
 
 @code {
     public List<StorageUnit>? storages { get; set; }
@@ -24,4 +24,7 @@
     {
         storages = DataStorages.Storages;
     }
+
+
+
 }

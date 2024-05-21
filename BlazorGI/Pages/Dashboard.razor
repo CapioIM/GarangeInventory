@@ -3,6 +3,7 @@
 @inject NavigationManager navigation
 @inject Data.UserService UserData
 @using GarangeInventory.Storage
+<PageTitle>Your Warehouse!</PageTitle>
 
 
 @if (userName == null || UserData.User.Name == null || userName != UserData.User.Name)
@@ -18,7 +19,6 @@
 }
 else
 {
-    <PageTitle>Your Warehouse!</PageTitle>
     <h3>List of accessible containers:</h3>
     <ContainerList></ContainerList>
 

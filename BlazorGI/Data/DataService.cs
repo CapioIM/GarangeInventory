@@ -39,6 +39,11 @@ namespace BlazorGI.Data
             Storages.Add(storageUnit);
         }
 
+        public void AddUserToStorageUnit(User user,StorageUnit storageUnit)
+        {
+            storageUnit.Users.Add(user);
+        }
+
         /// <summary>
         /// Add new ShelfUnit 
         /// </summary>
