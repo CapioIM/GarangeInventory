@@ -3,15 +3,17 @@
 @inject Data.DataService DataStorages
 
 
+<h3>List of accessible containers:</h3>
 
 <ol>
     @foreach (StorageUnit storage in storages)
     {
-        foreach (User u in storage.Users)
+        foreach (User user in storage.Users)
         {
-            if (u.Name == UserData.User.Name)
+            if (user.Name == UserData.User.Name)
             {
                 <li>@storage.Name</li>
+                <ShelfUnits storage="@storage"></ShelfUnits>
             }
         }
     }
