@@ -1,8 +1,4 @@
 ﻿@using GarangeInventory.Storage
-@inject Data.UserService UserData
-@inject Data.DataService DataStorages
-
-
 <h3>List of accessible containers:</h3>
 
 <ol>
@@ -10,7 +6,7 @@
     {
         foreach (User user in storage.Users)
         {
-            if (user.Name == UserData.User.Name)
+            if (user.Name == userLoggedIn.Name)
             {
                 <li>@storage.Name</li>
                 <ShelfUnits storage="@storage"></ShelfUnits>
@@ -20,13 +16,8 @@
 </ol>
 
 @code {
+    [Parameter]
     public List<StorageUnit>? storages { get; set; }
-
-    protected override void OnInitialized()
-    {
-        storages = DataStorages.Storages;
-    }
-
-
-
+    [Parameter]
+    public User userLoggedIn { get; set; }
 }

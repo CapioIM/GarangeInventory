@@ -2,6 +2,7 @@
 @using BlazorGI.Components
 @inject NavigationManager navigation
 @inject Data.UserService UserData
+@inject Data.DataService DataStorages
 @using GarangeInventory.Storage
 <PageTitle>Your Warehouse!</PageTitle>
 
@@ -19,7 +20,7 @@
 }
 else
 {
-    <ContainerList/>
+    <ContainerList storages="@DataStorages.Storages" userLoggedIn="@UserData.User"/>
 }
 @code {
     [Parameter]
