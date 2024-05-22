@@ -78,10 +78,13 @@ namespace BlazorGI.Data
             storage.ShelfUnits.Add(shelfUnit);
             Save();
         }
+        
         /*
         public void AddBox(string boxName,NewBoxNavigation newBoxNavigation)
         {
             Box box = new Box(boxName);
+
+
 
         }
         */
