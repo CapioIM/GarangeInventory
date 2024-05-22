@@ -19,8 +19,7 @@ namespace GarangeInventory
             storageOne.Users.Add(AddUser("Jurijs"));
             storageOne.Users.Add(AddUser("Igor"));
 
-            ShelfUnit shelfUnitOne = new ShelfUnit("Floor", 1);
-            storageOne.ShelfUnits.Add(shelfUnitOne);
+            ShelfUnit shelfUnitOne = storageOne.ShelfUnits.First();
 
             ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right", 5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);

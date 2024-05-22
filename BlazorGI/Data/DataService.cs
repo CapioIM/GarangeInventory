@@ -1,6 +1,7 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.XmlData;
+using GarangeInventory.Enum;
 
 namespace BlazorGI.Data
 {
@@ -37,9 +38,10 @@ namespace BlazorGI.Data
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
             Storages.Add(storageUnit);
+            Save();
         }
 
-        public void AddUserToStorageUnit(User user,StorageUnit storageUnit)
+        public void AddUserToStorageUnit(User user, StorageUnit storageUnit)
         {
             storageUnit.Users.Add(user);
         }
@@ -50,13 +52,38 @@ namespace BlazorGI.Data
         /// <param name="shelfUnitName"> What is Name of ShelfUnit ( wooden rack on left) </param>
         /// <param name="storageUnit"> In which StorageUnit shelfUnit is located </param>
         /// <param name="amountOfShelfsInShelfUnit"> How many shelfs Unit has </param>
-        public void AddShelfUnit(string shelfUnitName,StorageUnit storageUnit,int amountOfShelfsInShelfUnit)
+        public void AddShelfUnit(string shelfUnitName, StorageUnit storageUnit, int amountOfShelfsInShelfUnit)
         {
             ShelfUnit shelfUnit = new ShelfUnit(shelfUnitName, amountOfShelfsInShelfUnit);
             storageUnit.ShelfUnits.Add(shelfUnit);
         }
 
+        /// <summary>
+        /// Serialize data
+        /// </summary>
+        public void Save()
+        {
+            Serialize.SaveData(_storages, SerializationAppFilePath.BlazorGI);
+        }
 
+        /// <summary>
+        /// Add new Shelf Unit
+        /// </summary>
+        /// <param name="storage"> which storage to add this shelf unit </param>
+        /// <param name="name"> What shelfUnit will be named as </param>
+        /// <param name="amountOfShelfs"> How many shelfs are there </param>
+        public void AddShelfUnit(StorageUnit storage, string name, int amountOfShelfs)
+        {
+            ShelfUnit shelfUnit = new ShelfUnit(name, amountOfShelfs);
+            storage.ShelfUnits.Add(shelfUnit);
+            Save();
+        }
+        /*
+        public void AddBox(string boxName,NewBoxNavigation newBoxNavigation)
+        {
+            Box box = new Box(boxName);
 
+        }
+        */
     }
 }

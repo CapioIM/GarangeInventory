@@ -10,8 +10,5 @@ namespace GarangeInventory.Storage.Shelf
 			get { return _itemID++; }
 			set { _itemID = value; }
 		}
-
-
-
 	}
 }

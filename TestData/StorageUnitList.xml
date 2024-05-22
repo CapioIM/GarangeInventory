@@ -15,20 +15,6 @@
           </Shelf>
         </Shelfs>
         <Note />
-        <Boxes />
-        <Items />
-      </ShelfUnit>
-      <ShelfUnit>
-        <Name>Floor</Name>
-        <ID>0</ID>
-        <Shelfs>
-          <Shelf>
-            <Name>Top Shelf</Name>
-            <Boxes />
-            <Items />
-          </Shelf>
-        </Shelfs>
-        <Note />
         <Boxes>
           <Box>
             <Name>Blue stackable box</Name>

@@ -1,19 +1,24 @@
 ﻿@using GarangeInventory.Storage
+@using GarangeInventory.Storage.Shelf
+
 <h3>List of accessible containers:</h3>
 
-<ol>
-    @foreach (StorageUnit storage in storages)
+@foreach (StorageUnit storage in storages)
+{
+    foreach (User user in storage.Users)
     {
-        foreach (User user in storage.Users)
+        if (user.Name == userLoggedIn.Name)
         {
-            if (user.Name == userLoggedIn.Name)
-            {
-                <li>@storage.Name</li>
-                <ShelfUnits storage="@storage"></ShelfUnits>
-            }
+            <h5>@storage.Name</h5>
+            <ul>
+                @foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
+                {
+                    <li>@shelfUnit.Name</li>
+                }
+            </ul>
         }
     }
-</ol>
+}
 
 @code {
     [Parameter]

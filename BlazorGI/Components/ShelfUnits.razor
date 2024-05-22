@@ -1,12 +1,6 @@
 ﻿@using GarangeInventory.Storage
-@using GarangeInventory.Storage.Shelf
 
-<ul>
-    @foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
-    {
-        <li>@shelfUnit.Name</li>
-    }
-</ul>
+
 
 @code {
     [Parameter]
