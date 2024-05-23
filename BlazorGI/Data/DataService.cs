@@ -8,7 +8,6 @@ namespace BlazorGI.Data
     public class DataService
     {
         private List<StorageUnit>? _storages;
-
         public List<StorageUnit>? Storages
         {
             get
@@ -79,14 +78,26 @@ namespace BlazorGI.Data
             Save();
         }
         
-        /*
-        public void AddBox(string boxName,NewBoxNavigation newBoxNavigation)
+       /// <summary>
+       /// add New Box to shelf
+       /// </summary>
+       /// <param name="shelf">Shelf where to add new box</param>
+       /// <param name="name"> Name of box </param>
+        public void AddBoxToShelf(Shelf shelf, string name)
         {
-            Box box = new Box(boxName);
-
-
-
+            Box box = new Box(name);
+            shelf.Boxes.Add(box);
         }
-        */
+
+        /// <summary>
+        /// Add Box to ShelfUnit
+        /// </summary>
+        /// <param name="shelfUnit"> Unit where to add box </param>
+        /// <param name="name"> Name of box </param>
+        public void AddBoxToShelfUnit(ShelfUnit shelfUnit, string name)
+        {
+            Box box = new Box(name);
+            shelfUnit.Boxes.Add(box);
+        }
     }
 }
