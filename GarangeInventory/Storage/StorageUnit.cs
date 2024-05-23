@@ -39,6 +39,8 @@ namespace GarangeInventory.Storage
 		public StorageUnit(string name)
 		{
 			Name = name;
+			ShelfUnit shelfUnit = new ShelfUnit("Floor",1);
+			_shelfUnits.Add(shelfUnit);
 		}
     }
 }

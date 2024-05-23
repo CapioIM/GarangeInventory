@@ -7,6 +7,12 @@ namespace GarangeInventory.Storage.Shelf
     public class Box
     {
         public Box() { }
+
+        public Box(string name)
+        {
+            _name = name;
+        }
+
         private string _name;
 
         public string Name
@@ -44,10 +50,6 @@ namespace GarangeInventory.Storage.Shelf
             get { return _path; }
             set { _path = value; }
         }
-        public Box(string name)
-        {
-            _name = name;
-        }
 
         private List<Item> _items = new();
 
@@ -56,7 +58,6 @@ namespace GarangeInventory.Storage.Shelf
             get { return _items; }
             set { _items = value; }
         }
-
 
     }
 }

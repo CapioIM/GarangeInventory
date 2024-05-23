@@ -19,8 +19,7 @@ namespace GarangeInventory
             storageOne.Users.Add(AddUser("Jurijs"));
             storageOne.Users.Add(AddUser("Igor"));
 
-            ShelfUnit shelfUnitOne = new ShelfUnit("Floor", 1);
-            storageOne.ShelfUnits.Add(shelfUnitOne);
+            ShelfUnit shelfUnitOne = storageOne.ShelfUnits.First();
 
             ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right", 5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);
@@ -131,6 +130,12 @@ namespace GarangeInventory
             Item item28 = new Item("Shelf Unit Level Item 28 for test data", 1, Category.Other);
             item28.Expiry = new DateTime(2020, 1, 1);
             shelfUnitOne.Items.Add(item28);
+
+            StorageUnit storageTwo = CreateStorageUnit("Garden Shed", storageUnitList);
+            storageTwo.Users.Add(AddUser("Jurijs"));
+            storageTwo.Users.Add(AddUser("Igor"));
+            ShelfUnit gardenShedLeft = new ShelfUnit("Left Unit", 4);
+            storageOne.ShelfUnits.Add(shelfUnitOne);
 
             return storageUnitList;
         }
