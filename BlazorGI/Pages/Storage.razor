@@ -1,0 +1,16 @@
+﻿@page "/storage{ID}"
+@inject Data.DataService DS;
+<h3>Storage</h3>
+
+@foreach (var st in DS.Storages.Where(storunit => storunit.IdNumber == ID))  //LINQ
+{
+
+    //do things
+
+}
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+}

@@ -132,7 +132,6 @@ namespace GarangeInventory
             shelfUnitOne.Items.Add(item28);
 
             StorageUnit storageTwo = CreateStorageUnit("Garden Shed", storageUnitList);
-            storageTwo.Users.Add(AddUser("Jurijs"));
             storageTwo.Users.Add(AddUser("Igor"));
             ShelfUnit gardenShedLeft = new ShelfUnit("Left Unit", 4);
             storageOne.ShelfUnits.Add(shelfUnitOne);

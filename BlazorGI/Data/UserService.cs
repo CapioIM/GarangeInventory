@@ -35,6 +35,17 @@ namespace BlazorGI.Data
             set { _user = value; }
         }
 
+        public void CreateUser(string name)
+        {
+            var u = new User();
+            u.Name = name;
+
+            int maxID = Users.Max(u => u.ID);
+            u.ID = maxID + 1;
+
+            Users.Add(u);
+        }
+
         private bool GetUserAccess(string userName)
         {
             bool sucess = false;
