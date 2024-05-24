@@ -1,7 +1,6 @@
 ﻿using GarangeInventory.Enum;
 using GarangeInventory.Storage;
-using GarangeInventory.XmlData;
-using System.Runtime.Serialization.Json;
+using GarangeInventory.DataOperations;
 
 namespace GarangeInventory
 {
@@ -9,23 +8,28 @@ namespace GarangeInventory
     {
         static void Main(string[] args)
         {
-            List<StorageUnit> storages = new List<StorageUnit>();
-            storages = TestData.TestDataStorageUnits();
-            Serialize.SaveData(storages,SerializationAppFilePath.GarageInventory); 
+            SaveData saveData = new SaveData();
+            saveData.storageUnits = TestData.TestDataStorageUnits();
+            saveData.users = TestData.TestDataUsers();
+            saveData.storageUnits[0].Users.Add(saveData.users[0]);
+            saveData.storageUnits[0].Users.Add(saveData.users[1]);
+            saveData.storageUnits[1].Users.Add(saveData.users[1]);
+            saveData.items = TestData.GetAllItems(saveData.storageUnits);
+            Serialize.SaveData(saveData, SerializationAppFilePath.GarageInventory);
 
             Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
-            int choice = UiMethods.GetUserInt();
+            int choice = UiMethods.GetUserChoice();
             SearchOptions searchOptions = UiMethods.GetSearchOptions(choice);
             switch (searchOptions)
             {
                 case SearchOptions.ExpiryDate:
                     {
-                        Expiry.DisplayExpiredItems(storages);
+                        Expiry.DisplayExpiredItems(saveData.storageUnits);
                         break;
                     }
-                    case SearchOptions.ContainsName:
+                case SearchOptions.ContainsName:
                     {
-                        Search.DisplaySearchResult(storages);
+                        Search.DisplaySearchResult(saveData.storageUnits);
                         break;
                     }
             }

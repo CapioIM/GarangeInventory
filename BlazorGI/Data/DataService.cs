@@ -1,29 +1,41 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory.Storage.Shelf;
-using GarangeInventory.XmlData;
+using GarangeInventory.DataOperations;
 using GarangeInventory.Enum;
 
 namespace BlazorGI.Data
 {
     public class DataService
     {
-        private List<StorageUnit>? _storages;
-        public List<StorageUnit>? Storages
+        private SaveData _saveData = new SaveData();
+
+        public SaveData saveData
         {
             get
             {
-                if (_storages == null)
+                if (_saveData == null)
                 {
-                    _storages = new List<StorageUnit>();
+                    _saveData = new SaveData();
                     LoadStoragesFromFile();
                 }
-                return _storages;
+                return _saveData;
             }
+            set { _saveData = value; }
         }
+
+        private List<StorageUnit> _storages = new List<StorageUnit>();
+
+        public List<StorageUnit> Storages
+        {
+            get { return _storages; }
+            set { _storages = value; }
+        }
+
 
         public void LoadStoragesFromFile()
         {
-            _storages = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
+            _saveData = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
+            _storages = _saveData.storageUnits;
         }
 
         /// <summary>
@@ -37,7 +49,7 @@ namespace BlazorGI.Data
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
             Storages.Add(storageUnit);
-            Save();
+            SaveStorageUnits();
         }
 
         public void AddUserToStorageUnit(User user, StorageUnit storageUnit)
@@ -60,9 +72,9 @@ namespace BlazorGI.Data
         /// <summary>
         /// Serialize data
         /// </summary>
-        public void Save()
+        public void SaveStorageUnits()
         {
-            Serialize.SaveData(_storages, SerializationAppFilePath.BlazorGI);
+            Serialize.SaveData(_saveData, SerializationAppFilePath.BlazorGI);
         }
 
         /// <summary>
@@ -75,14 +87,14 @@ namespace BlazorGI.Data
         {
             ShelfUnit shelfUnit = new ShelfUnit(name, amountOfShelfs);
             storage.ShelfUnits.Add(shelfUnit);
-            Save();
+            SaveStorageUnits();
         }
-        
-       /// <summary>
-       /// add New Box to shelf
-       /// </summary>
-       /// <param name="shelf">Shelf where to add new box</param>
-       /// <param name="name"> Name of box </param>
+
+        /// <summary>
+        /// add New Box to shelf
+        /// </summary>
+        /// <param name="shelf">Shelf where to add new box</param>
+        /// <param name="name"> Name of box </param>
         public void AddBoxToShelf(Shelf shelf, string name)
         {
             Box box = new Box(name);

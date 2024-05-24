@@ -1,7 +1,7 @@
 ﻿using GarangeInventory.Storage;
 using System.Xml.Serialization;
 
-namespace GarangeInventory.XmlData
+namespace GarangeInventory.DataOperations
 {
     public class Serialize
     {
@@ -14,15 +14,31 @@ namespace GarangeInventory.XmlData
         /// creates file in text format with values including in List of object
         /// </summary>
         /// <param name="storageUnits"> List of object </param>
-        public static void SaveData(List<StorageUnit> storageUnits, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
+        public static void SaveDataToFile(SaveData saveData, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
         {
             string path = GetDataFilePath(blazorGiOrGarageInventory);
             try
             {
-                XmlSerializer writer = new XmlSerializer(typeof(List<StorageUnit>));
+                XmlSerializer writer = new XmlSerializer(typeof(SaveData));
                 using (FileStream file = File.Create(path))
                 {
-                    writer.Serialize(file, storageUnits);
+                    writer.Serialize(file, saveData);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }  
+        public static void SaveData(SaveData saveData, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
+        {
+            string path = GetDataFilePath(blazorGiOrGarageInventory);
+            try
+            {
+                XmlSerializer writer = new XmlSerializer(typeof(SaveData));
+                using (FileStream file = File.Create(path))
+                {
+                    writer.Serialize(file, saveData);
                 }
             }
             catch (Exception ex)
@@ -36,16 +52,16 @@ namespace GarangeInventory.XmlData
         /// </summary>
         /// <param name="blazorGiOrGarageInventory">choose file path of app BlazorGi or GarageInventory -  GarageInventory.Enum.AppFilePath </param>
         /// <returns> List<StorageUnit> </returns>
-        public static List<StorageUnit> DeserializeStorageUnitList(Enum.SerializationAppFilePath blazorGiOrGarageInventory)
+        public static SaveData DeserializeStorageUnitList(Enum.SerializationAppFilePath blazorGiOrGarageInventory)
         {
             string path = GetDataFilePath(blazorGiOrGarageInventory);
-            XmlSerializer serializer = new XmlSerializer(typeof(List<StorageUnit>));
-            List<StorageUnit> storageUnit = new List<StorageUnit>();
+            XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+            SaveData saveData = new SaveData();
             using (FileStream file = File.OpenRead(path))
             {
-                storageUnit = serializer.Deserialize(file) as List<StorageUnit>;
+                saveData = serializer.Deserialize(file) as SaveData;
             }
-            return storageUnit;
+            return saveData;
         }
 
         /// <summary>

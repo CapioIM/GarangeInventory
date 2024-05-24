@@ -3,12 +3,18 @@ namespace GarangeInventory.Storage.Shelf
 {
     public class ItemIdCounter
     {
-		private int _itemID;
+		private int _id = 0;
 
-		public int ItemID
+		public int ID
 		{
-			get { return _itemID++; }
-			set { _itemID = value; }
+			get { return _id; }
+			set { _id = value; }
 		}
+
+		public void IncreaseID()
+		{
+			_id++;
+		}
+
 	}
 }

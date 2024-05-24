@@ -13,6 +13,15 @@ namespace GarangeInventory.Storage.Shelf
             set { _name = value; }
         }
 
+        private int _iD;
+
+        public int ID
+        {
+            get { return _iD; }
+            set { _iD = value; }
+        }
+
+
         private int _quantity;
 
         public int Quantity
@@ -97,14 +106,17 @@ namespace GarangeInventory.Storage.Shelf
         }
 
 
-        public Item(string name, int quantity, Category category)
+        public Item(string name, int quantity, Category category,ItemIdCounter itemIdCounter)
         {
             _quantity = quantity;
             _name = name;
             _itemCreationDate = DateTime.Now;
             _itemCategory = category;
             _expiry = new DateTime(2099, 12, 30);
+            _iD = itemIdCounter.ID;
+            itemIdCounter.IncreaseID();
         }
+
 
 
     }

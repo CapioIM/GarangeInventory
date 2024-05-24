@@ -2,7 +2,7 @@
 @inject Data.DataService DS;
 <h3>Storage</h3>
 
-@foreach (var st in DS.Storages.Where(storunit => storunit.IdNumber == ID))  //LINQ
+@foreach (var st in DS.Storages.Where(storunit => storunit.ID == ID))  //LINQ
 {
 
     //do things

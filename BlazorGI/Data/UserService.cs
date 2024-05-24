@@ -1,5 +1,5 @@
 ﻿using GarangeInventory.Storage;
-using GarangeInventory.XmlData;
+using GarangeInventory.DataOperations;
 
 namespace BlazorGI.Data
 {
@@ -49,6 +49,10 @@ namespace BlazorGI.Data
         private bool GetUserAccess(string userName)
         {
             bool sucess = false;
+            if (Users == null)
+            {
+                GetUsersFromFile();
+            }
             foreach (User userInputCheckForExistingUser in Users)
             {
                 if (userInputCheckForExistingUser.Name == userName)
@@ -70,14 +74,8 @@ namespace BlazorGI.Data
 
         public void GetUsersFromFile()
         {
-            List<StorageUnit> storageUnits = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
-            foreach (StorageUnit storageUnit in storageUnits)
-            {
-                foreach (User user in storageUnit.Users)
-                {
-                    Users.Add(user);
-                }
-            }
+            SaveData saveData = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
+            Users = saveData.users;
         }
     }
 }

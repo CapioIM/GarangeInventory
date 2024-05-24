@@ -4,7 +4,7 @@ namespace GarangeInventory
 {
     public class UiMethods
     {
-        public static int GetUserInt()
+        public static int GetUserChoice()
         {
             int result = 0;
             bool isNumber = false;

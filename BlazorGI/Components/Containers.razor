@@ -5,12 +5,11 @@
 
 @foreach (StorageUnit storage in storages)
 {
-    foreach (User user in storage.Users.Where(u => u.Name == userLoggeIn.Name))
+    foreach (User user in storage.Users.Where(u => u.Name == userLoggedIn.Name))
     {
         if (user.Name == userLoggedIn.Name)
         {
-            <h5>@storage.Name</h5>
-            <a href="/storage/@storage.ID">@storage.Name</a>
+          //  <a href="/storage/@storage.ID">@storage.Name</a>
             <ul>
                 @foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
                 {

@@ -6,12 +6,12 @@ namespace GarangeInventory.Storage
     {
 		public StorageUnit() { }
 
-		private int _idNumber;
+		private int _id;
 
-		public int IdNumber
+		public int ID
 		{
-			get { return _idNumber; }
-			set { _idNumber = value; }
+			get { return _id; }
+			set { _id = value; }
 		}
 
 		private string _name;
