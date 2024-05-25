@@ -3,7 +3,7 @@
 @inject Data.DataService Data
 
 <input @bind=storageName />
-<button class="btn" @onclick=AddStorage>Add Storage</button>
+<button class="btn btn-outline-primary" @onclick=AddStorage>Add Storage</button>
 
 <h4>List of accessible containers:</h4>
 @foreach (StorageUnit storage in storages)

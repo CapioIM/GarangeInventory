@@ -539,6 +539,28 @@
         </User>
       </Users>
     </StorageUnit>
+    <StorageUnit>
+      <ID>2</ID>
+      <Name>Huntingdon</Name>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>1</ID>
+          <Name>Igor</Name>
+        </User>
+      </Users>
+    </StorageUnit>
+    <StorageUnit>
+      <ID>3</ID>
+      <Name>Orchard</Name>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>1</ID>
+          <Name>Igor</Name>
+        </User>
+      </Users>
+    </StorageUnit>
   </storageUnits>
   <items>
     <Item>

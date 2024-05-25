@@ -1,7 +1,8 @@
-﻿@page "/storage/{storageID}"
+﻿@page "/storage/{ID:int}"
 @inject Data.DataService Data;
 @using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
+@inject NavigationManager SatNav
 
 <PageTitle>Storage</PageTitle>
 <h3>Storage: @Data.Storages[ID].Name</h3>
@@ -22,8 +23,5 @@
 
 @code {
     [Parameter]
-    public string? storageID { get; set; }
-
-    private int ID { get; set; }
-
+    public int ID { get; set; }
 }
