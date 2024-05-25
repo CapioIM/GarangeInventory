@@ -35,8 +35,9 @@ namespace BlazorGI.Data
             set { _user = value; }
         }
 
-        public void CreateUser(string name)
+        public void CreateUser(string? name)
         {
+
             var u = new User();
             u.Name = name;
 
@@ -55,7 +56,7 @@ namespace BlazorGI.Data
             }
             foreach (User userInputCheckForExistingUser in Users)
             {
-                if (userInputCheckForExistingUser.Name == userName)
+                if (userInputCheckForExistingUser.Name.ToLower() == userName.ToLower())
                 {
                     sucess = true;
                     User = userInputCheckForExistingUser;

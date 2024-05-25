@@ -7,34 +7,33 @@ namespace BlazorGI.Data
 {
     public class DataService
     {
-        private SaveData _saveData = new SaveData();
+        private SaveData? _saveData = new SaveData();
 
         public SaveData saveData
         {
-            get
-            {
-                if (_saveData == null)
-                {
-                    _saveData = new SaveData();
-                    LoadStoragesFromFile();
-                }
-                return _saveData;
-            }
+            get { return _saveData; }
             set { _saveData = value; }
         }
 
-        private List<StorageUnit> _storages = new List<StorageUnit>();
+        private List<StorageUnit>? _storages;
 
         public List<StorageUnit> Storages
         {
-            get { return _storages; }
+            get
+            {
+                if (_storages == null)
+                {
+                    _storages = new List<StorageUnit>();
+                    LoadStoragesFromFile();
+                }
+                return _storages;
+            }
             set { _storages = value; }
         }
 
-
         public void LoadStoragesFromFile()
         {
-            _saveData = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
+            _saveData = Serialize.DeserializeStorageUnitList(SerializationAppFilePath.BlazorGI);
             _storages = _saveData.storageUnits;
         }
 

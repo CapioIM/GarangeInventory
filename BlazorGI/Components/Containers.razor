@@ -1,22 +1,14 @@
 ﻿@using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
 
-<h3>List of accessible containers:</h3>
+<h4>List of accessible containers:</h4>
 
 @foreach (StorageUnit storage in storages)
 {
-    foreach (User user in storage.Users.Where(u => u.Name == userLoggedIn.Name))
+    foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
     {
-        if (user.Name == userLoggedIn.Name)
-        {
-          //  <a href="/storage/@storage.ID">@storage.Name</a>
-            <ul>
-                @foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
-                {
-                    <li>@shelfUnit.Name</li>
-                }
-            </ul>
-        }
+        <a href="/storage/@storage.ID">@storage.Name</a>
+        <br />
     }
 }
 

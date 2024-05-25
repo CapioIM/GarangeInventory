@@ -1,16 +1,32 @@
-﻿@page "/storage{ID}"
-@inject Data.DataService DS;
-<h3>Storage</h3>
+﻿@page "/storage/{storageID}"
+@inject Data.DataService Data;
+@using GarangeInventory.Storage
+@using GarangeInventory.Storage.Shelf
 
-@foreach (var st in DS.Storages.Where(storunit => storunit.ID == ID))  //LINQ
+<PageTitle>Storage</PageTitle>
+<h3>Storage: @Data.Storages[ID].Name</h3>
+
+@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
 {
+    foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+    {
+        <ul>
+            <li>@shelfUnit.Name</li>
+        </ul>
+        <ol>
+            @foreach (Shelf shelf in shelfUnit.Shelfs)
+            {
+                <li>@shelf.Name</li>
 
-    //do things
-
+            }
+        </ol>
+    }
 }
 
 @code {
     [Parameter]
-    public int ID { get; set; }
+    public string? storageID { get; set; }
+
+    private int ID { get; set; }
 
 }

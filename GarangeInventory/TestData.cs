@@ -17,9 +17,9 @@ namespace GarangeInventory
             ItemIdCounter iDCounter = new ItemIdCounter();
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
             StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
+            storageOne.ID = 0;
 
-            ShelfUnit shelfUnitOne = storageOne.ShelfUnits.First();
-
+            ShelfUnit shelfUnitOne = storageOne.ShelfUnits[0];
             ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right", 5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);
 
@@ -131,8 +131,8 @@ namespace GarangeInventory
             shelfUnitOne.Items.Add(item28);
 
             StorageUnit storageTwo = CreateStorageUnit("Garden Shed", storageUnitList);
+            storageTwo.ID = 1;
             ShelfUnit gardenShedLeft = new ShelfUnit("Left Unit", 4);
-            storageOne.ShelfUnits.Add(shelfUnitOne);
 
             return storageUnitList;
         }
@@ -147,7 +147,7 @@ namespace GarangeInventory
             return users;
         }
 
-        private static User AddUser(string name,int idNumber)
+        private static User AddUser(string name, int idNumber)
         {
             User user = new User();
             user.Name = name;

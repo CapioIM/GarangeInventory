@@ -5,12 +5,18 @@
 
 <PageTitle>Garage Inventory Login</PageTitle>
 
-<h3>Enter your Username</h3>
-<input @bind=UsernameInput />
-<br />
-<button class="btn btn-outline-primary" @onclick=GetUserCheckMessage title="Let's log in.">Don't Click me</button>
+<div>
+    <h3>Enter your Username</h3>
+    <input @bind=UsernameInput />
+    <button class="btn btn-outline-primary" @onclick=GetUserCheckMessage title="Let's log in.">Click to login.</button>
+    <p>@notValidLogin</p>
+</div>
 
-<p>@notValidLogin</p>
+<div>
+    <h3>Create account.</h3>
+    <input @bind=nameUserToCreate />
+    <button class="btn btn-outline-primary" @onclick=CreateUser>Create User</button>
+</div>
 
 @code {
     public string? UsernameInput { get; set; }
@@ -24,19 +30,28 @@
             if (UsernameInput != null)
             {
                 isUser = UserData.GetUserCheck(UsernameInput);
-                if (isUser && UsernameInput == UserData.User.Name)
+                if (isUser && UsernameInput.ToLower() == UserData.User.Name.ToLower())
                 {
                     MyNavigationManager.NavigateTo($"/dashboard/{UsernameInput}");
                 }
             }
-            if (UsernameInput == null || UsernameInput != UserData.User.Name || UserData.User.Name == null)
+            if (UsernameInput == null || UsernameInput.ToLower() != UserData.User.Name.ToLower() || UserData.User.Name == null)
             {
                 notValidLogin = "Login not valid!";
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
-           Console.WriteLine(e.ToString());
+            Console.WriteLine(e.ToString());
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("GetUserCheckMessage() failed. -----------------------");
+            Console.ResetColor();
         }
+    }
+
+    private string? nameUserToCreate { get; set; }
+    private void CreateUser()
+    {
+        UserData.CreateUser(nameUserToCreate);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GarangeInventory.Storage;
+using System.Linq.Expressions;
 using System.Xml.Serialization;
 
 namespace GarangeInventory.DataOperations
@@ -29,7 +30,7 @@ namespace GarangeInventory.DataOperations
             {
                 Console.WriteLine(ex.ToString());
             }
-        }  
+        }
         public static void SaveData(SaveData saveData, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
         {
             string path = GetDataFilePath(blazorGiOrGarageInventory);
@@ -50,16 +51,24 @@ namespace GarangeInventory.DataOperations
         /// <summary>
         /// Deserialize file as List<StorageUnit>
         /// </summary>
-        /// <param name="blazorGiOrGarageInventory">choose file path of app BlazorGi or GarageInventory -  GarageInventory.Enum.AppFilePath </param>
+        /// <param name="appPath">choose file path of app BlazorGi or GarageInventory -  GarageInventory.Enum.AppFilePath </param>
         /// <returns> List<StorageUnit> </returns>
-        public static SaveData DeserializeStorageUnitList(Enum.SerializationAppFilePath blazorGiOrGarageInventory)
+        public static SaveData DeserializeStorageUnitList(Enum.SerializationAppFilePath appPath)
         {
-            string path = GetDataFilePath(blazorGiOrGarageInventory);
-            XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
             SaveData saveData = new SaveData();
-            using (FileStream file = File.OpenRead(path))
+            try
             {
-                saveData = serializer.Deserialize(file) as SaveData;
+                string path = GetDataFilePath(appPath);
+                XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+                using (FileStream file = File.OpenRead(path))
+                {
+                    saveData = serializer.Deserialize(file) as SaveData;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("DeserializeStorageUnitList failed.---------------------");
             }
             return saveData;
         }

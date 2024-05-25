@@ -7,7 +7,7 @@
 <PageTitle>Your Warehouse!</PageTitle>
 
 
-@if (userName == null || UserData.User.Name == null || userName != UserData.User.Name)
+@if (userName == null || UserData.User.Name == null || userName.ToLower() != UserData.User.Name.ToLower())
 {
     try
     {
