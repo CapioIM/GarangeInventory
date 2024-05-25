@@ -10,14 +10,11 @@
 {
     foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
     {
-        <ul>
-            <li>@shelfUnit.Name</li>
-        </ul>
+        <p>@shelfUnit.Name</p>
         <ol>
             @foreach (Shelf shelf in shelfUnit.Shelfs)
             {
                 <li>@shelf.Name</li>
-
             }
         </ol>
     }

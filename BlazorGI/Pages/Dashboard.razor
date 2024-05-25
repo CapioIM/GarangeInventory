@@ -16,6 +16,9 @@
     catch (Exception e)
     {
         Console.WriteLine(e.ToString());
+        Console.BackgroundColor = ConsoleColor.Red;
+        Console.WriteLine("/dashboard navigation to login page failed.");
+        Console.ResetColor();
     }
 }
 else

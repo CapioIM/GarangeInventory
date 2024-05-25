@@ -31,9 +31,12 @@ namespace BlazorGI.Data
             set { _storages = value; }
         }
 
+        /// <summary>
+        /// deserialize from SaveData in to _storages
+        /// </summary>
         public void LoadStoragesFromFile()
         {
-            _saveData = Serialize.DeserializeStorageUnitList(SerializationAppFilePath.BlazorGI);
+            _saveData = Serialize.LoadSaveData(SerializationAppFilePath.BlazorGI);
             _storages = _saveData.storageUnits;
         }
 
@@ -47,8 +50,16 @@ namespace BlazorGI.Data
             StorageUnit storageUnit = new StorageUnit();
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
+            int assignID = Storages.Max(s => s.ID);
+            storageUnit.ID = assignID + 1;
             Storages.Add(storageUnit);
             SaveStorageUnits();
+        }
+
+        public void RemoveStorageUnit(int storageUnitID)
+        {
+            StorageUnit storageUnit = Storages.Where(s => s.ID == storageUnitID).First();
+            Storages.Remove(storageUnit);
         }
 
         public void AddUserToStorageUnit(User user, StorageUnit storageUnit)

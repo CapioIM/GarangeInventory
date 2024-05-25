@@ -67,14 +67,14 @@ namespace GarangeInventory.Storage.Shelf
         public ShelfUnit(string name,int amountOfShelfs)
         {
             _name = name;
-            for (int i = 0; i < amountOfShelfs; i++)
+            for (int i = 1; i <= amountOfShelfs; i++)
             {
                 string shelfNumber = i.ToString();
-                if (i == 0)
+                if (i == 1)
                 {
                     shelfNumber = "Bottom/Floor Shelf";
                 }
-                if (i == amountOfShelfs - 1)
+                if (i == amountOfShelfs )
                 {
                     shelfNumber = "Top Shelf";
                 }

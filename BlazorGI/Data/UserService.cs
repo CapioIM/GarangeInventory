@@ -75,7 +75,7 @@ namespace BlazorGI.Data
 
         public void GetUsersFromFile()
         {
-            SaveData saveData = Serialize.DeserializeStorageUnitList(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
+            SaveData saveData = Serialize.LoadSaveData(GarangeInventory.Enum.SerializationAppFilePath.BlazorGI);
             Users = saveData.users;
         }
     }

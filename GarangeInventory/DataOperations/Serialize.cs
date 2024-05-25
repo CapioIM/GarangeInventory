@@ -53,7 +53,7 @@ namespace GarangeInventory.DataOperations
         /// </summary>
         /// <param name="appPath">choose file path of app BlazorGi or GarageInventory -  GarageInventory.Enum.AppFilePath </param>
         /// <returns> List<StorageUnit> </returns>
-        public static SaveData DeserializeStorageUnitList(Enum.SerializationAppFilePath appPath)
+        public static SaveData LoadSaveData(Enum.SerializationAppFilePath appPath)
         {
             SaveData saveData = new SaveData();
             try
@@ -68,7 +68,9 @@ namespace GarangeInventory.DataOperations
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                Console.WriteLine("DeserializeStorageUnitList failed.---------------------");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("LoadSaveData failed.---------------------");
+                Console.ResetColor();
             }
             return saveData;
         }
