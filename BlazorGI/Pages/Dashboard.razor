@@ -1,11 +1,10 @@
-﻿@page "/dashboard/{userName}"
+﻿@page "/{userName}/dashboard"
 @using BlazorGI.Components
 @inject NavigationManager navigation
 @inject Data.UserService UserData
 @inject Data.DataService DataStorages
 @using GarangeInventory.Storage
 <PageTitle>Your Warehouse!</PageTitle>
-
 
 @if (userName == null || UserData.User.Name == null || userName.ToLower() != UserData.User.Name.ToLower())
 {
@@ -23,7 +22,6 @@
 }
 else
 {
-    <AddItem></AddItem>
     <Containers storages="@DataStorages.Storages" userLoggedIn="@UserData.User"/>
 }
 @code {

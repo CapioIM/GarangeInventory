@@ -32,7 +32,7 @@
                 isUser = UserData.GetUserCheck(UsernameInput);
                 if (isUser && UsernameInput.ToLower() == UserData.User.Name.ToLower())
                 {
-                    MyNavigationManager.NavigateTo($"/dashboard/{UsernameInput}");
+                    MyNavigationManager.NavigateTo($"/{UsernameInput}/dashboard");
                 }
             }
             if (UsernameInput == null || UsernameInput.ToLower() != UserData.User.Name.ToLower() || UserData.User.Name == null)
