@@ -1,7 +1,7 @@
 ﻿using GarangeInventory.Storage;
 using GarangeInventory.DataOperations;
 
-namespace BlazorGI.Data
+namespace WebGI.Data
 {
     public class UserService
     {

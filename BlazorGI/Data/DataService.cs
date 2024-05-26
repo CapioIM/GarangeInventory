@@ -3,7 +3,7 @@ using GarangeInventory.Storage.Shelf;
 using GarangeInventory.DataOperations;
 using GarangeInventory.Enum;
 
-namespace BlazorGI.Data
+namespace WebGI.Data
 {
     public class DataService
     {

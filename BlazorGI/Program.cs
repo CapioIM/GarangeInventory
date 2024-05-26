@@ -1,4 +1,4 @@
-using BlazorGI.Data;
+using WebGI.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 

@@ -540,7 +540,18 @@
       </Users>
     </StorageUnit>
     <StorageUnit>
-      <ID>2</ID>
+      <ID>3</ID>
+      <Name>Cambridge</Name>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>1</ID>
+          <Name>Igor</Name>
+        </User>
+      </Users>
+    </StorageUnit>
+    <StorageUnit>
+      <ID>4</ID>
       <Name>Huntingdon</Name>
       <ShelfUnits />
       <Users>
@@ -551,8 +562,8 @@
       </Users>
     </StorageUnit>
     <StorageUnit>
-      <ID>3</ID>
-      <Name>Orchard</Name>
+      <ID>5</ID>
+      <Name>London</Name>
       <ShelfUnits />
       <Users>
         <User>
