@@ -32,6 +32,7 @@
                 isUser = UserData.GetUserCheck(UsernameInput);
                 if (isUser && UsernameInput.ToLower() == UserData.User.Name.ToLower())
                 {
+                    UserData.Authentication = true;
                     MyNavigationManager.NavigateTo($"/{UsernameInput}/dashboard");
                 }
             }

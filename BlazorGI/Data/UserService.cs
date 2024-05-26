@@ -35,6 +35,15 @@ namespace BlazorGI.Data
             set { _user = value; }
         }
 
+        private bool _authentication = false;
+
+        public bool Authentication
+        {
+            get { return _authentication; }
+            set { _authentication = value; }
+        }
+
+
         public void CreateUser(string? name)
         {
 

@@ -1,0 +1,15 @@
+﻿@inject Data.UserService UserData
+
+@if (!UserData.Authentication)
+{
+    <a href="/login" target="_blank">Login</a>
+}
+else
+{
+    <input @bind=searchMessage />
+    <p> @UserData.User.Name </p>
+}
+@code{
+    private string searchMessage{ get; set; }
+
+}
