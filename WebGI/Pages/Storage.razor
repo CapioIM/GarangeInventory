@@ -1,0 +1,34 @@
+﻿@page "/storage/{storageID}"
+@inject Data.DataService Data;
+@using GarangeInventory.Storage
+@using GarangeInventory.Storage.Shelf
+
+<PageTitle>Storage</PageTitle>
+<h3>Storage: @Data.Storages.Where(st => st.ID == IDNumber).First()</h3>          
+
+@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == IDNumber))
+{
+    foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+    {
+        <p>@shelfUnit.Name</p>
+        
+        <ol>
+            @foreach (Shelf shelf in shelfUnit.Shelfs)
+            {
+                <li>@shelf.Name</li>
+            }
+        </ol>
+    }
+}
+
+@code {
+    [Parameter]
+<<<<<<< HEAD
+    public int IDNumber { get; set; }
+=======
+    public string? storageID { get; set; }
+
+    private int ID { get; set; }
+
+>>>>>>> parent of bf39685 (/storage page display correct shelfunits)
+}

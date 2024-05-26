@@ -1,0 +1,34 @@
+﻿@using GarangeInventory.Storage
+@using GarangeInventory.Storage.Shelf
+@inject Data.DataService Data
+
+<input @bind=storageName />
+<button class="btn" @onclick=AddStorage>Add Storage</button>
+
+<h4>List of accessible containers:</h4>
+@foreach (StorageUnit storage in Data.Storages)
+{
+   foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
+    {
+        <a href="/storage/@storage.ID">@storage.Name</a>
+        <p >@storage.ID</p>
+        <button class="btn" @onclick="() => Remove(storage.ID)">Remove</button>
+        <br />
+    }
+}
+
+@code {
+    [Parameter]
+    public User userLoggedIn { get; set; }
+    private string storageName { get; set; }
+    private async Task AddStorage()
+    {
+        Data.AddStorageUnit(storageName, userLoggedIn);
+        storageName = "";
+    }
+    private void Remove(int ID)
+    {
+        Data.RemoveStorageUnit(ID);
+    }
+
+}
