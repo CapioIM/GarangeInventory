@@ -6,12 +6,11 @@
 <button class="btn btn-outline-primary" @onclick=AddStorage>Add Storage</button>
 
 <h4>List of accessible containers:</h4>
-@foreach (StorageUnit storage in Data.Storages)
+@foreach (StorageUnit storage in storages)
 {
    foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
     {
         <a href="/storage/@storage.ID">@storage.Name</a>
-        <p >@storage.ID</p>
         <button class="btn" @onclick="() => Remove(storage.ID)">Remove</button>
         <br />
     }
@@ -19,16 +18,16 @@
 
 @code {
     [Parameter]
+    public List<StorageUnit>? storages { get; set; }
+    [Parameter]
     public User userLoggedIn { get; set; }
     private string storageName { get; set; }
-    private async Task AddStorage()
+    private void AddStorage()
     {
         Data.AddStorageUnit(storageName, userLoggedIn);
-        storageName = "";
     }
     private void Remove(int ID)
     {
         Data.RemoveStorageUnit(ID);
     }
-
 }

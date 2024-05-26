@@ -1,4 +1,4 @@
-namespace WebGI.Data
+namespace BlazorGI.Data
 {
     public class WeatherForecast
     {

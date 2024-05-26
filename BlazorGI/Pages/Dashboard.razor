@@ -1,5 +1,5 @@
 ﻿@page "/dashboard/{userName}"
-@using WebGI.Components
+@using BlazorGI.Components
 @inject NavigationManager navigation
 @inject Data.UserService UserData
 @inject Data.DataService DataStorages
@@ -23,7 +23,8 @@
 }
 else
 {
-    <Containers userLoggedIn="@UserData.User"/>
+    <AddItem></AddItem>
+    <Containers storages="@DataStorages.Storages" userLoggedIn="@UserData.User"/>
 }
 @code {
     [Parameter]

@@ -5,14 +5,13 @@
 @inject NavigationManager SatNav
 
 <PageTitle>Storage</PageTitle>
-<h3>Storage: @Data.Storages.Where(st => st.ID == IDNumber).First()</h3>          
+<h3>Storage: @Data.Storages[ID].Name</h3>
 
-@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == IDNumber))
+@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
 {
     foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
     {
         <p>@shelfUnit.Name</p>
-        
         <ol>
             @foreach (Shelf shelf in shelfUnit.Shelfs)
             {
@@ -24,5 +23,5 @@
 
 @code {
     [Parameter]
-    public int IDNumber { get; set; }
+    public int ID { get; set; }
 }
