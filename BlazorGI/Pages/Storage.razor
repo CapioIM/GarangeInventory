@@ -2,7 +2,6 @@
 @inject Data.DataService Data;
 @using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
-@inject NavigationManager SatNav
 
 <PageTitle>Storage</PageTitle>
 <h3>Storage: @DisplayStorageName()</h3>
@@ -11,11 +10,17 @@
 {
     foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
     {
-        <p>@shelfUnit.Name</p>
+        <h4>@shelfUnit.Name</h4>
         <ol>
             @foreach (Shelf shelf in shelfUnit.Shelfs)
             {
-                <li>@shelf.Name</li>
+                <li>@shelf.Name Level , List of items:</li>
+                @for (int i = 0; i < shelf.Items.Count; i++)
+                {
+                    int countFrom1 = i + 1;
+                    <p>@countFrom1 - @shelf.Items[i].Name</p>
+                }
+
             }
         </ol>
     }
@@ -28,7 +33,7 @@
     private string DisplayStorageName()
     {
         string storageNam = "No storage Unit avaialble.";
-        foreach(StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
+        foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
         {
             return storageUnit.Name;
         }
