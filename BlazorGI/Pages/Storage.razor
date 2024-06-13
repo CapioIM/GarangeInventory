@@ -20,11 +20,30 @@
                     int countFrom1 = i + 1;
                     <p>@countFrom1 - @shelf.Items[i].Name</p>
                 }
-
             }
         </ol>
+        <table>
+            <tr>
+                <th>@shelfUnit.Name</th>
+            </tr>
+        </table>
     }
 }
+
+<table border="1">
+    <tr>
+        @foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
+        {
+            <th>
+                @foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+                {
+                    <h4>@shelfUnit.Name</h4>
+                }
+            </th>
+        }
+    </tr>
+</table>
+
 
 @code {
     [Parameter]
