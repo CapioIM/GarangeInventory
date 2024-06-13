@@ -5,7 +5,7 @@
 @inject NavigationManager SatNav
 
 <PageTitle>Storage</PageTitle>
-<h3>Storage: @Data.Storages[ID].Name</h3>
+<h3>Storage: @DisplayStorageName()</h3>
 
 @foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
 {
@@ -24,4 +24,17 @@
 @code {
     [Parameter]
     public int ID { get; set; }
+
+    private string DisplayStorageName()
+    {
+        string storageNam = "No storage Unit avaialble.";
+        foreach(StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
+        {
+            return storageUnit.Name;
+        }
+        return storageNam;
+    }
+
+
+
 }
