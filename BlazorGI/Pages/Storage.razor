@@ -14,12 +14,26 @@
         <ol>
             @foreach (Shelf shelf in shelfUnit.Shelfs)
             {
-                <li>@shelf.Name Level , List of items:</li>
-                @for (int i = 0; i < shelf.Items.Count; i++)
-                {
-                    int countFrom1 = i + 1;
-                    <p>@countFrom1 - @shelf.Items[i].Name</p>
-                }
+                <li>@shelf.Name Level , List of boxes/items:</li>
+                <table border="1">
+                    @for (int i = 0; i < shelf.Items.Count; i++)
+                    {
+                        int countFrom1 = i + 1;
+                        <p>@countFrom1 - @shelf.Items[i].Name</p>
+                    }
+                </table>
+                <li>
+                    @foreach (Box box in shelfUnit.Boxes)
+                    {
+                        <p>@box.Name</p>
+                        @foreach (Item item in box.Items)
+                        {
+                            <ul>
+                                @item.Name
+                            </ul>
+                        }
+                    }
+                </li>
             }
         </ol>
         <table>

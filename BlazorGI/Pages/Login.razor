@@ -19,7 +19,7 @@
 </div>
 
 @code {
-    public string? UsernameInput { get; set; }
+    public string UsernameInput { get; set; }
     private string notValidLogin { get; set; } = "";
     private bool isUser { get; set; }
 
@@ -50,7 +50,7 @@
         }
     }
 
-    private string? nameUserToCreate { get; set; }
+    private string nameUserToCreate { get; set; }
     private void CreateUser()
     {
         UserData.CreateUser(nameUserToCreate);

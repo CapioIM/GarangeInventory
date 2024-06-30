@@ -7,7 +7,7 @@ namespace BlazorGI.Data
 {
     public class DataService
     {
-        private SaveData? _saveData = new SaveData();
+        private SaveData _saveData = new SaveData();
 
         public SaveData saveData
         {
@@ -15,7 +15,7 @@ namespace BlazorGI.Data
             set { _saveData = value; }
         }
 
-        private List<StorageUnit>? _storages;
+        private List<StorageUnit> _storages;
 
         public List<StorageUnit> Storages
         {
