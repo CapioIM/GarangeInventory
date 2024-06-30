@@ -8,38 +8,44 @@
 
 @foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
 {
-    foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+    @foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
     {
-        <h4>@shelfUnit.Name</h4>
-        <ol>
-            @foreach (Shelf shelf in shelfUnit.Shelfs)
-            {
-                <li>@shelf.Name Level , List of boxes/items:</li>
-                <table border="1">
+        <table border="1">
+            <tr>
+                <th>ShelfUnit</th>
+                <th>Shelf</th>
+                <th>Box</th>
+                <th>Item</th>
+            </tr>
+
+            <tr>
+                <td>@shelfUnit.Name</td>
+            </tr>
+
+            <tr>
+                @foreach (Shelf shelf in shelfUnit.Shelfs)
+                {
+                    <td>@shelf.Name Level , List of boxes/items:</td>
                     @for (int i = 0; i < shelf.Items.Count; i++)
                     {
                         int countFrom1 = i + 1;
                         <p>@countFrom1 - @shelf.Items[i].Name</p>
                     }
-                </table>
-                <li>
-                    @foreach (Box box in shelfUnit.Boxes)
-                    {
-                        <p>@box.Name</p>
-                        @foreach (Item item in box.Items)
+                    <li>
+                        @foreach (Box box in shelfUnit.Boxes)
                         {
-                            <ul>
-                                @item.Name
-                            </ul>
+                            <p>@box.Name</p>
+                            @foreach (Item item in box.Items)
+                            {
+                                <ul>
+                                    @item.Name  Quantity @item.Quantity
+                                </ul>
+                            }
                         }
-                    }
-                </li>
-            }
-        </ol>
-        <table>
-            <tr>
-                <th>@shelfUnit.Name</th>
+                    </li>
+                }
             </tr>
+
         </table>
     }
 }
@@ -72,7 +78,4 @@
         }
         return storageNam;
     }
-
-
-
 }
