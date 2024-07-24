@@ -4,13 +4,26 @@
 @using GarangeInventory.Storage.Shelf
 @using Microsoft.AspNetCore.Components.QuickGrid
 <PageTitle>Storage</PageTitle>
-<h3>Storage: @DisplayStorageName()</h3>
+<h3>Storage: @DisplayStorageName() </h3>
+
+<QuickGrid Items="@InitializeList()">
+    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
+    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
+    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
+</QuickGrid>
 
 
 
 @code {
     [Parameter]
     public int ID { get; set; }
+
+    private IQueryable<StorageUnit> InitializeList()
+    {
+        IQueryable<StorageUnit> queryableStorages = Data.Storages.AsQueryable();
+        return queryableStorages;
+    }
+
 
     private string DisplayStorageName()
     {
@@ -21,4 +34,6 @@
         }
         return storageNam;
     }
+
+
 }
