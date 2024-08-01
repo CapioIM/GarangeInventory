@@ -6,10 +6,8 @@
 <PageTitle>Storage</PageTitle>
 <h3>Storage: @DisplayStorageName() </h3>
 
-<QuickGrid Items="@InitializeList()">
-    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
-    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
-    <PropertyColumn Property="@(p => p.ShelfUnits)" Sortable="true" />
+<QuickGrid Items="@ShelfUnitQueryable()">
+    <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
 </QuickGrid>
 
 
@@ -18,10 +16,16 @@
     [Parameter]
     public int ID { get; set; }
 
-    private IQueryable<StorageUnit> InitializeList()
+    private IQueryable<StorageUnit> QuerableStorages()
     {
         IQueryable<StorageUnit> queryableStorages = Data.Storages.AsQueryable();
         return queryableStorages;
+    }
+
+    private IQueryable<ShelfUnit> ShelfUnitQueryable()
+    {
+        IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
+        return queryableShelfUnit;
     }
 
 
