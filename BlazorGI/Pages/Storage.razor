@@ -1,13 +1,13 @@
-﻿@page "/storage/{ID:int}"
+﻿@page "/storage/{iD:int}"
 @inject Data.DataService Data;
 @using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
 @inject NavigationManager SatNav
 
 <PageTitle>Storage</PageTitle>
-<h3>Storage: @Data.Storages[ID].Name</h3>
+<h3>Storage: @Data.Storages[GetStorageIndex()].Name</h3>
 
-@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == ID))
+@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == iD))
 {
     foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
     {
@@ -23,5 +23,18 @@
 
 @code {
     [Parameter]
-    public int ID { get; set; }
+    public int iD { get; set; }
+
+    private int GetStorageIndex()
+    {
+        int indexNumber = 0;
+        foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == iD))
+        {
+             indexNumber = iD;
+        }
+        return indexNumber;
+    }
+
+
+
 }

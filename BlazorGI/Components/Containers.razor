@@ -8,11 +8,12 @@
 <h4>List of accessible containers:</h4>
 @foreach (StorageUnit storage in storages)
 {
-   foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
+    foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
     {
-        <a href="/storage/@storage.ID">@storage.Name</a>
-        <button class="btn" @onclick="() => Remove(storage.ID)">Remove</button>
-        <br />
+            <a href="/storage/@storage.ID">@storage.Name</a>
+            <button class="btn" @onclick="() => Remove(storage.ID) ">Remove</button>
+            <p>@storage.ID</p>
+            <br />
     }
 }
 
