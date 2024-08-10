@@ -15,7 +15,15 @@
     [Parameter]
     public int ID { get; set; }
     private StorageUnit selectedStorageUnit { get; }
-
+    /*
+    private IQueryable<String> SomeLoop(IQueryable<ShelfUnit> shelfs)
+    {
+        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+        {
+            
+        }
+    }
+    */
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
         IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.Where(storages =>storages.ID == ID).SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
