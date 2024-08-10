@@ -11,30 +11,23 @@
     <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
 </QuickGrid>
 
-
-
 @code {
     [Parameter]
     public int ID { get; set; }
-
-    private IQueryable<StorageUnit> QuerableStorages()
-    {
-        IQueryable<StorageUnit> queryableStorages = Data.Storages.AsQueryable();
-        return queryableStorages;
-    }
+    private StorageUnit selectedStorageUnit { get; }
 
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
-        IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
+        IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.Where(storages =>storages.ID == ID).SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
         return queryableShelfUnit;
     }
-
 
     private string DisplayStorageName()
     {
         string storageNam = "No storage Unit avaialble.";
         foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
         {
+
             return storageUnit.Name;
         }
         return storageNam;
