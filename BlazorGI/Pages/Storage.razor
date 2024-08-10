@@ -2,39 +2,42 @@
 @inject Data.DataService Data;
 @using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
-@inject NavigationManager SatNav
-
+@using Microsoft.AspNetCore.Components.QuickGrid
 <PageTitle>Storage</PageTitle>
-<h3>Storage: @Data.Storages[GetStorageIndex()].Name</h3>
+<h3>Storage: @DisplayStorageName() </h3>
 
-@foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == iD))
-{
-    foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
-    {
-        <p>@shelfUnit.Name</p>
-        <ol>
-            @foreach (Shelf shelf in shelfUnit.Shelfs)
-            {
-                <li>@shelf.Name</li>
-            }
-        </ol>
-    }
-}
+<QuickGrid Items="@ShelfUnitQueryable()">
+    <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+</QuickGrid>
+
+
 
 @code {
     [Parameter]
-    public int iD { get; set; }
+    public int ID { get; set; }
 
-    private int GetStorageIndex()
+    private IQueryable<StorageUnit> QuerableStorages()
     {
-        int indexNumber = 0;
-        foreach (StorageUnit storageUnit in Data.Storages.Where(storageUnit => storageUnit.ID == iD))
-        {
-             indexNumber = iD;
-        }
-        return indexNumber;
+        IQueryable<StorageUnit> queryableStorages = Data.Storages.AsQueryable();
+        return queryableStorages;
     }
 
+    private IQueryable<ShelfUnit> ShelfUnitQueryable()
+    {
+        IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
+        return queryableShelfUnit;
+    }
+
+
+    private string DisplayStorageName()
+    {
+        string storageNam = "No storage Unit avaialble.";
+        foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
+        {
+            return storageUnit.Name;
+        }
+        return storageNam;
+    }
 
 
 }

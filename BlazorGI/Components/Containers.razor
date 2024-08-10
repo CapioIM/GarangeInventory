@@ -2,7 +2,7 @@
 @using GarangeInventory.Storage.Shelf
 @inject Data.DataService Data
 
-<input @bind=storageName />
+<input @bind=addStorageName />
 <button class="btn btn-outline-primary" @onclick=AddStorage>Add Storage</button>
 
 <h4>List of accessible containers:</h4>
@@ -19,13 +19,13 @@
 
 @code {
     [Parameter]
-    public List<StorageUnit>? storages { get; set; }
+    public List<StorageUnit> storages { get; set; }
     [Parameter]
     public User userLoggedIn { get; set; }
-    private string storageName { get; set; }
+    private string addStorageName { get; set; }
     private void AddStorage()
     {
-        Data.AddStorageUnit(storageName, userLoggedIn);
+        Data.AddStorageUnit(addStorageName, userLoggedIn);
     }
     private void Remove(int ID)
     {

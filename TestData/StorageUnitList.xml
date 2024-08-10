@@ -540,8 +540,8 @@
       </Users>
     </StorageUnit>
     <StorageUnit>
-      <ID>2</ID>
-      <Name>Huntingdon</Name>
+      <ID>3</ID>
+      <Name>Orchard</Name>
       <ShelfUnits />
       <Users>
         <User>
@@ -551,8 +551,8 @@
       </Users>
     </StorageUnit>
     <StorageUnit>
-      <ID>3</ID>
-      <Name>Orchard</Name>
+      <ID>4</ID>
+      <Name>Huntingdon</Name>
       <ShelfUnits />
       <Users>
         <User>

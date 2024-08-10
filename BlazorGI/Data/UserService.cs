@@ -5,9 +5,9 @@ namespace BlazorGI.Data
 {
     public class UserService
     {
-        private List<User>? _users;
+        private List<User> _users;
 
-        public List<User>? Users
+        public List<User> Users
         {
             get
             {
@@ -21,8 +21,8 @@ namespace BlazorGI.Data
             set { _users = value; }
         }
 
-        private User? _user;
-        public User? User
+        private User _user;
+        public User User
         {
             get
             {
@@ -44,7 +44,7 @@ namespace BlazorGI.Data
         }
 
 
-        public void CreateUser(string? name)
+        public void CreateUser(string name)
         {
 
             var u = new User();
