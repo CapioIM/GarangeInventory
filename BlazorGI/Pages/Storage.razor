@@ -8,27 +8,24 @@
 <h3>Storage: @DisplayStorageName() </h3>
 
 <QuickGrid Items="@ShelfUnitQueryable()">
-    <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+    <PropertyColumn Property="@(shelfUnitsdkjah => shelfUnitsdkjah.Name)" Sortable="true" />
+    <PropertyColumn Property="@(shelfUnit=> shelfUnit.Shelfs.SelectMany(shelfs => shelfs.Name))" />
+
 </QuickGrid>
 
 @code {
     [Parameter]
     public int ID { get; set; }
-    private StorageUnit selectedStorageUnit { get; }
-    /*
-    private IQueryable<String> SomeLoop(IQueryable<ShelfUnit> shelfs)
-    {
-        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
-        {
-            
-        }
-    }
-    */
+
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
-        IQueryable<ShelfUnit> queryableShelfUnit = Data.Storages.Where(storages =>storages.ID == ID).SelectMany(sbyt => sbyt.ShelfUnits).AsQueryable();
+        var queryableShelfUnit = Data.Storages
+            .Where(storages => storages.ID == ID)
+            .SelectMany(sbyt => sbyt.ShelfUnits)
+            .AsQueryable();
         return queryableShelfUnit;
     }
+
 
     private string DisplayStorageName()
     {
