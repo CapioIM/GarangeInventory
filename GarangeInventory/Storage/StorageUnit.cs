@@ -29,7 +29,16 @@ namespace GarangeInventory.Storage
 			set { _shelfUnits = value; }
 		}
 
-        private List<User> _users = new();
+		private string picturePath;
+
+		public string PicturePath
+		{
+			get { return picturePath; }
+			set { picturePath = value; }
+		}
+
+
+		private List<User> _users = new();
 
         public List<User> Users 
         {

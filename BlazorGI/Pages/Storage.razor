@@ -9,8 +9,6 @@
 
 <QuickGrid Items="@ShelfUnitQueryable()">
     <PropertyColumn Property="@(shelfUnitsdkjah => shelfUnitsdkjah.Name)" Sortable="true" />
-    <PropertyColumn Property="@(shelfUnit=> shelfUnit.Shelfs.SelectMany(shelfs => shelfs.Name))" />
-
 </QuickGrid>
 
 @code {
@@ -25,7 +23,6 @@
             .AsQueryable();
         return queryableShelfUnit;
     }
-
 
     private string DisplayStorageName()
     {
