@@ -8,9 +8,10 @@
 <h3>Storage: @DisplayStorageName() </h3>
 
 <QuickGrid Items="@ShelfUnitQueryable()">
-    <PropertyColumn Property="@(shelfUnitPicturePath => shelfUnitPicturePath.PicturePath)" Sortable="true" />
+    <PropertyColumn Property="@(shelfUnitPicturePath => shelfUnitPicturePath.PicturePath)" Title="Picture" Sortable="true" />
     <PropertyColumn Property="@(shelfUnitsdkjah => shelfUnitsdkjah.Name)" Sortable="true" />
 </QuickGrid>
+
 
 @code {
     [Parameter]
@@ -30,7 +31,6 @@
         string storageNam = "No storage Unit avaialble.";
         foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
         {
-
             return storageUnit.Name;
         }
         return storageNam;
