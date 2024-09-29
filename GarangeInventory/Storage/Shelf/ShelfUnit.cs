@@ -26,6 +26,13 @@ namespace GarangeInventory.Storage.Shelf
             get { return _shelfs.Count; }
 
         }
+        private string picturePath;
+
+        public string PicturePath
+        {
+            get { return picturePath; }
+            set { picturePath = value; }
+        }
 
         private List<Shelf> _shelfs = new();
 

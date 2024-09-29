@@ -317,17 +317,17 @@
               <Items />
             </Shelf>
             <Shelf>
-              <Name>1</Name>
-              <Boxes />
-              <Items />
-            </Shelf>
-            <Shelf>
               <Name>2</Name>
               <Boxes />
               <Items />
             </Shelf>
             <Shelf>
               <Name>3</Name>
+              <Boxes />
+              <Items />
+            </Shelf>
+            <Shelf>
+              <Name>4</Name>
               <Boxes />
               <Items />
             </Shelf>
@@ -532,28 +532,6 @@
           <Items />
         </ShelfUnit>
       </ShelfUnits>
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
-      <ID>3</ID>
-      <Name>Orchard</Name>
-      <ShelfUnits />
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
-      <ID>4</ID>
-      <Name>Huntingdon</Name>
-      <ShelfUnits />
       <Users>
         <User>
           <ID>1</ID>
