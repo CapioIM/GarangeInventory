@@ -1,0 +1,21 @@
+﻿@inject Data.UserService UserData
+@inject NavigationManager MyNavigationManager
+
+<button class="btn btn-outline-primary" @onclick=redirect title="Let's log in.">Test Page Awaits</button>
+
+@code {
+    private string testUserName = "Igor";
+    private bool isUser { get; set; }
+
+    private void redirect()
+    {
+        isUser = UserData.GetUserCheck(testUserName);
+        if (isUser && testUserName.ToLower() == UserData.User.Name.ToLower())
+        {
+            UserData.Authentication = true;
+            MyNavigationManager.NavigateTo($"/{testUserName}/dashboard");
+        }
+    }
+}
+
+
