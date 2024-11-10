@@ -126,7 +126,8 @@ namespace GarangeInventory
             Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools, iDCounter);
             box6.Items.Add(Item27);
 
-            Item item28 = new Item("Shelf Unit Level Item 28 for test data", 1, Category.Other, iDCounter);
+            Item item28 = new Item("Shelf Unit Level Item 28 for test data, Only test Item in ShelfUnit ?",
+                                1, Category.Other, iDCounter);
             item28.Expiry = new DateTime(2020, 1, 1);
             shelfUnitOne.Items.Add(item28);
 

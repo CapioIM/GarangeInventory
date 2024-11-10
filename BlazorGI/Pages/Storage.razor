@@ -12,8 +12,9 @@
 <QuickGrid Items="@ShelfUnitQueryable()">
     <PropertyColumn Property="@(shelfUnitPicturePath => shelfUnitPicturePath.PicturePath)" Title="Picture" Sortable="true" />
     <PropertyColumn Property="@(shelfUnitsdkjah => shelfUnitsdkjah.Name)" Sortable="true" />
+    <PropertyColumn Property="@(shelfUnit => string.Join(", ", shelfUnit.Shelfs.Select(shelf => shelf.Name)))" Title="Shelf" />
+    <PropertyColumn Property="@(itemss => string.Join(", ", itemss.Items.Select(dontknow => dontknow.Name)))" Title="Items" />
 </QuickGrid>
-
 
 @code {
     [Parameter]
@@ -37,4 +38,37 @@
         }
         return storageNam;
     }
+
+    /*
+    private string GetItems(List<StorageUnit> storages)
+    {
+        List<Item> result = new List<Item>();
+        foreach (StorageUnit storage in storages)
+        {
+            foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
+            {
+                result.AddRange((shelfUnit.Items));
+                foreach (Shelf shelf in shelfUnit.Shelfs)
+                {
+                    result.AddRange((shelf.Items));
+                    foreach (Box box in shelf.Boxes)
+                    {
+                        result.AddRange((box.Items));
+                    }
+                }
+                foreach (Box box in shelfUnit.Boxes)
+                {
+                    result.AddRange((box.Items));
+                }
+            }
+        }
+        string listString = "";
+        foreach (Item item in result)
+        {
+            listString.Join(" ", item.Name);
+        }
+        return result;
+    }
+
+    */
 }

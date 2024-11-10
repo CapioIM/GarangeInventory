@@ -292,7 +292,7 @@
           </Boxes>
           <Items>
             <Item>
-              <Name>Shelf Unit Level Item 28 for test data</Name>
+              <Name>Shelf Unit Level Item 28 for test data, Only test Item in ShelfUnit ?</Name>
               <ID>27</ID>
               <Quantity>1</Quantity>
               <Cost>0</Cost>
@@ -542,7 +542,7 @@
   </storageUnits>
   <items>
     <Item>
-      <Name>Shelf Unit Level Item 28 for test data</Name>
+      <Name>Shelf Unit Level Item 28 for test data, Only test Item in ShelfUnit ?</Name>
       <ID>27</ID>
       <Quantity>1</Quantity>
       <Cost>0</Cost>
