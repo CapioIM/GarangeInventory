@@ -181,6 +181,10 @@ namespace BlazorGI.Data
             {
                 result.AddRange(GetItemsFromShelfAndBox(shelf));
             }
+            foreach (Box box in shelfUnit.Boxes)
+            {
+                result.AddRange(GetItemsFromBox(box));
+            }
             return result;
         }
 

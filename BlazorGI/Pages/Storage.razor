@@ -9,13 +9,19 @@
 
 <h3>Storage: @DisplayStorageName() </h3>
 
-<QuickGrid Items="@ShelfUnitQueryable()">
+<QuickGrid Items="@GetItemsShelfUnitQueryable()">
+    <PropertyColumn Property="@(item => item.Name)" Title="Item Name" Sortable="true" />
+</QuickGrid>
+
+
+@*
+    <QuickGrid Items="@ShelfUnitQueryable()">
     <PropertyColumn Property="@(shelfUnitPicturePath => shelfUnitPicturePath.PicturePath)" Title="Picture" Sortable="true" />
     <PropertyColumn Property="@(shelfUnitsdkjah => shelfUnitsdkjah.Name)" Sortable="true" />
     <PropertyColumn Property="@(shelfUnit => string.Join(", ", shelfUnit.Shelfs.Select(shelf => shelf.Name)))" Title="Shelf" />
     <PropertyColumn Property="@(shelfUnit => string.Join(", ", shelfUnit.Items.Select(dontknow => dontknow.Name)))" Title="Items" />
 </QuickGrid>
-
+ *@
 
 <QuickGrid Items="@GetItems(Data.Storages)">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
@@ -28,12 +34,14 @@
 
 @code {
     [Parameter]
-    public int ID { get; set; }
+    public int iD { get; set; }
+
+
 
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
         var queryableShelfUnit = Data.Storages
-        .Where(storages => storages.ID == ID)
+        .Where(storages => storages.ID == iD)
         .SelectMany(sbyt => sbyt.ShelfUnits)
         .AsQueryable();
         return queryableShelfUnit;
@@ -42,7 +50,7 @@
     private string DisplayStorageName()
     {
         string storageNam = "No storage Unit avaialble.";
-        foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == ID))
+        foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == iD))
         {
             return storageUnit.Name;
         }
@@ -102,6 +110,18 @@
             }
         }
 
+        return result.AsQueryable();
+    }
+
+    /// <summary>
+    /// returns items from whole ShelfUnit and converts to IQueryable
+    /// </summary>
+    /// <returns> return IQueryable<Item> list from ShelfUnit </returns>
+    private IQueryable<Item> GetItemsShelfUnitQueryable()
+    {
+        List<Item> result = new List<Item>();
+        var storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == iD);
+        result.AddRange(Data.GetItemsFromStorageUnit(storageUnit));
         return result.AsQueryable();
     }
 }
