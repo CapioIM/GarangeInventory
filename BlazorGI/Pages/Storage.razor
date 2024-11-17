@@ -36,8 +36,6 @@
     [Parameter]
     public int iD { get; set; }
 
-
-
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
         var queryableShelfUnit = Data.Storages
@@ -60,28 +58,25 @@
     private ShelfUnit GetShelfUnit(Item itemToBeFound)
     {
         List<Item> result = new List<Item>();
-        foreach (StorageUnit storage in Data.Storages)
+        var storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == iD);
+        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
-            foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
+            if (shelfUnit.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                return shelfUnit;
+            foreach (Shelf shelf in shelfUnit.Shelfs)
             {
-                if (shelfUnit.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                if (shelf.Items.FirstOrDefault(i => i == itemToBeFound) != null)
                     return shelfUnit;
-
-                foreach (Shelf shelf in shelfUnit.Shelfs)
-                {
-                    if (shelf.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-                        return shelfUnit;
-                    foreach (Box box in shelf.Boxes)
-                    {
-                        if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-                            return shelfUnit;
-                    }
-                }
-                foreach (Box box in shelfUnit.Boxes)
+                foreach (Box box in shelf.Boxes)
                 {
                     if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
                         return shelfUnit;
                 }
+            }
+            foreach (Box box in shelfUnit.Boxes)
+            {
+                if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                    return shelfUnit;
             }
         }
         return null;

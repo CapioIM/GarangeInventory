@@ -540,51 +540,19 @@
       </Users>
     </StorageUnit>
     <StorageUnit>
-      <ID>2</ID>
-      <ShelfUnits />
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
-      <ID>3</ID>
-      <Name>edfsa</Name>
-      <ShelfUnits />
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
-      <ID>4</ID>
-      <Name>edfsafdsa</Name>
-      <ShelfUnits />
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
-      <ID>5</ID>
-      <Name>edfsafdsagasfga</Name>
-      <ShelfUnits />
-      <Users>
-        <User>
-          <ID>1</ID>
-          <Name>Igor</Name>
-        </User>
-      </Users>
-    </StorageUnit>
-    <StorageUnit>
       <ID>6</ID>
       <Name>tadam</Name>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>1</ID>
+          <Name>Igor</Name>
+        </User>
+      </Users>
+    </StorageUnit>
+    <StorageUnit>
+      <ID>7</ID>
+      <Name>one way</Name>
       <ShelfUnits />
       <Users>
         <User>
