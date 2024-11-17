@@ -17,8 +17,8 @@
 </QuickGrid>
 
 
-<QuickGrid Items="@GetItems(new List<StorageUnit>())">
-    <PropertyColumn Property="@(i => i.Name)" Title="Picture" Sortable="true" />
+<QuickGrid Items="@GetItems(Data.Storages)">
+    <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
     <TemplateColumn Title="ShelfUnit Name">
         @GetShelfUnit(context).Name  <a href="/shelfdetail?@GetShelfUnit(context).Name">Go To this shelf</a>
     </TemplateColumn>

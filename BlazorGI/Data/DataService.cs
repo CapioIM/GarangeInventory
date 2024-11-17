@@ -2,6 +2,7 @@
 using GarangeInventory.Storage.Shelf;
 using GarangeInventory.DataOperations;
 using GarangeInventory.Enum;
+using System.Collections.Generic;
 
 namespace BlazorGI.Data
 {
@@ -121,5 +122,82 @@ namespace BlazorGI.Data
             Box box = new Box(name);
             shelfUnit.Boxes.Add(box);
         }
+
+        /// <summary>
+        /// Returns list of object Item from object Box provided
+        /// </summary>
+        /// <param name="box"> Object Box </param>
+        /// <returns> List<Item> list of object Item </returns>
+        public List<Item> GetItemsFromBox(Box box)
+        {
+            List<Item> result = new List<Item>();
+            foreach (Item item in box.Items)
+            {
+                result.Add(item);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// returns List<Item> from Shelf.Items list provided
+        /// </summary>
+        /// <param name="shelf"> object Shelf </param>
+        /// <returns> List<Item> list with Item objects </returns>
+        public List<Item> GetItemsFromShelf(Shelf shelf)
+        {
+            List<Item> result = new List<Item>();
+            foreach (Item item in shelf.Items)
+            {
+                result.Add(item);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// returns combined List<Item> from Shelf.Items and Shelf.Boxes-(Box.Items)
+        /// </summary>
+        /// <param name="shelf"> object Shelf </param>
+        /// <returns> returns List<Item> </returns>
+        public List<Item> GetItemsFromShelfAndBox(Shelf shelf)
+        {
+            List<Item> result = new List<Item>();
+            foreach (Box box in shelf.Boxes)
+            {
+                result.AddRange(GetItemsFromBox(box));
+            }
+            result.AddRange(GetItemsFromShelf(shelf));
+            return result;
+        }
+
+        /// <summary>
+        /// returns List<Item> located in ShelfUnit object
+        /// </summary>
+        /// <param name="shelfUnit"> ShelfUnit object </param>
+        /// <returns> List<Item> </returns>
+        public List<Item> GetItemsFromShelfUnit(ShelfUnit shelfUnit)
+        {
+            List<Item> result = new List<Item>();
+            foreach (Shelf shelf in shelfUnit.Shelfs)
+            {
+                result.AddRange(GetItemsFromShelfAndBox(shelf));
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// returns List<Item> of Item which are in StorageUnit
+        /// </summary>
+        /// <param name="storageUnit"> StorageUnit object </param>
+        /// <returns> List<Item> ,list of Item </returns>
+        public List<Item> GetItemsFromStorageUnit(StorageUnit storageUnit)
+        {
+            List<Item > result = new List<Item>();
+            foreach(ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+            {
+                result.AddRange(GetItemsFromShelfUnit(shelfUnit));
+            }
+            return result;
+        }
+
     }
 }
