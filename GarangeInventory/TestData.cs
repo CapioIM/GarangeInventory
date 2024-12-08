@@ -14,11 +14,21 @@ namespace GarangeInventory
 
         private static List<StorageUnit> GenerateItems()
         {
+
             ItemIdCounter iDCounter = new ItemIdCounter();
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
-            StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
-            storageOne.ID = 0;
 
+            // Empty Storage Unit creation
+            StorageUnit emptyStorageUnit = CreateStorageUnit("Empty", storageUnitList);
+            emptyStorageUnit.ID = 0;
+            ShelfUnit emptyShelfUnit = new ShelfUnit("Empty", 1);
+            emptyStorageUnit.ShelfUnits.Add(emptyShelfUnit);
+            Box emptyBox = new Box("Empty");
+            emptyShelfUnit.Boxes.Add(emptyBox);
+            Item emptyItem = new Item("Empty", 0, Category.CarParts, iDCounter);
+
+            StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
+            storageOne.ID = 1;
             ShelfUnit shelfUnitOne = storageOne.ShelfUnits[0];
             ShelfUnit shelfUnitTwo = new ShelfUnit("wooden shelf unit on right", 5);
             storageOne.ShelfUnits.Add(shelfUnitTwo);
@@ -132,7 +142,7 @@ namespace GarangeInventory
             shelfUnitOne.Items.Add(item28);
 
             StorageUnit storageTwo = CreateStorageUnit("Garden Shed", storageUnitList);
-            storageTwo.ID = 1;
+            storageTwo.ID = 2;
             ShelfUnit gardenShedLeft = new ShelfUnit("Left Unit", 4);
 
             return storageUnitList;

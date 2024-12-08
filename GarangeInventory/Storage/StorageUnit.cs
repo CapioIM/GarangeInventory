@@ -37,7 +37,6 @@ namespace GarangeInventory.Storage
 			set { picturePath = value; }
 		}
 
-
 		private List<User> _users = new();
 
         public List<User> Users 

@@ -105,7 +105,13 @@ namespace GarangeInventory.Storage.Shelf
             set { weightType = value; }
         }
 
-
+        /// <summary>
+        /// Copy Constructor
+        /// </summary>
+        /// <param name="name"> string for name</param>
+        /// <param name="quantity"> int quantity</param>
+        /// <param name="category"> Category of category </param>
+        /// <param name="itemIdCounter"></param>
         public Item(string name, int quantity, Category category,ItemIdCounter itemIdCounter)
         {
             _quantity = quantity;

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GarangeInventory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9d021082054acc59c8b0c6a733e61ac5274afd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d260340b923616c2cc001f35b30910fec90db2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GarangeInventory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GarangeInventory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
