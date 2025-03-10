@@ -8,24 +8,67 @@
     [Parameter]
     public int iD { get; set; }
 
-    private string StorageName = "";
-    private string ShelfUnitName = "";
-    private string ShelfName = "";
-    private string BoxName = "Not In a Box!";
-    /*
-    private string GetStorageNameDetails()
+    /// <summary>
+    /// search of item in ShelfUnit object, add name of Shelf and Box Name to the List<string> path variable , and return boolean
+    /// </summary>
+    /// <param name="shelfUnit"> ShelfUnit where to search for item object </param>
+    /// <param name="target"> Item object </param>
+    /// <param name="path"> List<string> where Name of destination of item is located </param>
+    /// <returns> true if item is found, otherwise false </returns>
+    private bool GetShelfNameDetails(ShelfUnit shelfUnit, Item target, List<string> path)
     {
-        string storageName = Data.Storages.Where(ItemID=>ItemID.)
+        foreach (Shelf shelf in shelfUnit.Shelfs)
+        {
+            path.Add(shelf.Name);
+            foreach (Item item in shelf.Items)
+            {
+                if (item == target)
+                    return true;
+            }
+            foreach (Box box in shelf.Boxes)
+            {
+                path.Add(box.Name);
+                foreach (Item item in box.Items)
+                {
+                    if (item == target)
+                        return true;
+                }
+                path.RemoveAt(path.Count - 1);
+            }
+            path.RemoveAt(path.Count - 1);
+        }
+        return false;
+    }
 
+    /// <summary>
+    /// search of item target in StorageUnit object, add name of ShelfUnit,Shelf,Box to list and return boolean
+    /// </summary>
+    /// <param name="storageUnit"> storageUnit object</param>
+    /// <param name="target"> item to be found , object </param>
+    /// <param name="path"> List<string> Contains object .Name to locate item </param>
+    /// <returns> true if item is found, otherwise false</returns>
+    private bool GetShelfUnitNameDetails(StorageUnit storageUnit, Item target, List<string> path)
+    {
+        bool itemFound = false;
+        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+        {
+            path.Add(shelfUnit.Name);
+            itemFound = GetShelfNameDetails(shelfUnit, target, path);
+            if (itemFound != false)
+            {
+                return true;
+            }
+            path.RemoveAt(path.Count - 1);
+        }
+        return itemFound;
+    }
+    /*
+    private bool GetStorageUnitNameDetails(Storage storage, Item target, List<string> path)
+    {
+        bool itemFound = false;
+        foreach(StorageUnit storageUnit in storage.s)
 
     }
+
     */
-    // get item ID , pass as parameter .
-    // using LINQ get and display Storage Name
-    // using LINQ get and display ShelfUnit Name
-    // using LINQ get and display Shelf Name
-    // using LINQ get and display Box Name if exists
-
-
-
 }
