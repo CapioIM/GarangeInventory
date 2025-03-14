@@ -19,7 +19,7 @@ namespace GarangeInventory
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
 
             // Empty Storage Unit creation
-            StorageUnit emptyStorageUnit = CreateStorageUnit("Empty", storageUnitList);
+            StorageUnit emptyStorageUnit = CreateStorageUnit("Empty1", storageUnitList);
             emptyStorageUnit.ID = 0;
             ShelfUnit emptyShelfUnit = new ShelfUnit("Empty", 1);
             emptyStorageUnit.ShelfUnits.Add(emptyShelfUnit);

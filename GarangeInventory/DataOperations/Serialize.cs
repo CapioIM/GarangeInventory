@@ -33,9 +33,15 @@ namespace GarangeInventory.DataOperations
         }
         public static void SaveData(SaveData saveData, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
         {
-            string path = GetDataFilePath(blazorGiOrGarageInventory);
+            //  string path = GetDataFilePath(blazorGiOrGarageInventory);
+            string path = _DATA_FILE_PATH;
             try
             {
+                if(!Directory.Exists(_DATA_FOLDER_PATH))
+                {
+                    Directory.CreateDirectory(_DATA_FOLDER_PATH);
+                }
+
                 XmlSerializer writer = new XmlSerializer(typeof(SaveData));
                 using (FileStream file = File.Create(path))
                 {
@@ -44,7 +50,9 @@ namespace GarangeInventory.DataOperations
             }
             catch (Exception ex)
             {
+                Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.ToString());
+                Console.ResetColor();
             }
         }
 
