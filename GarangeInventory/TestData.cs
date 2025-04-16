@@ -21,11 +21,12 @@ namespace GarangeInventory
             // Empty Storage Unit creation
             StorageUnit emptyStorageUnit = CreateStorageUnit("Empty1", storageUnitList);
             emptyStorageUnit.ID = 0;
-            ShelfUnit emptyShelfUnit = new ShelfUnit("Empty", 1);
+            int emptyShelfUnitShelfAmount = 1;
+            ShelfUnit emptyShelfUnit = new ShelfUnit("Empty2", emptyShelfUnitShelfAmount);
             emptyStorageUnit.ShelfUnits.Add(emptyShelfUnit);
-            Box emptyBox = new Box("Empty");
+            Box emptyBox = new Box("Empty3");
             emptyShelfUnit.Boxes.Add(emptyBox);
-            Item emptyItem = new Item("Empty", 0, Category.CarParts, iDCounter);
+            Item emptyItem = new Item("Empty4", 0, Category.CarParts, iDCounter);
 
             StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
             storageOne.ID = 1;

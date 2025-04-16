@@ -2,20 +2,19 @@
 @using GarangeInventory.Storage.Shelf
 @inject Data.DataService Data
 
-<h1>  </h1>
 
 @code {
-    [Parameter]
-    public int iD { get; set; }
+    List<string> path = new List<string>();
+
+
 
     /// <summary>
     /// search of item in ShelfUnit object, add name of Shelf and Box Name to the List<string> path variable , and return boolean
     /// </summary>
     /// <param name="shelfUnit"> ShelfUnit where to search for item object </param>
     /// <param name="target"> Item object </param>
-    /// <param name="path"> List<string> where Name of destination of item is located </param>
     /// <returns> true if item is found, otherwise false </returns>
-    private bool GetShelfNameDetails(ShelfUnit shelfUnit, Item target, List<string> path)
+    private bool GetShelfNameDetails(ShelfUnit shelfUnit, Item target)
     {
         foreach (Shelf shelf in shelfUnit.Shelfs)
         {
@@ -45,15 +44,14 @@
     /// </summary>
     /// <param name="storageUnit"> storageUnit object</param>
     /// <param name="target"> item to be found , object </param>
-    /// <param name="path"> List<string> Contains object .Name to locate item </param>
     /// <returns> true if item is found, otherwise false</returns>
-    private bool GetShelfUnitNameDetails(StorageUnit storageUnit, Item target, List<string> path)
+    private bool GetShelfUnitNameDetails(StorageUnit storageUnit, Item target)
     {
         bool itemFound = false;
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
             path.Add(shelfUnit.Name);
-            itemFound = GetShelfNameDetails(shelfUnit, target, path);
+            itemFound = GetShelfNameDetails(shelfUnit, target);
             if (itemFound != false)
             {
                 return true;
@@ -62,13 +60,27 @@
         }
         return itemFound;
     }
-    /*
-    private bool GetStorageUnitNameDetails(Storage storage, Item target, List<string> path)
+
+    /// <summary>
+    /// search of item target in DataService Data.Storages list, add Storage.Name to string list
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    private bool GetStorageUnitNameDetails(Item target)
     {
         bool itemFound = false;
-        foreach(StorageUnit storageUnit in storage.s)
-
+        foreach (StorageUnit storageUnit in Data.Storages)
+        {
+            path.Add(storageUnit.Name);
+            itemFound = GetShelfUnitNameDetails(storageUnit, target);
+            if (itemFound != false)
+            {
+                return true;
+            }
+            path.RemoveAt(path.Count - 1);
+        }
+        return itemFound;
     }
 
-    */
+
 }
