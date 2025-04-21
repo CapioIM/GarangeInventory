@@ -2,16 +2,9 @@
 using GarangeInventory.Enum;
 namespace GarangeInventory.Storage.Shelf
 {
-    public class Item
+    public class Item : StorageObject
     {
         public Item() { }
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
 
         private int _iD;
 
@@ -115,7 +108,7 @@ namespace GarangeInventory.Storage.Shelf
         public Item(string name, int quantity, Category category,ItemIdCounter itemIdCounter)
         {
             _quantity = quantity;
-            _name = name;
+            Name = name;
             _itemCreationDate = DateTime.Now;
             _itemCategory = category;
             _expiry = new DateTime(2099, 12, 30);

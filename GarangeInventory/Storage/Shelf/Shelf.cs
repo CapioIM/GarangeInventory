@@ -3,7 +3,7 @@
 
 namespace GarangeInventory.Storage.Shelf
 {
-    public class Shelf
+    public class Shelf : StorageObject
     {
         public Shelf() { }
         public Shelf(string shelfNumber)
@@ -11,16 +11,7 @@ namespace GarangeInventory.Storage.Shelf
             Name = shelfNumber;
         }
 
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-
-
+ 
 
         private List<Box> _boxes = new();
 

@@ -4,22 +4,15 @@ using GarangeInventory.Enum;
 
 namespace GarangeInventory.Storage.Shelf
 {
-    public class Box
+    public class Box : StorageObject
     {
         public Box() { }
 
         public Box(string name)
         {
-            _name = name;
+           Name = name;
         }
 
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
         private SizeType _type;
 
         public SizeType Type

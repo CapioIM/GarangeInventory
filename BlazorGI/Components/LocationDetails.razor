@@ -1,12 +1,24 @@
 ﻿@using GarangeInventory.Storage
 @using GarangeInventory.Storage.Shelf
 @inject Data.DataService Data
-
+@page "/locationdetail/{ID:int}"
 
 @code {
     List<string> path = new List<string>();
+    List<StorageObject> ObjPath = new List<StorageObject>();
+
+    Item ItemofInterest;
+
+    [Parameter]
+    public int ID { get; set; }
 
 
+    protected override void OnParametersSet()
+    {
+        ItemofInterest = Data.GetItemsFromStorageUnit().Where(i => i.ID == ID);
+        GetStorageUnitNameDetails(ItemofInterest);
+        base.OnParametersSet();
+    }
 
     /// <summary>
     /// search of item in ShelfUnit object, add name of Shelf and Box Name to the List<string> path variable , and return boolean
@@ -19,6 +31,8 @@
         foreach (Shelf shelf in shelfUnit.Shelfs)
         {
             path.Add(shelf.Name);
+            ObjPath.Add(shelf);          
+
             foreach (Item item in shelf.Items)
             {
                 if (item == target)
@@ -73,7 +87,7 @@
         {
             path.Add(storageUnit.Name);
             itemFound = GetShelfUnitNameDetails(storageUnit, target);
-            if (itemFound != false)
+            if (itemFound)
             {
                 return true;
             }

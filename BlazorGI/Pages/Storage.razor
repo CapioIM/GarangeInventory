@@ -12,7 +12,7 @@
 <QuickGrid Items="@GetItems(Data.Storages)">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
     <TemplateColumn Title="ShelfUnit Name">
-        @GetShelfUnit(context).Name   <a href="/shelfdetail?@GetShelfUnit(context).Name">Go To this shelf</a>
+        @GetShelfUnit(context).Name   <a href="/locationdetail/@context.ID">Go To this shelf</a>
     </TemplateColumn>
 </QuickGrid>
 
