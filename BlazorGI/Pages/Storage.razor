@@ -1,7 +1,6 @@
 ﻿@page "/storage/{iD:int}"
 @inject Data.DataService Data
 @using GarangeInventory.Storage
-@using GarangeInventory.Storage.Shelf
 @using Microsoft.AspNetCore.Components.QuickGrid
 
 
@@ -65,33 +64,6 @@
         }
         return null;
     }
-
-    // private Box GetBox(Item itemToBeFound)
-    // {
-    //     List<Item> result = new List<Item>();
-    //     var storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == iD);
-    //     foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
-    //     {
-    //         if (shelfUnit.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-    //             return null;
-    //         foreach (Shelf shelf in shelfUnit.Shelfs)
-    //         {
-    //             if (shelf.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-    //                 return null;
-    //             foreach (Box box in shelf.Boxes)
-    //             {
-    //                 if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-    //                     return box;
-    //             }
-    //         }
-    //         foreach (Box box in shelfUnit.Boxes)
-    //         {
-    //             if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
-    //                 return box;
-    //         }
-    //     }
-    //     return null;
-    // }
 
     private IQueryable<Item> GetItems(List<StorageUnit> storages)
     {

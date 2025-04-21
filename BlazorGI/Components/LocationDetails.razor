@@ -2,6 +2,13 @@
 @inject Data.DataService Data
 @page "/locationdetail/{ID:int}"
 
+<p>@ItemofInterest.Name</p>
+@foreach (StorageObject storageObject in ObjPath)
+{
+    <a></a>
+    <a>@storageObject.Name</a>
+}
+
 @code {
     List<string> path = new List<string>();
     List<StorageObject> ObjPath = new List<StorageObject>();
@@ -14,7 +21,7 @@
 
     protected override void OnParametersSet()
     {
-        ItemofInterest = Data.GetItemsFromStorageUnit().Where(i => i.ID == ID);
+        ItemofInterest = Data.GetAllItemsFromStorageUnit().Where(p => p.ID == ID).First();
         GetStorageUnitNameDetails(ItemofInterest);
         base.OnParametersSet();
     }
@@ -30,8 +37,7 @@
         foreach (Shelf shelf in shelfUnit.Shelfs)
         {
             path.Add(shelf.Name);
-            ObjPath.Add(shelf);          
-
+            ObjPath.Add(shelf);
             foreach (Item item in shelf.Items)
             {
                 if (item == target)

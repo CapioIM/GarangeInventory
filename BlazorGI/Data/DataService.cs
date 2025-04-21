@@ -202,5 +202,31 @@ namespace BlazorGI.Data
             return result;
         }
 
+        public List<Item> GetAllItemsFromStorageUnit()
+        {
+            List<Item> result = new List<Item>();
+            foreach (StorageUnit storage in Storages)
+            {
+                foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
+                {
+                    result.AddRange((shelfUnit.Items));
+                    foreach (Shelf shelf in shelfUnit.Shelfs)
+                    {
+                        result.AddRange((shelf.Items));
+                        foreach (Box box in shelf.Boxes)
+                        {
+                            result.AddRange((box.Items));
+                        }
+                    }
+                    foreach (Box box in shelfUnit.Boxes)
+                    {
+                        result.AddRange((box.Items));
+                    }
+                }
+            }
+            return result;
+        }
+
+
     }
 }
