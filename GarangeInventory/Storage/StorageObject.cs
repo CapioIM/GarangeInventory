@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GarangeInventory.Storage.Shelf
+namespace GarangeInventory.Storage
 {
     public class StorageObject
     {

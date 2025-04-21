@@ -1,5 +1,4 @@
 ﻿using GarangeInventory.Storage;
-using GarangeInventory.Storage.Shelf;
 
 namespace GarangeInventory.DataOperations
 {

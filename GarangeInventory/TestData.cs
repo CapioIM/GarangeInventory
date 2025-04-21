@@ -1,5 +1,4 @@
 ﻿using GarangeInventory.Enum;
-using GarangeInventory.Storage.Shelf;
 using GarangeInventory.Storage;
 
 namespace GarangeInventory

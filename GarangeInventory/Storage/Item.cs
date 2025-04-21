@@ -1,6 +1,7 @@
 ﻿using GarangeInventory.Common;
 using GarangeInventory.Enum;
-namespace GarangeInventory.Storage.Shelf
+using GarangeInventory.Storage.Shelf;
+namespace GarangeInventory.Storage
 {
     public class Item : StorageObject
     {
