@@ -36,7 +36,6 @@
     {
         foreach (Shelf shelf in shelfUnit.Shelfs)
         {
-            path.Add(shelf.Name);
             ObjPath.Add(shelf);
             foreach (Item item in shelf.Items)
             {
@@ -45,15 +44,16 @@
             }
             foreach (Box box in shelf.Boxes)
             {
-                path.Add(box.Name);
+                ObjPath.Add(box);
                 foreach (Item item in box.Items)
                 {
                     if (item == target)
-                        return true;
+                        ObjPath.Add(item);
+                    return true;
                 }
-                path.RemoveAt(path.Count - 1);
+                ObjPath.Remove(box);
             }
-            path.RemoveAt(path.Count - 1);
+            ObjPath.Remove(shelf);
         }
         return false;
     }
@@ -69,7 +69,7 @@
         bool itemFound = false;
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
-            path.Add(shelfUnit.Name);
+            ObjPath.Add(shelfUnit);
             itemFound = GetShelfNameDetails(shelfUnit, target);
             if (itemFound != false)
             {

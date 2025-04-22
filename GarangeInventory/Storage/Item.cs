@@ -6,15 +6,7 @@ namespace GarangeInventory.Storage
     {
         public Item() { }
 
-        private int _iD;
-
-        public int ID
-        {
-            get { return _iD; }
-            set { _iD = value; }
-        }
-
-
+     
         private int _quantity;
 
         public int Quantity
@@ -67,22 +59,7 @@ namespace GarangeInventory.Storage
             get { return _size; }
             set { _size = value; }
         }
-        private Note _note = new();
-
-        public Note Note
-        {
-            get { return _note; }
-            set { _note = value; }
-        }
-
-        private PictureFilePath _path = new();
-
-        public PictureFilePath Path
-        {
-            get { return _path; }
-            set { _path = value; }
-        }
-
+  
         private Category _itemCategory;
         public Category ItemCategory
         {
@@ -112,7 +89,7 @@ namespace GarangeInventory.Storage
             _itemCreationDate = DateTime.Now;
             _itemCategory = category;
             _expiry = new DateTime(2099, 12, 30);
-            _iD = itemIdCounter.ID;
+            ID = itemIdCounter.ID;
             itemIdCounter.IncreaseID();
         }
 

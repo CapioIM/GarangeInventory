@@ -28,13 +28,6 @@ namespace GarangeInventory.Storage
             get { return _items; }
             set { _items = value; }
         }
-        private Note _note;
-
-        public Note Notes
-        {
-            get { return _note; }
-            set { _note = value; }
-        }
 
 
     }

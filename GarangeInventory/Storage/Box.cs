@@ -8,11 +8,6 @@ namespace GarangeInventory.Storage
     {
         public Box() { }
 
-        public Box(string name)
-        {
-           Name = name;
-        }
-
         private SizeType _type;
 
         public SizeType Type
@@ -22,26 +17,13 @@ namespace GarangeInventory.Storage
         }
         private Note _note;
 
-        public Note Note
-        {
-            get { return _note; }
-            set { _note = value; }
-        }
-
+ 
         private string _definitiveFeature;
 
         public string DefinitiveFeature
         {
             get { return _definitiveFeature; }
             set { _definitiveFeature = value; }
-        }
-
-        private PictureFilePath _path;
-
-        public PictureFilePath Path
-        {
-            get { return _path; }
-            set { _path = value; }
         }
 
         private List<Item> _items = new();
@@ -51,6 +33,11 @@ namespace GarangeInventory.Storage
             get { return _items; }
             set { _items = value; }
         }
+        public Box(string name)
+        {
+           Name = name;
+        }
+
 
     }
 }
