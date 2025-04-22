@@ -2,17 +2,18 @@
 @inject Data.DataService Data
 @page "/locationdetail/{ID:int}"
 
-<p>@ItemofInterest.Name</p>
+@messageItemNotFound
+<p>Item: @ItemofInterest.Name</p>
+<p>Location:</p>
 @foreach (StorageObject storageObject in ObjPath)
 {
-    <a></a>
-    <a>@storageObject.Name</a>
+    <p>@storageObject.Name</p>
 }
 
 @code {
     List<string> path = new List<string>();
     List<StorageObject> ObjPath = new List<StorageObject>();
-
+    string messageItemNotFound = "";
     Item ItemofInterest;
 
     [Parameter]
@@ -22,7 +23,10 @@
     protected override void OnParametersSet()
     {
         ItemofInterest = Data.GetAllItemsFromStorageUnit().Where(p => p.ID == ID).First();
-        GetStorageUnitNameDetails(ItemofInterest);
+        if (!GetStorageUnitNameDetails(ItemofInterest))
+        {
+            messageItemNotFound = "Item not Found!";
+        }
         base.OnParametersSet();
     }
 
@@ -71,11 +75,11 @@
         {
             ObjPath.Add(shelfUnit);
             itemFound = GetShelfNameDetails(shelfUnit, target);
-            if (itemFound != false)
+            if (itemFound)
             {
                 return true;
             }
-            path.RemoveAt(path.Count - 1);
+            ObjPath.Remove(shelfUnit);
         }
         return itemFound;
     }
@@ -90,13 +94,13 @@
         bool itemFound = false;
         foreach (StorageUnit storageUnit in Data.Storages)
         {
-            path.Add(storageUnit.Name);
+            ObjPath.Add(storageUnit);
             itemFound = GetShelfUnitNameDetails(storageUnit, target);
             if (itemFound)
             {
                 return true;
             }
-            path.RemoveAt(path.Count - 1);
+            ObjPath.Remove(storageUnit);
         }
         return itemFound;
     }

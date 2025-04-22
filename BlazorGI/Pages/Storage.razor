@@ -11,7 +11,7 @@
 <QuickGrid Items="@GetItems(Data.Storages)">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
     <TemplateColumn Title="ShelfUnit Name">
-        @GetShelfUnit(context).Name   <a href="/locationdetail/@context.ID">Go To this shelf</a>
+        @GetShelfUnit(context).Name   <a href="@context.ID">Show Location</a>
     </TemplateColumn>
 </QuickGrid>
 
@@ -65,6 +65,7 @@
         return null;
     }
 
+    
     private IQueryable<Item> GetItems(List<StorageUnit> storages)
     {
         List<Item> result = new List<Item>();
@@ -89,16 +90,6 @@
         }
         return result.AsQueryable();
     }
+     
 
-    /// <summary>
-    /// returns items from whole ShelfUnit and converts to IQueryable
-    /// </summary>
-    /// <returns> return IQueryable<Item> list from ShelfUnit </returns>
-    private IQueryable<Item> GetItemsShelfUnitQueryable()
-    {
-        List<Item> result = new List<Item>();
-        var storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == iD);
-        result.AddRange(Data.GetItemsFromStorageUnit(storageUnit));
-        return result.AsQueryable();
-    }
 }
