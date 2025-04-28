@@ -8,7 +8,7 @@
 
 <h3>Storage: @DisplayStorageName() </h3>
 
-<QuickGrid Items="@Data.GetItemsFromStorageUnit(iD).AsQueryable()">
+<QuickGrid Items="@Data.GetItemsFromStorageUnit(ID).AsQueryable()">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
     <TemplateColumn Title="ShelfUnit Name">
         @GetShelfUnit(context)?.Name   <a href="/locationdetail/@context.ID">Show Location</a>
@@ -17,12 +17,12 @@
 
 @code {
     [Parameter]
-    public int iD { get; set; }
+    public int ID { get; set; }
 
     private IQueryable<ShelfUnit> ShelfUnitQueryable()
     {
         var queryableShelfUnit = Data.Storages
-        .Where(storages => storages.ID == iD)
+        .Where(storages => storages.ID == ID)
         .SelectMany(sbyt => sbyt.ShelfUnits)
         .AsQueryable();
         return queryableShelfUnit;
@@ -31,46 +31,47 @@
     private string DisplayStorageName()
     {
         string storageNam = "No storage Unit avaialble.";
-        foreach (StorageUnit storageUnit in Data.Storages.Where(storages => storages.ID == iD))
+        StorageUnit storage = Data.Storages.FirstOrDefault(storages => storages.ID == ID);
+        if (storage != null)
         {
-            return storageUnit.Name;
+            storageNam = storage.Name;
         }
         return storageNam;
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="itemToBeFound"></param>
     /// <returns>coresponding shelfunit or null if not found</returns>
     private ShelfUnit GetShelfUnit(Item itemToBeFound)
     {
-        List<Item> result = new List<Item>();
-        var storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == iD);
+        StorageUnit storageUnit = Data.Storages.First(storage => storage.ID == ID);
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
-            if (shelfUnit.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+            if (shelfUnit.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
                 return shelfUnit;
             foreach (Shelf shelf in shelfUnit.Shelfs)
             {
-                if (shelf.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                if (shelf.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
                     return shelfUnit;
                 foreach (Box box in shelf.Boxes)
                 {
-                    if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                    if (box.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
                         return shelfUnit;
                 }
             }
             foreach (Box box in shelfUnit.Boxes)
             {
-                if (box.Items.FirstOrDefault(i => i == itemToBeFound) != null)
+                if (box.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
                     return shelfUnit;
             }
         }
         return null;
-       // return new ShelfUnit();
+        // return new ShelfUnit();
     }
 
-    
+
     private IQueryable<Item> GetItems(List<StorageUnit> storages)
     {
         List<Item> result = new List<Item>();
@@ -95,6 +96,6 @@
         }
         return result.AsQueryable();
     }
-     
+
 
 }

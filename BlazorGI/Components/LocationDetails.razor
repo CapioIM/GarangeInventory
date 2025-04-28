@@ -11,7 +11,6 @@
 }
 
 @code {
-    List<string> path = new List<string>();
     List<StorageObject> ObjPath = new List<StorageObject>();
     string messageItemNotFound = "";
     Item ItemofInterest;
@@ -19,11 +18,11 @@
     [Parameter]
     public int ID { get; set; }
 
-
     protected override void OnParametersSet()
     {
-        ItemofInterest = Data.GetAllItemsFromStorageUnit().Where(p => p.ID == ID).First();
-        if (!GetStorageUnitNameDetails(ItemofInterest))
+        ItemofInterest = Data.GetAllItemsFromStorageUnit().First(p => p.ID == ID);
+
+        if (!GetStorageUnitNameDetails(ItemofInterest) || ItemofInterest == null)
         {
             messageItemNotFound = "Item not Found!";
         }
@@ -74,6 +73,11 @@
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
             ObjPath.Add(shelfUnit);
+            foreach (Item item in shelfUnit.Items)
+            {
+                if (item == target)
+                    return true;
+            }
             itemFound = GetShelfNameDetails(shelfUnit, target);
             if (itemFound)
             {

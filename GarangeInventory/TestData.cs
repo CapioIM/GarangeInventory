@@ -18,14 +18,15 @@ namespace GarangeInventory
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
 
             // Empty Storage Unit creation
-            StorageUnit emptyStorageUnit = CreateStorageUnit("Empty1", storageUnitList);
+            StorageUnit emptyStorageUnit = CreateStorageUnit("EmptyStorageUnit", storageUnitList);
             emptyStorageUnit.ID = 0;
             int emptyShelfUnitShelfAmount = 1;
-            ShelfUnit emptyShelfUnit = new ShelfUnit("Empty2", emptyShelfUnitShelfAmount);
+            ShelfUnit emptyShelfUnit = new ShelfUnit("EmptyShelfUnit", emptyShelfUnitShelfAmount);
             emptyStorageUnit.ShelfUnits.Add(emptyShelfUnit);
-            Box emptyBox = new Box("Empty3");
+            Box emptyBox = new Box("EmptyBox");
             emptyShelfUnit.Boxes.Add(emptyBox);
-            Item emptyItem = new Item("Empty4", 0, Category.CarParts, iDCounter);
+            Item emptyItem = new Item("EmptyItem", 0, Category.CarParts, iDCounter);
+            emptyBox.Items.Add(emptyItem);
 
             StorageUnit storageOne = CreateStorageUnit("2nd Floor left room", storageUnitList);
             storageOne.ID = 1;
@@ -136,10 +137,10 @@ namespace GarangeInventory
             Item Item27 = new Item("Impact Driver 20v", 1, Category.ElectricTools, iDCounter);
             box6.Items.Add(Item27);
 
-            Item item28 = new Item("Shelf Unit Level Item 28 for test data, Only test Item in ShelfUnit ?",
+            Item item28onTheShelfUnit = new Item("Item 28, ShelfUnit.Items",
                                 1, Category.Other, iDCounter);
-            item28.Expiry = new DateTime(2020, 1, 1);
-            shelfUnitOne.Items.Add(item28);
+            item28onTheShelfUnit.Expiry = new DateTime(2020, 1, 1);
+            shelfUnitOne.Items.Add(item28onTheShelfUnit);
 
             StorageUnit storageTwo = CreateStorageUnit("Garden Shed", storageUnitList);
             storageTwo.ID = 2;

@@ -38,6 +38,9 @@ namespace GarangeInventory.Storage
             get { return _note; }
             set { _note = value; }
         }
-
+        public override string ToString()
+        {
+            return ID + " " + Name;
+        }
     }
 }

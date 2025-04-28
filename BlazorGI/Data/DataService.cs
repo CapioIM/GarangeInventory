@@ -177,6 +177,7 @@ namespace BlazorGI.Data
         public List<Item> GetItemsFromShelfUnit(ShelfUnit shelfUnit)
         {
             List<Item> result = new List<Item>();
+            result.AddRange(shelfUnit.Items);
             foreach (Shelf shelf in shelfUnit.Shelfs)
             {
                 result.AddRange(GetItemsFromShelfAndBox(shelf));
@@ -216,7 +217,7 @@ namespace BlazorGI.Data
             {
                 foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
                 {
-                    result.AddRange((shelfUnit.Items));
+                    result.AddRange((shelfUnit.Items)); 
                     foreach (Shelf shelf in shelfUnit.Shelfs)
                     {
                         result.AddRange((shelf.Items));
