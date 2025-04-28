@@ -93,6 +93,11 @@ namespace GarangeInventory.Storage
             itemIdCounter.IncreaseID();
         }
 
+        public override string ToString()
+        {
+            return ID + " " + Name;
+        }
+
 
 
     }

@@ -164,7 +164,8 @@ namespace BlazorGI.Data
             {
                 result.AddRange(GetItemsFromBox(box));
             }
-            result.AddRange(GetItemsFromShelf(shelf));
+         //   result.AddRange(GetItemsFromShelf(shelf));
+            result.AddRange(shelf.Items);
             return result;
         }
 
@@ -201,6 +202,12 @@ namespace BlazorGI.Data
             }
             return result;
         }
+        public List<Item> GetItemsFromStorageUnit(int storageUnitID)
+        {
+            var stu = Storages.Where(s => s.ID == storageUnitID).First();
+            return GetItemsFromStorageUnit(stu);
+        }
+
 
         public List<Item> GetAllItemsFromStorageUnit()
         {

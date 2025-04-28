@@ -8,10 +8,10 @@
 
 <h3>Storage: @DisplayStorageName() </h3>
 
-<QuickGrid Items="@GetItems(Data.Storages)">
+<QuickGrid Items="@Data.GetItemsFromStorageUnit(iD).AsQueryable()">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
     <TemplateColumn Title="ShelfUnit Name">
-        @GetShelfUnit(context).Name   <a href="@context.ID">Show Location</a>
+        @GetShelfUnit(context)?.Name   <a href="/locationdetail/@context.ID">Show Location</a>
     </TemplateColumn>
 </QuickGrid>
 
@@ -37,7 +37,11 @@
         }
         return storageNam;
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="itemToBeFound"></param>
+    /// <returns>coresponding shelfunit or null if not found</returns>
     private ShelfUnit GetShelfUnit(Item itemToBeFound)
     {
         List<Item> result = new List<Item>();
@@ -63,13 +67,14 @@
             }
         }
         return null;
+       // return new ShelfUnit();
     }
 
     
     private IQueryable<Item> GetItems(List<StorageUnit> storages)
     {
         List<Item> result = new List<Item>();
-        foreach (StorageUnit storage in storages)
+        foreach (StorageUnit storage in storages)  //TODO probably worng - just look into the one stroage you got via ID
         {
             foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
             {

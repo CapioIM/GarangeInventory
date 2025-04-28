@@ -26,5 +26,10 @@
 			ShelfUnit shelfUnit = new ShelfUnit("Floor",1);
 			_shelfUnits.Add(shelfUnit);
 		}
+
+		public override string ToString()
+		{
+			return $"{ID} - {Name} : {ShelfUnits.Count} ShelfUnits";
+		}
     }
 }
