@@ -17,7 +17,6 @@ namespace GarangeInventory
             ItemIdCounter iDCounter = new ItemIdCounter();
             List<StorageUnit> storageUnitList = new List<StorageUnit>();
 
-            // Empty Storage Unit creation
             StorageUnit emptyStorageUnit = CreateStorageUnit("EmptyStorageUnit", storageUnitList);
             emptyStorageUnit.ID = 0;
             int emptyShelfUnitShelfAmount = 1;

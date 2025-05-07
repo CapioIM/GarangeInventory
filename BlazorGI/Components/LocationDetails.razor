@@ -42,17 +42,22 @@
             ObjPath.Add(shelf);
             foreach (Item item in shelf.Items)
             {
-                if (item == target)
+                if (item.ID == target.ID)
+                {
+                    ObjPath.Add(item);
                     return true;
+                }
             }
             foreach (Box box in shelf.Boxes)
             {
                 ObjPath.Add(box);
                 foreach (Item item in box.Items)
                 {
-                    if (item == target)
+                    if (item.ID == target.ID)
+                    {
                         ObjPath.Add(item);
-                    return true;
+                        return true;
+                    }
                 }
                 ObjPath.Remove(box);
             }
@@ -75,8 +80,11 @@
             ObjPath.Add(shelfUnit);
             foreach (Item item in shelfUnit.Items)
             {
-                if (item == target)
+                if (item.ID == target.ID)
+                {
+                    ObjPath.Add(item);
                     return true;
+                }
             }
             itemFound = GetShelfNameDetails(shelfUnit, target);
             if (itemFound)

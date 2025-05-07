@@ -6,7 +6,7 @@ namespace GarangeInventory.Storage
     {
         public Item() { }
 
-     
+
         private int _quantity;
 
         public int Quantity
@@ -59,7 +59,7 @@ namespace GarangeInventory.Storage
             get { return _size; }
             set { _size = value; }
         }
-  
+
         private Category _itemCategory;
         public Category ItemCategory
         {
@@ -82,7 +82,7 @@ namespace GarangeInventory.Storage
         /// <param name="quantity"> int quantity</param>
         /// <param name="category"> Category of category </param>
         /// <param name="itemIdCounter"></param>
-        public Item(string name, int quantity, Category category,ItemIdCounter itemIdCounter)
+        public Item(string name, int quantity, Category category, ItemIdCounter itemIdCounter)
         {
             _quantity = quantity;
             Name = name;
@@ -95,7 +95,7 @@ namespace GarangeInventory.Storage
 
         public override string ToString()
         {
-            return ID + " " + Name;
+            return ID + " ID " + " " + Name;
         }
 
 
