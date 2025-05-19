@@ -86,6 +86,20 @@
                     return true;
                 }
             }
+            foreach (Box box in shelfUnit.Boxes)
+            {
+                ObjPath.Add(box);
+                foreach (Item item in box.Items)
+                {
+                    if (item.ID == target.ID)
+                    {
+                        ObjPath.Add(item);
+                        return true;
+                    }
+                }
+                ObjPath.Remove(box);
+            }
+
             itemFound = GetShelfNameDetails(shelfUnit, target);
             if (itemFound)
             {
