@@ -40,10 +40,10 @@
     }
 
     /// <summary>
-    ///
+    /// search for item in Shelfunit 
     /// </summary>
     /// <param name="itemToBeFound"></param>
-    /// <returns>coresponding shelfunit or null if not found</returns>
+    /// <returns> returns found shelfUnit or empty shelfUnit if item ID is not found inside</returns>
     private ShelfUnit GetShelfUnit(Item itemToBeFound)
     {
         StorageUnit storageUnit = Data.Storages.First(storage => storage.ID == ID);
@@ -67,33 +67,15 @@
                     return shelfUnit;
             }
         }
-        return null;
-        // return new ShelfUnit();
+        return new ShelfUnit("Item you were searching was not found!", 1); 
     }
 
 
     private IQueryable<Item> GetItems(List<StorageUnit> storages)
     {
         List<Item> result = new List<Item>();
-        foreach (StorageUnit storage in storages)  //TODO probably worng - just look into the one stroage you got via ID
-        {
-            foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
-            {
-                result.AddRange((shelfUnit.Items));
-                foreach (Shelf shelf in shelfUnit.Shelfs)
-                {
-                    result.AddRange((shelf.Items));
-                    foreach (Box box in shelf.Boxes)
-                    {
-                        result.AddRange((box.Items));
-                    }
-                }
-                foreach (Box box in shelfUnit.Boxes)
-                {
-                    result.AddRange((box.Items));
-                }
-            }
-        }
+        //TODO probably worng - just look into the one stroage you got via ID
+        result = Data.GetItemsFromStorageUnit(ID);
         return result.AsQueryable();
     }
 
