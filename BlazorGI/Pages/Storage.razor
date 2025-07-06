@@ -10,8 +10,11 @@
 
 <QuickGrid Items="@Data.GetItemsFromStorageUnit(ID).AsQueryable()">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
+    <TemplateColumn Title="Box">
+    
+    </TemplateColumn>
     <TemplateColumn Title="ShelfUnit Name">
-        @GetShelfUnit(context)?.Name   <a href="/locationdetail/@context.ID">Show Location</a>
+        @GetShelfUnit(context)?.Name   <a href="/locationdetail/@context.ID"> Show Location</a>
     </TemplateColumn>
 </QuickGrid>
 
@@ -39,8 +42,37 @@
         return storageNam;
     }
 
+
+    private Box? GetBoxForItem(Item itemToBeFound)
+    {
+        StorageUnit storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == ID);
+
+        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+        {
+            foreach (Box boxOnShelfUnit in shelfUnit.Boxes)
+            {
+                if (boxOnShelfUnit.Items.Any(item => item.ID == itemToBeFound.ID))
+                    return boxOnShelfUnit;
+
+                foreach (Shelf shelf in shelfUnit.Shelfs)
+                {
+                    if (shelf.Items.Any(item => item.ID == itemToBeFound.ID))
+                        return null;
+
+                    foreach (Box boxOnShelf in shelf.Boxes)
+                    {
+                        if (boxOnShelf.Items.Any(item => item.ID == itemToBeFound.ID))
+                            return boxOnShelf;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
     /// <summary>
-    /// search for item in Shelfunit 
+    /// search for item in Shelfunit
     /// </summary>
     /// <param name="itemToBeFound"></param>
     /// <returns> returns found shelfUnit or empty shelfUnit if item ID is not found inside</returns>
@@ -67,6 +99,6 @@
                     return shelfUnit;
             }
         }
-        return new ShelfUnit("Item you were searching was not found!", 1); 
+        return new ShelfUnit("Item you were searching was not found!", 1);
     }
 }
