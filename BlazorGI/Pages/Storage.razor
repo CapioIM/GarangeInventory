@@ -69,15 +69,4 @@
         }
         return new ShelfUnit("Item you were searching was not found!", 1); 
     }
-
-
-    private IQueryable<Item> GetItems(List<StorageUnit> storages)
-    {
-        List<Item> result = new List<Item>();
-        //TODO probably worng - just look into the one stroage you got via ID
-        result = Data.GetItemsFromStorageUnit(ID);
-        return result.AsQueryable();
-    }
-
-
 }
