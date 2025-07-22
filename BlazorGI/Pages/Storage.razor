@@ -9,7 +9,9 @@
 <h3>Storage: @DisplayStorageName() </h3>
 
 <QuickGrid Items="@Data.GetItemsFromStorageUnit(ID).AsQueryable()">
-    <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
+    <TemplateColumn Title="Item Name"> 
+        <a href="/locationdetail/@context.ID"> @context.Name </a>
+    </TemplateColumn>
 
     <TemplateColumn Title="ShelfUnit">
         <a href="/locationdetail/@context.ID"> @GetShelfUnit(context)?.Name </a>
@@ -39,6 +41,7 @@
         }
         return storageNam;
     }
+
 
 
     private Box? GetBoxForItem(Item itemToBeFound)
