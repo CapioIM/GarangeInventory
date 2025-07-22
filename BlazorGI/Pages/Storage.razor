@@ -10,11 +10,9 @@
 
 <QuickGrid Items="@Data.GetItemsFromStorageUnit(ID).AsQueryable()">
     <PropertyColumn Property="@(i => i.Name)" Title="Item Name" Sortable="true" />
-    <TemplateColumn Title="Box">
-    
-    </TemplateColumn>
-    <TemplateColumn Title="ShelfUnit Name">
-        @GetShelfUnit(context)?.Name   <a href="/locationdetail/@context.ID"> Show Location</a>
+
+    <TemplateColumn Title="ShelfUnit">
+        <a href="/locationdetail/@context.ID"> @GetShelfUnit(context)?.Name </a>
     </TemplateColumn>
 </QuickGrid>
 
