@@ -14,7 +14,19 @@
     </TemplateColumn>
 
     <TemplateColumn Title="ShelfUnit">
-        <a href="/locationdetail/@context.ID"> @GetShelfUnit(context)?.Name </a>
+        <a href="/locationdetail/@context.ID"> 
+            @{
+                var shelfUnit = GetShelfUnit(context);
+            }
+            @if (shelfUnit != null)
+            {
+                <span> @shelfUnit.Name </span>
+            }
+            else
+            {
+                <span> Shelf Unit not Found! </span>
+            }
+        </a>
     </TemplateColumn>
 </QuickGrid>
 
@@ -79,27 +91,33 @@
     /// <returns> returns found shelfUnit or empty shelfUnit if item ID is not found inside</returns>
     private ShelfUnit GetShelfUnit(Item itemToBeFound)
     {
-        StorageUnit storageUnit = Data.Storages.First(storage => storage.ID == ID);
-        foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+        if (itemToBeFound != null)
         {
-            if (shelfUnit.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
-                return shelfUnit;
-            foreach (Shelf shelf in shelfUnit.Shelfs)
+            StorageUnit storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == ID);
+            if (storageUnit == null)
+            { return null; }
+
+            foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
             {
-                if (shelf.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
+                if (shelfUnit.Items.Any(i => i.ID == itemToBeFound.ID))
                     return shelfUnit;
-                foreach (Box box in shelf.Boxes)
+                foreach (Shelf shelf in shelfUnit.Shelfs)
                 {
-                    if (box.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
+                    if (shelf.Items.Any(i => i.ID == itemToBeFound.ID))
+                        return shelfUnit;
+                    foreach (Box box in shelf.Boxes)
+                    {
+                        if (box.Items.Any(i => i.ID == itemToBeFound.ID))
+                            return shelfUnit;
+                    }
+                }
+                foreach (Box box in shelfUnit.Boxes)
+                {
+                    if (box.Items.Any(i => i.ID == itemToBeFound.ID))
                         return shelfUnit;
                 }
             }
-            foreach (Box box in shelfUnit.Boxes)
-            {
-                if (box.Items.FirstOrDefault(i => i.ID == itemToBeFound.ID) != null)
-                    return shelfUnit;
-            }
         }
-        return new ShelfUnit("Item you were searching was not found!", 1);
+        return null;
     }
 }
