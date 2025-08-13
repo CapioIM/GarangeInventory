@@ -6,15 +6,15 @@
 
 <PageTitle>Storage</PageTitle>
 
-<h3>Storage: @DisplayStorageName() </h3>
+<h3>Storage:@DisplayStorageName();</h3>
 
 <QuickGrid Items="@Data.GetItemsFromStorageUnit(ID).AsQueryable()">
-    <TemplateColumn Title="Item Name"> 
+    <TemplateColumn Title="Item Name">
         <a href="/locationdetail/@context.ID"> @context.Name </a>
     </TemplateColumn>
 
     <TemplateColumn Title="ShelfUnit">
-        <a href="/locationdetail/@context.ID"> 
+        <a href="/locationdetail/@context.ID">
             @{
                 var shelfUnit = GetShelfUnit(context);
             }
@@ -45,20 +45,22 @@
 
     private string DisplayStorageName()
     {
-        string storageNam = "No storage Unit avaialble.";
         StorageUnit storage = Data.Storages.FirstOrDefault(storages => storages.ID == ID);
         if (storage != null)
         {
-            storageNam = storage.Name;
+            return storage.Name;
         }
-        return storageNam;
+        return "No storage Unit avaialble.";
     }
 
 
 
-    private Box? GetBoxForItem(Item itemToBeFound)
+    private Box GetBoxForItem(Item itemToBeFound)
     {
         StorageUnit storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == ID);
+
+        if(storageUnit == null)
+        { return null; }
 
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
         {
