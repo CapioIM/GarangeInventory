@@ -2,6 +2,7 @@
 using GarangeInventory.DataOperations;
 using GarangeInventory.Enum;
 using System.Collections.Generic;
+using GarangeInventory.Common;
 
 namespace BlazorGI.Data
 {
@@ -164,7 +165,7 @@ namespace BlazorGI.Data
             {
                 result.AddRange(GetItemsFromBox(box));
             }
-         //   result.AddRange(GetItemsFromShelf(shelf));
+            //   result.AddRange(GetItemsFromShelf(shelf));
             result.AddRange(shelf.Items);
             return result;
         }
@@ -196,8 +197,8 @@ namespace BlazorGI.Data
         /// <returns> List<Item> ,list of Item </returns>
         public List<Item> GetItemsFromStorageUnit(StorageUnit storageUnit)
         {
-            List<Item > result = new List<Item>();
-            foreach(ShelfUnit shelfUnit in storageUnit.ShelfUnits)
+            List<Item> result = new List<Item>();
+            foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)
             {
                 result.AddRange(GetItemsFromShelfUnit(shelfUnit));
             }
@@ -217,7 +218,7 @@ namespace BlazorGI.Data
             {
                 foreach (ShelfUnit shelfUnit in storage.ShelfUnits)
                 {
-                    result.AddRange((shelfUnit.Items)); 
+                    result.AddRange((shelfUnit.Items));
                     foreach (Shelf shelf in shelfUnit.Shelfs)
                     {
                         result.AddRange((shelf.Items));
@@ -235,6 +236,22 @@ namespace BlazorGI.Data
             return result;
         }
 
-
+        public Item CreateItem(string name,int id,string picturePath,Note note,int quantity,decimal cost,float weight,DateTime expiry,DateTime purchaseDate,SizeType size,Category itemCategory,WeightType weightType)
+        {
+            Item item = new Item();
+            item.Name = name;
+            item.ID = id;
+            item.PicturePath = picturePath;
+            item.Note = note;
+            item.Quantity = quantity;
+            item.Cost = cost;
+            item.Weight = weight;
+            item.Expiry = expiry;
+            item.PurchaseDate = purchaseDate;
+            item.Size = size;
+            item.ItemCategory = itemCategory;
+            item.WeightType = weightType;
+            return item;
+        }
     }
 }

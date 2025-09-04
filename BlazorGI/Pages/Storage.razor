@@ -17,14 +17,14 @@
         <a href="/locationdetail/@context.ID">
             @{
                 var shelfUnit = GetShelfUnit(context);
-            }
-            @if (shelfUnit != null)
-            {
-                <span> @shelfUnit.Name </span>
-            }
-            else
-            {
-                <span> Shelf Unit not Found! </span>
+                if (shelfUnit != null)
+                {
+                    <span> @shelfUnit.Name </span>
+                }
+                else
+                {
+                    <span> Shelf Unit not Found! </span>
+                }
             }
         </a>
     </TemplateColumn>
@@ -59,7 +59,7 @@
     {
         StorageUnit storageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == ID);
 
-        if(storageUnit == null)
+        if (storageUnit == null)
         { return null; }
 
         foreach (ShelfUnit shelfUnit in storageUnit.ShelfUnits)

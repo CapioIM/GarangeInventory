@@ -15,9 +15,6 @@ namespace GarangeInventory.Storage
             get { return _type; }
             set { _type = value; }
         }
-        private Note _note;
-
- 
         private string _definitiveFeature;
 
         public string DefinitiveFeature
