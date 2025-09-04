@@ -1,8 +1,43 @@
-﻿@using GarangeInventory.Storage;
+﻿@page "/create"
+@using GarangeInventory.Storage;
+@using GarangeInventory.Enum;
 @inject Data.DataService Data;
 
+<a> Name</a>
+<input @bind=Name />
+<a>Note</a>
+<input @bind=note />
+<a>Quantity</a>
+<input @bind=quantity />
+<a>Cost</a>
+<input @bind=cost />
+<a>Expiry</a>
+<input @bind=expiry />
+<a>Purchase Date</a>
+<input @bind=purchaseDate />
+<a>Size</a>
+<input @bind=size />
+<a>Category</a>
+<input @bind=itemCategory />
+<a>Weight Type</a>
+<input @bind=weightType />
+<a>Weight</a>
+<input @bind=weight />
 
 
 @code {
+    // @Data.CreateItem(Name, note, quantity, cost, weight, expiry, purchaseDate, size, itemCategory, weightType)
 
+    private string Name { get; set; }
+    private string note { get; set; }
+    private int quantity { get; set; }
+    private decimal cost { get; set; }
+    private float weight { get; set; }
+    private DateTime expiry { get; set; }
+    private DateTime purchaseDate { get; set; }
+    private SizeType size { get; set; }
+    private Category itemCategory { get; set; }
+    private WeightType weightType{ get; set; }
 }
+
+

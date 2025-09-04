@@ -78,18 +78,18 @@ namespace GarangeInventory
             box3.Items.Add(item11);
 
             Item item12 = new Item("Blank remote car key", 4, Category.CarElecticalEquipment, iDCounter);
-            item12.Note.Text = "no chip,no blade,no battery";
+            item12.Note = "no chip,no blade,no battery";
             box3.Items.Add(item12);
 
             Item item13 = new Item("Volvo rear Number Plate Light with camera", 1, Category.CarElecticalEquipment, iDCounter);
             box3.Items.Add(item13);
 
             Item item14 = new Item("remote car key tool", 1, Category.CarElecticalEquipment, iDCounter);
-            item14.Note.Text = "Device generates remote keys";
+            item14.Note = "Device generates remote keys";
             box3.Items.Add(item14);
 
             Item item15 = new Item("Blank remote car key", 7, Category.CarElecticalEquipment, iDCounter);
-            item15.Note.Text = "universal remote, no chip, no blade";
+            item15.Note = "universal remote, no chip, no blade";
             box3.Items.Add(item15);
 
             Item item16 = new Item("Various car interior Led Lights bag", 1, Category.CarElecticalEquipment, iDCounter);

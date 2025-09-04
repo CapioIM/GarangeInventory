@@ -1,5 +1,4 @@
-﻿using GarangeInventory.Common;
-using GarangeInventory.Enum;
+﻿using GarangeInventory.Enum;
 namespace GarangeInventory.Storage
 {
     public class Item : StorageObject
@@ -98,7 +97,7 @@ namespace GarangeInventory.Storage
             return ID + " ID " + " " + Name;
         }
 
-  
+
 
 
     }

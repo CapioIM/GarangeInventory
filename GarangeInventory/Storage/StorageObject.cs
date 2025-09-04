@@ -1,5 +1,4 @@
-﻿using GarangeInventory.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,9 +30,9 @@ namespace GarangeInventory.Storage
             get { return picturePath; }
             set { picturePath = value; }
         }
-        private Note _note = new();
+        private string _note ;
 
-        public Note Note
+        public string Note
         {
             get { return _note; }
             set { _note = value; }

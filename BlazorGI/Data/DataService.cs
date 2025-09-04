@@ -2,7 +2,6 @@
 using GarangeInventory.DataOperations;
 using GarangeInventory.Enum;
 using System.Collections.Generic;
-using GarangeInventory.Common;
 
 namespace BlazorGI.Data
 {
@@ -236,12 +235,11 @@ namespace BlazorGI.Data
             return result;
         }
 
-        public Item CreateItem(string name,int id,string picturePath,Note note,int quantity,decimal cost,float weight,DateTime expiry,DateTime purchaseDate,SizeType size,Category itemCategory,WeightType weightType)
+        /*   Item item = new Item(name, itemCategory, idToDelete);
+
+        public Item CreateItem(string name,string note,int quantity,decimal cost,float weight,DateTime expiry,DateTime purchaseDate,SizeType size,Category itemCategory,WeightType weightType)
         {
-            Item item = new Item();
             item.Name = name;
-            item.ID = id;
-            item.PicturePath = picturePath;
             item.Note = note;
             item.Quantity = quantity;
             item.Cost = cost;
@@ -249,9 +247,9 @@ namespace BlazorGI.Data
             item.Expiry = expiry;
             item.PurchaseDate = purchaseDate;
             item.Size = size;
-            item.ItemCategory = itemCategory;
             item.WeightType = weightType;
             return item;
         }
+        */
     }
 }

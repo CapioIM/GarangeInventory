@@ -1,6 +1,4 @@
-﻿using GarangeInventory.Common;
-
-namespace GarangeInventory.Storage
+﻿namespace GarangeInventory.Storage
 {
     public class ShelfUnit : StorageObject
     {
