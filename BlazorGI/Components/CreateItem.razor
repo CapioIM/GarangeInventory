@@ -3,6 +3,14 @@
 @using GarangeInventory.Enum;
 @inject Data.DataService Data;
 
+<EditForm Model="@model">
+    <label for="name">Name</label>
+    <InputText id="name" @bind-Value="model.Name"></InputText>
+    <label for="quantity">Quantity</label>
+    <InputNumber @bind-Value="model.Quantity"></InputNumber>
+</EditForm>
+
+<p></p>
 <a> Name</a>
 <input @bind=Name />
 <a>Note</a>
@@ -27,7 +35,7 @@
 
 @code {
     // @Data.CreateItem(Name, note, quantity, cost, weight, expiry, purchaseDate, size, itemCategory, weightType)
-
+        private TestModel model = new();
     private string Name { get; set; }
     private string note { get; set; }
     private int quantity { get; set; }

@@ -2,6 +2,7 @@
 @inject NavigationManager MyNavigationManager
 
 <button class="btn btn-outline-primary" @onclick=redirect title="Let's log in.">Test Page Awaits</button>
+<button class="btn btn-outline-primary" @onclick=TestPageAddItem title="add item test page">add item test page</button>
 
 @code {
     private string testUserName = "Igor";
@@ -15,6 +16,10 @@
             UserData.Authentication = true;
             MyNavigationManager.NavigateTo($"/{testUserName}/dashboard");
         }
+    }
+    private void TestPageAddItem()
+    {
+        MyNavigationManager.NavigateTo($"/create");
     }
 }
 
