@@ -22,9 +22,9 @@ namespace GarangeInventory.Storage
             set { _cost = value; }
         }
 
-        private float _weight;
+        private decimal _weight;
 
-        public float Weight
+        public decimal Weight
         {
             get { return _weight; }
             set { _weight = value; }
