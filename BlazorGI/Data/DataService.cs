@@ -15,6 +15,12 @@ namespace BlazorGI.Data
             set { _saveData = value; }
         }
 
+        List<Item> _unassigned = new();
+        public void AddToUnassigned(Item i)
+        {
+            _unassigned.Add(i);
+        }
+
         private List<StorageUnit> _storages;
 
         public List<StorageUnit> Storages

@@ -3,49 +3,17 @@
 @using GarangeInventory.Enum;
 @inject Data.DataService Data;
 
-<EditForm Model="@model">
+<EditForm Model="@newItem">
     <label for="name">Name</label>
-    <InputText id="name" @bind-Value="model.Name"></InputText>
+    <InputText id="name" @bind-Value="newItem.Name"></InputText>
     <label for="quantity">Quantity</label>
-    <InputNumber @bind-Value="model.Quantity"></InputNumber>
+    <InputNumber @bind-Value="newItem.Quantity"></InputNumber>
 </EditForm>
-
-<p></p>
-<a> Name</a>
-<input @bind=Name />
-<a>Note</a>
-<input @bind=note />
-<a>Quantity</a>
-<input @bind=quantity />
-<a>Cost</a>
-<input @bind=cost />
-<a>Expiry</a>
-<input @bind=expiry />
-<a>Purchase Date</a>
-<input @bind=purchaseDate />
-<a>Size</a>
-<input @bind=size />
-<a>Category</a>
-<input @bind=itemCategory />
-<a>Weight Type</a>
-<input @bind=weightType />
-<a>Weight</a>
-<input @bind=weight />
 
 
 @code {
-    // @Data.CreateItem(Name, note, quantity, cost, weight, expiry, purchaseDate, size, itemCategory, weightType)
-        private TestModel model = new();
-    private string Name { get; set; }
-    private string note { get; set; }
-    private int quantity { get; set; }
-    private decimal cost { get; set; }
-    private decimal weight { get; set; }
-    private DateTime expiry { get; set; }
-    private DateTime purchaseDate { get; set; }
-    private SizeType size { get; set; }
-    private Category itemCategory { get; set; }
-    private WeightType weightType{ get; set; }
+    Item newItem = new();
+
 }
 
 
