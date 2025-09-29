@@ -240,22 +240,5 @@ namespace BlazorGI.Data
             }
             return result;
         }
-
-        /*   Item item = new Item(name, itemCategory, idToDelete);
-
-        public Item CreateItem(string name,string note,int quantity,decimal cost,float weight,DateTime expiry,DateTime purchaseDate,SizeType size,Category itemCategory,WeightType weightType)
-        {
-            item.Name = name;
-            item.Note = note;
-            item.Quantity = quantity;
-            item.Cost = cost;
-            item.Weight = weight;
-            item.Expiry = expiry;
-            item.PurchaseDate = purchaseDate;
-            item.Size = size;
-            item.WeightType = weightType;
-            return item;
-        }
-        */
     }
 }
