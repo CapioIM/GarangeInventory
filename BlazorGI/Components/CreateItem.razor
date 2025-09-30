@@ -9,8 +9,9 @@
 
 <EditForm Model="@newItem">
     <label for="name">Item Name</label>
-    <InputText id="name" @bind-Value="newItem.Name"></InputText>
+    <InputText @bind-Value="newItem.Name"></InputText>
     <br />
+   
     <label for="quantity">Quantity</label>
     <InputNumber @bind-Value="newItem.Quantity"></InputNumber>
     <br />
@@ -42,8 +43,17 @@
         }
     </InputSelect>
     <br />
-
-
+    <label for="itemCategory"></label>
+    <InputSelect @bind-Value="newItem.ItemCategory">
+        @foreach (var category in itemCategory)
+        {
+            <option>@category</option>
+        }
+    </InputSelect>
+    <br />
+    <label for="note">Note</label>
+    <InputText @bind-Value="newItem.Note"></InputText>
+    <br />
 
     <button type="submit">Save</button>
 </EditForm>
@@ -53,6 +63,7 @@
     Item newItem = new();
     private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
+    private readonly IEnumerable<Category> itemCategory = Enum.GetValues<Category>();
 
 }
 
