@@ -3,17 +3,35 @@
 @using GarangeInventory.Enum;
 @inject Data.DataService Data;
 
+
+
+<p>New item creation page!</p>
+
 <EditForm Model="@newItem">
-    <label for="name">Name</label>
+    <label for="name">Item Name</label>
     <InputText id="name" @bind-Value="newItem.Name"></InputText>
     <label for="quantity">Quantity</label>
     <InputNumber @bind-Value="newItem.Quantity"></InputNumber>
+    <label for="cost">Item Cost $</label>
+    <InputNumber @bind-Value="newItem.Cost" ></InputNumber>
+    <label for="weight">Weight</label>
+    <InputNumber @bind-Value="newItem.Weight" ></InputNumber>
+    <label for="weightCategory">Kilograms,Litres,Gramms</label>
+    <InputSelect @bind-Value="newItem.WeightType">
+        @foreach(var weightType in weightTypes)
+        {
+            <option>@weightType</option>
+        }
+    </InputSelect>
+    <label for="expiry">Expiry</label>
+    <InputDate @bind-Value="newItem.Expiry"></InputDate>
+
+    <button type="submit">Save</button>
 </EditForm>
 
 
 @code {
     Item newItem = new();
-
+    private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
 }
-
 

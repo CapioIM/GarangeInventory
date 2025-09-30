@@ -240,6 +240,5 @@ namespace BlazorGI.Data
             }
             return result;
         }
-        
     }
 }
