@@ -1,6 +1,13 @@
-﻿
+﻿@using GarangeInventory.Storage
+@inject Data.DataService Data;
 
+<label for="Storage">Storage</label>
+
+    
 
 @code {
+
+    [Parameter]
+    public Item itemToBePlaced { get; set; }
 
 }
