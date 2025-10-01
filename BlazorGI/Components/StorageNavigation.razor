@@ -4,7 +4,6 @@
 
 <label for="storage">Storage Unit</label>
 <InputSelect @bind-Value="selectedStorageUnit">
-    <option value="">Select Storage</option>
     @foreach(StorageUnit storage in Data.Storages)
     {
         <option>@storage.Name</option>

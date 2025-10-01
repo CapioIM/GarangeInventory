@@ -17,9 +17,11 @@
     <label for="cost">Item Cost $</label>
     <InputNumber @bind-Value="newItem.Cost" ></InputNumber>
     <br />
+
     <label for="weight">Weight</label>
     <InputNumber @bind-Value="newItem.Weight" ></InputNumber>
     <br />
+
     <label for="weightCategory">Kilograms,Litres,Gramms</label>
     <InputSelect @bind-Value="newItem.WeightType">
         @foreach(var weightType in weightTypes)
@@ -28,12 +30,15 @@
         }
     </InputSelect>
     <br />
+
     <label for="expiry">Expiry</label>
     <InputDate @bind-Value="newItem.Expiry"></InputDate>
     <br />
+
     <label for="purchaseDate">Purchase Date</label>
     <InputDate @bind-Value="newItem.PurchaseDate"></InputDate>
     <br />
+
     <label for="size"></label>
     <InputSelect @bind-Value="newItem.Size">
         @foreach(var sizeType in sizeTypes)
@@ -42,6 +47,7 @@
         }
     </InputSelect>
     <br />
+
     <label for="itemCategory"></label>
     <InputSelect @bind-Value="newItem.ItemCategory">
         @foreach (var category in itemCategory)
@@ -50,11 +56,12 @@
         }
     </InputSelect>
     <br />
+
     <label for="note">Note</label>
     <InputText @bind-Value="newItem.Note"></InputText>
     <br />
 
-    <button type="submit">Save</button>
+    <button type="submit">Save, does nothing for now</button>
 </EditForm>
 
 <StorageNavigation></StorageNavigation>
