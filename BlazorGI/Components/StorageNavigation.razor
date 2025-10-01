@@ -1,13 +1,18 @@
 ﻿@using GarangeInventory.Storage
 @inject Data.DataService Data;
 
-<label for="Storage">Storage</label>
 
+<label for="storage">Storage Unit</label>
+<InputSelect @bind-Value="Data.Storages">
+    <option value="">Select Storage</option>
+    @foreach(StorageUnit storage in Data.Storages)
+    {<option>@storage.Name</option>}
+</InputSelect>
     
 
 @code {
 
     [Parameter]
     public Item itemToBePlaced { get; set; }
-
+    
 }
