@@ -4,15 +4,31 @@
 
 <label for="storage">Storage Unit</label>
 <InputSelect @bind-Value="selectedSUID">
-    @foreach(StorageUnit storage in Data.Storages)
+    @foreach (StorageUnit storage in Data.Storages)
     {
         <option value="@storage.ID">@storage.Name</option>
     }
 </InputSelect>
-    
+
+@if (true)
+{
+    StorageUnit pickedStorage = Data.Storages.FirstOrDefault(storage => storage.ID == selectedSUID);
+
+    <label for="shelfUnit">Shelf Unit</label>
+    <InputSelect @bind-Value="selectedShelfUnitID">
+        @foreach (ShelfUnit shelfUnit in pickedStorage.ShelfUnits)
+        {
+            <option value="@shelfUnit.ID">@shelfUnit.Name</option>
+        }
+    </InputSelect>
+}
+
 
 @code {
 
     [Parameter]
     public int selectedSUID { get; set; }
+    [Parameter]
+    public int selectedShelfUnitID { get; set; }
+
 }
