@@ -3,10 +3,10 @@
 
 
 <label for="storage">Storage Unit</label>
-<InputSelect @bind-Value="selectedStorageUnit">
+<InputSelect @bind-Value="selectedSUID">
     @foreach(StorageUnit storage in Data.Storages)
     {
-        <option>@storage.Name</option>
+        <option value="@storage.ID">@storage.Name</option>
     }
 </InputSelect>
     
@@ -14,10 +14,5 @@
 @code {
 
     [Parameter]
-    public Item itemToBePlaced { get; set; }
-    private StorageUnit selectedStorageUnit { get; set; }
-    private void SelectStorage(StorageUnit storageUnit)
-    {
-        selectedStorageUnit = storageUnit;
-    }
+    public int selectedSUID { get; set; }
 }

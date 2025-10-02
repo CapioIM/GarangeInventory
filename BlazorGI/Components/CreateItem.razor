@@ -66,8 +66,11 @@
 
 <StorageNavigation></StorageNavigation>
 
-    @code {
+@code {
     Item newItem = new();
+    StorageUnit storageUnit;
+    ShelfUnit shelfUnit;
+
     private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
     private readonly IEnumerable<Category> itemCategory = Enum.GetValues<Category>();
