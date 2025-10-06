@@ -3,32 +3,35 @@
 
 
 <label for="storage">Storage Unit</label>
-<InputSelect @bind-Value="selectedSUID">
+<InputSelect id="storage" @bind-Value="selectedSUID">
     @foreach (StorageUnit storage in Data.Storages)
     {
         <option value="@storage.ID">@storage.Name</option>
     }
 </InputSelect>
 
-@if (pickedStorageUnit != null)
+@if (true)
 {
-   // pickedStorageUnit = FindStorageUnitByID(selectedSUID);
+    pickedStorageUnit = FindStorageUnitByID(selectedSUID);
     <label for="shelfUnit">Shelf Unit</label>
-    <InputSelect @bind-Value="selectedShelfUnitID">
+    <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID">
         @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
         {
             <option value="@shelfUnit.ID">@shelfUnit.Name</option>
         }
     </InputSelect>
 }
-
-<label for="shelf">Shelf</label>
+@if(true)
+{
+    ShelfUnit pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
+    <label for="shelf">Shelf</label>
 <InputSelect @bind-Value="selectedShelfID">
-    @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
+    @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
     {
-        <option value="@shelfUnit.ID">@shelfUnit.Name</option>
+        <option value="@shelf.ID">@shelf.Name</option>
     }
 </InputSelect>
+}
 
 
 
@@ -43,8 +46,9 @@
 
     private StorageUnit pickedStorageUnit { get; set; }
 
-    private void FindStorageUnitByID(int ID)
+    private StorageUnit FindStorageUnitByID(int ID)
     {
-         pickedStorageUnit = Data.Storages.FirstOrDefault(storage => storage.ID == selectedSUID);
+        StorageUnit storage = Data.Storages.FirstOrDefault(storage => storage.ID == selectedSUID);
+        return storage;
     }
 }
