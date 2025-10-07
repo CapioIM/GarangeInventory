@@ -232,7 +232,7 @@ namespace GarangeInventory
                     for (int p = 0; p < shelfUnit.Shelfs.Count; p++)
                     {
                         Shelf shelf = shelfUnit.Shelfs[p];
-                        Console.Write("Shelf: ");
+                        Console.Write($"Shelf: +{shelf.ID} ");
                         Console.WriteLine(shelf.Name);
                     }
                 }

@@ -10,9 +10,9 @@
     }
 </InputSelect>
 
-@if (selectedSUID != null)
+@if(true)
 {
-    pickedStorageUnit = FindStorageUnitByID();
+    pickedStorageUnit = @FindStorageUnitByID();
     <label for="shelfUnit">Shelf Unit</label>
     <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID">
         @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
@@ -21,7 +21,8 @@
         }
     </InputSelect>
 }
-@if (selectedShelfUnitID != null)
+
+@if (true)
 {
     pickedShelfUnit = FindShelfUnitByID();
     <label for="shelf">Shelf</label>
