@@ -8,7 +8,6 @@
         public int ShelfLevelCount
         {
             get { return _shelfs.Count; }
-
         }
 
         private List<Shelf> _shelfs = new();
@@ -58,7 +57,7 @@
                 }
                 else
                 {
-                    shelfNumber = i.ToString();
+                    shelfNumber = $"Shelf - " + i.ToString();
                 }
                 shelf.Name = shelfNumber;
                 Shelfs.Add(shelf);
