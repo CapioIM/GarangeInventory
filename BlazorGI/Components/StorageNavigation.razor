@@ -21,17 +21,20 @@
         }
     </InputSelect>
 }
-@if(true)
+@if (true)
 {
     ShelfUnit pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
     <label for="shelf">Shelf</label>
-<InputSelect @bind-Value="selectedShelfID">
-    @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
-    {
-        <option value="@shelf.ID">@shelf.Name</option>
-    }
-</InputSelect>
+    <InputSelect @bind-Value="selectedShelfID">
+        @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
+        {
+            <option value="@shelf.ID">@shelf.Name</option>
+        }
+    </InputSelect>
 }
+
+
+
 
 
 
@@ -45,10 +48,24 @@
     public int selectedShelfID { get; set; }
 
     private StorageUnit pickedStorageUnit { get; set; }
+    private ShelfUnit pickedShelfUnit { get; set; }
 
     private StorageUnit FindStorageUnitByID(int ID)
     {
         StorageUnit storage = Data.Storages.FirstOrDefault(storage => storage.ID == selectedSUID);
         return storage;
     }
+
+    private void ShowNames()
+    {
+        for (int i = 0; i < Data.Storages.Count; i++) ;
+        {
+          //  var storage = Data.Storages[i];
+          //  for (int j = 0; j < storage.ShelfUnits.Count; j++) ;
+            {
+                
+            }
+        }
+    }
+
 }

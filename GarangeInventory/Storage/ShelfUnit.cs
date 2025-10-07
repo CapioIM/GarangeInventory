@@ -10,7 +10,7 @@
             get { return _shelfs.Count; }
 
         }
-  
+
         private List<Shelf> _shelfs = new();
 
         public List<Shelf> Shelfs
@@ -18,7 +18,7 @@
             get { return _shelfs; }
             set { _shelfs = value; }
         }
- 
+
 
         private List<Box> _boxes = new();
 
@@ -41,21 +41,26 @@
         /// </summary>
         /// <param name="name"> ShelfUnit name </param>
         /// <param name="amountOfShelfs"> How many shelfs in ShelfUnit </param>
-        public ShelfUnit(string name,int amountOfShelfs)
+        public ShelfUnit(string name, int amountOfShelfs)
         {
             Name = name;
             for (int i = 1; i <= amountOfShelfs; i++)
             {
-                string shelfNumber = i.ToString();
+                string shelfNumber;
+                Shelf shelf = new Shelf();
                 if (i == 1)
                 {
                     shelfNumber = "Bottom/Floor Shelf";
                 }
-                if (i == amountOfShelfs )
+                if (i == amountOfShelfs)
                 {
                     shelfNumber = "Top Shelf";
                 }
-                Shelf shelf = new Shelf(shelfNumber);
+                else
+                {
+                    shelfNumber = i.ToString();
+                }
+                shelf.Name = shelfNumber;
                 Shelfs.Add(shelf);
             }
         }
