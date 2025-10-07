@@ -1,5 +1,8 @@
-﻿using GarangeInventory.Enum;
+﻿using GarangeInventory.DataOperations;
+using GarangeInventory.Enum;
 using GarangeInventory.Storage;
+using GarangeInventory.DataOperations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GarangeInventory
 {
@@ -212,6 +215,28 @@ namespace GarangeInventory
                 }
             }
             return result;
+        }
+
+        public static void ShowNames(List<StorageUnit> storages)
+        {
+            for (int i = 0; i < storages.Count; i++)
+            {
+                StorageUnit storage = storages[i];
+                Console.Write("Storage: ");
+                Console.WriteLine(storage.Name);
+                for (int j = 0; j < storage.ShelfUnits.Count; j++)
+                {
+                    ShelfUnit shelfUnit = storage.ShelfUnits[j];
+                    Console.Write("ShelfUnit: ");
+                    Console.WriteLine(shelfUnit.Name);
+                    for (int p = 0; p < shelfUnit.Shelfs.Count; p++)
+                    {
+                        Shelf shelf = shelfUnit.Shelfs[p];
+                        Console.Write("Shelf: ");
+                        Console.WriteLine(shelf.Name);
+                    }
+                }
+            }
         }
 
     }

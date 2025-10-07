@@ -34,6 +34,8 @@ namespace GarangeInventory
                     }
             }
 
+            TestData.ShowNames(saveData.storageUnits);
+
             Console.WriteLine("End of programm , press any key");
             Console.ReadKey();
         }
