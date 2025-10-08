@@ -6,6 +6,5 @@ namespace GarangeInventory.DataOperations
     {
         public List<User> users { get; set; }
         public List<StorageUnit> storageUnits { get; set; }
-        public List<Item> items { get; set; }
     }
 }

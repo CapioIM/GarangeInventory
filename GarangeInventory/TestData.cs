@@ -176,47 +176,7 @@ namespace GarangeInventory
             return newUnit;
         }
 
-        public static List<Item> GetAllItems(List<StorageUnit> storages)
-        {
-            List<Item> result = new List<Item>();
-            foreach (StorageUnit storage in storages)
-            {
-                foreach (ShelfUnit shelfUnits in storage.ShelfUnits)
-                {
-                    result.AddRange(AddItems(shelfUnits.Items));
-                    foreach (Shelf shelf in shelfUnits.Shelfs)
-                    {
-                        result.AddRange(AddItems(shelf.Items));
-                        foreach (Box box in shelf.Boxes)
-                        {
-                            result.AddRange(AddItems(box.Items));
-                        }
-                    }
-                    foreach (Box box in shelfUnits.Boxes)
-                    {
-                        result.AddRange(AddItems(box.Items));
-                    }
-                }
-            }
-            return result;
-        }
-
-        private static List<Item> AddItems(List<Item> items)
-        {
-            List<Item> result = new List<Item>();
-            if (items != null)
-            {
-                foreach (Item item in items)
-                {
-                    if (item != null)
-                    {
-                        result.Add(item);
-                    }
-                }
-            }
-            return result;
-        }
-
+   
         public static void ShowNames(List<StorageUnit> storages)
         {
             for (int i = 0; i < storages.Count; i++)
