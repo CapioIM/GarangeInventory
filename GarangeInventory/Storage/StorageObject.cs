@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarangeInventory.DataOperations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,8 @@ namespace GarangeInventory.Storage
 
         public int ID
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _id;}
+            set {  _id = SaveData.GenerateID(); }
         }
         private string picturePath;
 

@@ -81,15 +81,13 @@ namespace GarangeInventory.Storage
         /// <param name="quantity"> int quantity</param>
         /// <param name="category"> Category of category </param>
         /// <param name="itemIdCounter"></param>
-        public Item(string name, int quantity, Category category, ItemIdCounter itemIdCounter)
+        public Item(string name, int quantity, Category category)
         {
             _quantity = quantity;
             Name = name;
             _itemCreationDate = DateTime.Now;
             _itemCategory = category;
             _expiry = new DateTime(2099, 12, 30);
-            ID = itemIdCounter.ID;
-            itemIdCounter.IncreaseID();
         }
 
         public override string ToString()
