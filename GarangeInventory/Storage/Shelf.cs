@@ -8,8 +8,6 @@
             Name = shelfNumber;
         }
 
- 
-
         private List<Box> _boxes = new();
 
         public List<Box> Boxes

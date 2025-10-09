@@ -22,7 +22,7 @@ namespace GarangeInventory.Storage
         public int ID
         {
             get { return _id;}
-            set {  _id = SaveData.GenerateID(); }
+            set {  _id = SaveData.GetID(); }
         }
         private string picturePath;
 

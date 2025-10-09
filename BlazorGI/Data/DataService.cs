@@ -56,8 +56,6 @@ namespace BlazorGI.Data
             StorageUnit storageUnit = new StorageUnit();
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
-            int assignID = Storages.Max(s => s.ID);
-            storageUnit.ID = assignID + 1;
             Storages.Add(storageUnit);
             SaveStorageUnits();
         }
