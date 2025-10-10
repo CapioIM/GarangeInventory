@@ -15,9 +15,12 @@
     pickedStorageUnit = @FindStorageUnitByID();
     <label for="shelfUnit">Shelf Unit</label>
     <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID">
-        @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
+        @if (pickedStorageUnit != null)
         {
-            <option value="@shelfUnit.ID">@shelfUnit.Name</option>
+            @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
+            {
+                <option value="@shelfUnit.ID">@shelfUnit.Name</option>
+            }
         }
     </InputSelect>
 }
@@ -27,9 +30,12 @@
     pickedShelfUnit = FindShelfUnitByID();
     <label for="shelf">Shelf</label>
     <InputSelect id="shelf" @bind-Value="selectedShelfID">
-        @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
+        @if (pickedShelfUnit != null)
         {
-            <option value="@shelf.ID">@shelf.Name</option>
+            @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
+            {
+                <option value="@shelf.ID">@shelf.Name</option>
+            }
         }
     </InputSelect>
 }

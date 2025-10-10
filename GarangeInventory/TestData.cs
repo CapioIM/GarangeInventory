@@ -38,7 +38,7 @@ namespace GarangeInventory
             storageOne.ShelfUnits[0].ID = 56;
             storageOne.ShelfUnits[0].Shelfs[0].ID = 57;
             storageOne.ID = 1;
-            ShelfUnit shelfUnitOne = new ShelfUnit("Floor",1);
+            ShelfUnit shelfUnitOne = storageOne.ShelfUnits[0];
             shelfUnitOne.ID = 15;
             shelfUnitOne.Shelfs[0].ID = 16;
             storageOne.ShelfUnits.Add(shelfUnitOne);
