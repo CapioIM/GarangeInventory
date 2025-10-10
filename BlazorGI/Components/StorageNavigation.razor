@@ -10,7 +10,7 @@
     }
 </InputSelect>
 
-@if(true)
+@if (Data.Storages != null)
 {
     pickedStorageUnit = @FindStorageUnitByID();
     <label for="shelfUnit">Shelf Unit</label>
@@ -22,7 +22,7 @@
     </InputSelect>
 }
 
-@if (true)
+@if (pickedStorageUnit.ShelfUnits != null)
 {
     pickedShelfUnit = FindShelfUnitByID();
     <label for="shelf">Shelf</label>
@@ -58,8 +58,7 @@
     }
     private ShelfUnit FindShelfUnitByID()
     {
-        StorageUnit storage = Data.Storages.FirstOrDefault(storag => storag.ID == selectedSUID);
-        ShelfUnit shelfUnit = storage.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
+        ShelfUnit shelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
         return shelfUnit;
     }
 

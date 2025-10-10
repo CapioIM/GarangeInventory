@@ -9,7 +9,7 @@ namespace BlazorGI.Data
     {
         private SaveData _saveData = new SaveData();
 
-        public SaveData saveData
+        public SaveData SaveData
         {
             get { return _saveData; }
             set { _saveData = value; }
@@ -54,6 +54,7 @@ namespace BlazorGI.Data
         public void AddStorageUnit(string storageUnitName, User user)
         {
             StorageUnit storageUnit = new StorageUnit();
+            storageUnit.ID = SaveData.MaxID;
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
             Storages.Add(storageUnit);
