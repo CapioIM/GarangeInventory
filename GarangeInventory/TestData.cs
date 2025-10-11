@@ -239,18 +239,15 @@ namespace GarangeInventory
             for (int i = 0; i < storages.Count; i++)
             {
                 StorageUnit storage = storages[i];
-                Console.Write("Storage: ");
-                Console.WriteLine(storage.Name);
+                Console.WriteLine($"Storage: {storage.Name} , ID - {storage.ID} ");
                 for (int j = 0; j < storage.ShelfUnits.Count; j++)
                 {
                     ShelfUnit shelfUnit = storage.ShelfUnits[j];
-                    Console.Write("ShelfUnit: ");
-                    Console.WriteLine(shelfUnit.Name);
+                    Console.WriteLine($" ShelfUnit: {shelfUnit.Name} , ID - {shelfUnit.ID} ");
                     for (int p = 0; p < shelfUnit.Shelfs.Count; p++)
                     {
                         Shelf shelf = shelfUnit.Shelfs[p];
-                        Console.Write($"Shelf: +{shelf.ID} ");
-                        Console.WriteLine(shelf.Name);
+                        Console.WriteLine($"Shelf: {shelf.Name}, ID - {shelf.ID} ");
                     }
                 }
             }
