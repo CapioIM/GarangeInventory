@@ -47,6 +47,15 @@ namespace BlazorGI.Data
         }
 
         /// <summary>
+        /// Retrieves Max Int Value for ID stored in List of Lists....
+        /// </summary>
+        /// <returns> Max Int found +1 </returns>
+        public int GetMaxID()
+        {
+            return SaveData.MaxID;
+        }
+
+        /// <summary>
         /// Add new storageUnit to list of _storages
         /// </summary>
         /// <param name="storageUnitName">What you want to name this storage unit</param>
@@ -54,7 +63,7 @@ namespace BlazorGI.Data
         public void AddStorageUnit(string storageUnitName, User user)
         {
             StorageUnit storageUnit = new StorageUnit();
-            storageUnit.ID = SaveData.MaxID;
+            storageUnit.ID = GetMaxID();
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
             Storages.Add(storageUnit);

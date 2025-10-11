@@ -2,6 +2,8 @@
 @using GarangeInventory.Storage;
 @using GarangeInventory.Enum;
 
+@inject Data.DataService Data;
+
 
 
 <p>New item creation page!</p>
@@ -70,10 +72,18 @@
     Item newItem = new();
     StorageUnit storageUnit;
     ShelfUnit shelfUnit;
+    Shelf shelf;
+    Box box;
 
     private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
     private readonly IEnumerable<Category> itemCategory = Enum.GetValues<Category>();
+
+    protected override void OnInitialized()
+    {
+        newItem.ID = Data.GetMaxID();
+    }
+
 
 }
 
