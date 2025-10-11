@@ -135,7 +135,7 @@ namespace GarangeInventory
             shelfTwoTierFour.Items.Add(item17);
 
             Item item18 = new Item("Pickled gerkins", 2, Category.Food);
-            item18.ID = 34;
+            item18.ID = 60;
             shelfTwoTierFour.Items.Add(item18);
             item18.Expiry = new DateTime(2025, 12, 30);
 
