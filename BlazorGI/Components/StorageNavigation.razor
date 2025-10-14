@@ -1,19 +1,21 @@
 ﻿@using GarangeInventory.Storage
 @inject Data.DataService Data;
 
-
-<label for="storage">Storage Unit</label>
-<InputSelect id="storage" @bind-Value="selectedSUID">
-    <option></option>
-    @foreach (StorageUnit storage in Data.Storages)
-    {
-        <option value="@storage.ID">@storage.Name</option>
-    }
-</InputSelect>
-
 @if (Data.Storages != null)
 {
+    <label for="storage">Storage Unit</label>
+    <InputSelect id="storage" @bind-Value="selectedSUID">
+        <option value=""></option>
+        @foreach (StorageUnit storage in Data.Storages)
+        {
+            <option value="@storage.ID">@storage.Name</option>
+        }
+    </InputSelect>
     pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedSUID);
+}
+
+@if (pickedStorageUnit != null)
+{
     <label for="shelfUnit">Shelf Unit</label>
     <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID">
         @if (pickedStorageUnit != null)
@@ -24,12 +26,12 @@
                 <option value="@shelfUnit.ID">@shelfUnit.Name</option>
             }
         }
+        @pickedShelfUnit = @pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
     </InputSelect>
 }
 
-@if (pickedStorageUnit.ShelfUnits != null)
+@if (pickedShelfUnit != null)
 {
-    pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
     <label for="shelf">Shelf</label>
     <InputSelect id="shelf" @bind-Value="selectedShelfID">
         @if (pickedShelfUnit != null)
@@ -43,7 +45,7 @@
     </InputSelect>
 }
 
-@if (pickedShelfUnit != null && pickedShelfUnit.Shelfs != null )
+@if (pickedShelfUnit != null)
 {
     pickedShelf = pickedShelfUnit.Shelfs.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
     <label for="box">Box</label>
