@@ -4,7 +4,7 @@
 @if (Data != null)
 {
     <label for="storage">Storage Unit</label>
-    <InputSelect id="storage" @bind-Value="selectedStorageID" TValue="int?">
+    <InputSelect id="storage" @bind-Value="selectedStorageID" TValue="int?" >
         <option value="">Select...</option>
         @if (Data.Storages != null)
         {
@@ -118,8 +118,8 @@
     [Parameter]
     public EventCallback<Box> pickedBoxChanged { get; set; }
 
-    private int? selectedShelfUnitID { get; set; }
     private int? selectedStorageID { get; set; }
+    private int? selectedShelfUnitID { get; set; }
     private int? selectedShelfID { get; set; }
     private int? selectedBoxID { get; set; }
 
