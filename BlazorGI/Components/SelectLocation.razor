@@ -100,18 +100,22 @@
 @code {
     [Parameter]
     public StorageUnit pickedStorageUnit { get; set; }
+    [Parameter]
     public EventCallback<StorageUnit> pickedStorageUnitChanged { get; set; }
 
     [Parameter]
     public ShelfUnit pickedShelfUnit { get; set; }
+    [Parameter]
     public EventCallback<ShelfUnit> pickedShelfUnitChanged { get; set; }
 
     [Parameter]
     public Shelf pickedShelf { get; set; }
+    [Parameter]
     public EventCallback<Shelf> pickedShelfChanged { get; set; }
 
     [Parameter]
     public Box pickedBox { get; set; }
+    [Parameter]
     public EventCallback<Box> pickedBoxChanged { get; set; }
 
     private int? selectedShelfUnitID { get; set; }
