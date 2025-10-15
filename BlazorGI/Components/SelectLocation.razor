@@ -15,6 +15,7 @@
         }
     </InputSelect>
     pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedStorageID);
+    pickedStorageUnitChanged.InvokeAsync(pickedStorageUnit);
 }
 
 <br />
@@ -33,6 +34,7 @@
         }
     </InputSelect>
     pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
+    pickedShelfUnitChanged.InvokeAsync(pickedShelfUnit);
 }
 
 @if (pickedShelfUnit != null)
@@ -49,6 +51,7 @@
         }
     </InputSelect>
     pickedBox = pickedShelfUnit.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
+    pickedBoxChanged.InvokeAsync(pickedBox);
 }
 
 <br />
@@ -67,6 +70,7 @@
         }
     </InputSelect>
     pickedShelf = pickedShelfUnit.Shelfs.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
+    pickedShelfChanged.InvokeAsync(pickedShelf);
 }
 
 
@@ -84,6 +88,7 @@
         }
     </InputSelect>
     pickedBox = pickedShelf.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
+    pickedBoxChanged.InvokeAsync(pickedBox);
 }
 
 
@@ -93,16 +98,21 @@
 
 
 @code {
+    [Parameter]
+    public StorageUnit pickedStorageUnit { get; set; }
+    public EventCallback<StorageUnit> pickedStorageUnitChanged { get; set; }
 
     [Parameter]
     public ShelfUnit pickedShelfUnit { get; set; }
-    [Parameter]
-    public StorageUnit pickedStorageUnit { get; set; }
+    public EventCallback<ShelfUnit> pickedShelfUnitChanged { get; set; }
+
     [Parameter]
     public Shelf pickedShelf { get; set; }
+    public EventCallback<Shelf> pickedShelfChanged { get; set; }
+
     [Parameter]
     public Box pickedBox { get; set; }
-
+    public EventCallback<Box> pickedBoxChanged { get; set; }
 
     private int? selectedShelfUnitID { get; set; }
     private int? selectedStorageID { get; set; }
