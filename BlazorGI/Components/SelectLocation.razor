@@ -4,7 +4,7 @@
 @if (Data != null)
 {
     <label for="storage">Storage Unit</label>
-    <InputSelect id="storage" @bind-Value="selectedSUID" TValue="int?">
+    <InputSelect id="storage" @bind-Value="selectedStorageID" TValue="int?">
         <option value="">Select...</option>
         @if (Data.Storages != null)
         {
@@ -14,7 +14,7 @@
             }
         }
     </InputSelect>
-    pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedSUID);
+    pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedStorageID);
 }
 
 <br />
@@ -95,7 +95,7 @@
 @code {
 
     [Parameter]
-    public int? selectedSUID { get; set; }
+    public int? selectedStorageID { get; set; }
     [Parameter]
     public int? selectedShelfUnitID { get; set; }
     [Parameter]
