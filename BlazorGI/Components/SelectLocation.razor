@@ -95,18 +95,19 @@
 @code {
 
     [Parameter]
-    public int? selectedStorageID { get; set; }
+    public ShelfUnit pickedShelfUnit { get; set; }
     [Parameter]
-    public int? selectedShelfUnitID { get; set; }
+    public StorageUnit pickedStorageUnit { get; set; }
     [Parameter]
-    public int? selectedShelfID { get; set; }
+    public Shelf pickedShelf { get; set; }
     [Parameter]
-    public int? selectedBoxID { get; set; }
+    public Box pickedBox { get; set; }
 
-    private StorageUnit pickedStorageUnit { get; set; }
-    private ShelfUnit pickedShelfUnit { get; set; }
-    private Shelf pickedShelf { get; set; }
-    private Box pickedBox { get; set; }
+
+    private int? selectedShelfUnitID { get; set; }
+    private int? selectedStorageID { get; set; }
+    private int? selectedShelfID { get; set; }
+    private int? selectedBoxID { get; set; }
 
 
 
