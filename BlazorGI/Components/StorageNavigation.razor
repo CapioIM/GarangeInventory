@@ -1,14 +1,17 @@
 ﻿@using GarangeInventory.Storage
 @inject Data.DataService Data;
 
-@if (Data.Storages != null)
+@if (Data != null)
 {
     <label for="storage">Storage Unit</label>
     <InputSelect id="storage" @bind-Value="selectedSUID" TValue="int?">
         <option value="">Select...</option>
-        @foreach (StorageUnit storage in Data.Storages)
+        @if (Data.Storages != null)
         {
-            <option @key="storage.ID" value="@storage.ID">@storage.Name</option>
+            @foreach (StorageUnit storage in Data.Storages)
+            {
+                <option @key="storage.ID" value="@storage.ID">@storage.Name</option>
+            }
         }
     </InputSelect>
     pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedSUID);
@@ -22,7 +25,7 @@
     <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID" TValue="int?">
         @if (pickedStorageUnit.ShelfUnits != null)
         {
-            <option value="" >Select...</option>
+            <option value="">Select...</option>
             @foreach (ShelfUnit shelfUnit in pickedStorageUnit.ShelfUnits)
             {
                 <option @key="shelfUnit.ID" value="@shelfUnit.ID">@shelfUnit.Name</option>
