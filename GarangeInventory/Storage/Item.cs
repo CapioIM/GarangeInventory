@@ -29,26 +29,33 @@ namespace GarangeInventory.Storage
             get { return _weight; }
             set { _weight = value; }
         }
-        private DateTime _expiry;
+        private DateTime? _expiry;
 
-        public DateTime Expiry
+        public DateTime? Expiry
         {
             get { return _expiry; }
             set { _expiry = value; }
         }
-        private DateTime _purchaseDate;
+        private DateTime? _purchaseDate;
 
-        public DateTime PurchaseDate
+        public DateTime? PurchaseDate
         {
             get { return _purchaseDate; }
             set { _purchaseDate = value; }
         }
 
-        private DateTime _itemCreationDate;
+        private DateTime? _itemCreationDate;
 
-        public DateTime ItemCreationDate
+        public DateTime? ItemCreationDate
         {
-            get { return _itemCreationDate; }
+            get
+            {
+                if (_itemCreationDate == null)
+                {
+                    _itemCreationDate = DateTime.Today;
+                }
+                return _itemCreationDate;
+            }
         }
 
         private SizeType _size;

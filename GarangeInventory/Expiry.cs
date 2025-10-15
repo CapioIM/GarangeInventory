@@ -37,7 +37,7 @@ namespace GarangeInventory
 
         public static List<Item> GetAllExpiredItems(List<Item> items)
         {
-            return items.Where(item => item.Expiry.Date < DateTime.Now).ToList();
+            return items.Where(item => item.Expiry?.Date < DateTime.Now).ToList();
         }
 
         public static void DisplayExpiredItems(List<StorageUnit> storages)

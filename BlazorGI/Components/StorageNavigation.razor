@@ -47,8 +47,8 @@
                 <option @key="box.ID" value="@box.ID">@box.Name</option>
             }
         }
-        @pickedShelfUnit = @pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
     </InputSelect>
+    pickedBox = pickedShelfUnit.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
 }
 
 <br />
@@ -69,7 +69,6 @@
     pickedShelf = pickedShelfUnit.Shelfs.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
 }
 
-<br />
 
 @if (pickedShelf != null)
 {
@@ -84,6 +83,7 @@
             }
         }
     </InputSelect>
+    pickedBox = pickedShelf.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
 }
 
 
@@ -106,7 +106,7 @@
     private StorageUnit pickedStorageUnit { get; set; }
     private ShelfUnit pickedShelfUnit { get; set; }
     private Shelf pickedShelf { get; set; }
-
+    private Box pickedBox { get; set; }
 
 
 

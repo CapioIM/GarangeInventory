@@ -12,21 +12,21 @@
     <label for="name">Item Name</label>
     <InputText @bind-Value="newItem.Name"></InputText>
     <br />
-   
+
     <label for="quantity">Quantity</label>
     <InputNumber @bind-Value="newItem.Quantity"></InputNumber>
     <br />
     <label for="cost">Item Cost $</label>
-    <InputNumber @bind-Value="newItem.Cost" ></InputNumber>
+    <InputNumber @bind-Value="newItem.Cost"></InputNumber>
     <br />
 
     <label for="weight">Weight</label>
-    <InputNumber @bind-Value="newItem.Weight" ></InputNumber>
+    <InputNumber @bind-Value="newItem.Weight"></InputNumber>
     <br />
 
     <label for="weightCategory">Kilograms,Litres,Gramms</label>
     <InputSelect @bind-Value="newItem.WeightType">
-        @foreach(var weightType in weightTypes)
+        @foreach (var weightType in weightTypes)
         {
             <option>@weightType</option>
         }
@@ -38,12 +38,12 @@
     <br />
 
     <label for="purchaseDate">Purchase Date</label>
-    <InputDate @bind-Value="newItem.PurchaseDate"></InputDate>
+    <InputDate @bind-Value="newItem.PurchaseDate" ></InputDate>
     <br />
 
     <label for="size"></label>
     <InputSelect @bind-Value="newItem.Size">
-        @foreach(var sizeType in sizeTypes)
+        @foreach (var sizeType in sizeTypes)
         {
             <option>@sizeType</option>
         }
@@ -63,10 +63,13 @@
     <InputText @bind-Value="newItem.Note"></InputText>
     <br />
 
+    <StorageNavigation ></StorageNavigation>
+
+    <br />
     <button type="submit">Save, does nothing for now</button>
+
 </EditForm>
 
-<StorageNavigation></StorageNavigation>
 
 @code {
     Item newItem = new();
