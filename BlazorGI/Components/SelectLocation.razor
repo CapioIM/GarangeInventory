@@ -21,7 +21,7 @@
 @if (pickedStorageUnit != null)
 {
     <label for="shelfUnit">Shelf Unit</label>
-    <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID" TValue="int?">
+    <InputSelect id="shelfUnit" @bind-Value="selectedShelfUnitID" @bind-Value:after="SetStorageUnit" TValue="int?">
         @if (pickedStorageUnit.ShelfUnits != null)
         {
             <option value="">Select...</option>
@@ -31,25 +31,21 @@
             }
         }
     </InputSelect>
-    pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
-    pickedShelfUnitChanged.InvokeAsync(pickedShelfUnit);
 }
 
 @if (pickedShelfUnit != null)
 {
     <label for="boxOnSU">Box</label>
-    <InputSelect id="boxOnSU" @bind-Value="selectedBoxID" TValue="int?">
+    <InputSelect id="boxOnSU" @bind-Value="selectedBoxID" @bind-Value:after="SetBox" TValue="int?">
         @if (pickedShelfUnit.Boxes != null)
         {
-            <option></option>
+            <option value="">Select...</option>
             @foreach (Box box in pickedShelfUnit.Boxes)
             {
                 <option @key="box.ID" value="@box.ID">@box.Name</option>
             }
         }
     </InputSelect>
-    pickedBox = pickedShelfUnit.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
-    pickedBoxChanged.InvokeAsync(pickedBox);
 }
 
 <br />
@@ -57,38 +53,33 @@
 @if (pickedShelfUnit != null)
 {
     <label for="shelf">Shelf</label>
-    <InputSelect id="shelf" @bind-Value="selectedShelfID" TValue="int?">
+    <InputSelect id="shelf" @bind-Value="selectedShelfID" @bind-Value:after="SetShelf" TValue="int?">
         @if (pickedShelfUnit.Shelfs != null)
         {
-            <option></option>
+            <option value="">Select...</option>
             @foreach (Shelf shelf in pickedShelfUnit.Shelfs)
             {
                 <option @key="shelf.ID" value="@shelf.ID">@shelf.Name</option>
             }
         }
     </InputSelect>
-    pickedShelf = pickedShelfUnit.Shelfs.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
-    pickedShelfChanged.InvokeAsync(pickedShelf);
 }
 
 
 @if (pickedShelf != null)
 {
     <label for="box">Box</label>
-    <InputSelect id="box" @bind-Value="selectedBoxID" TValue="int?">
+    <InputSelect id="box" @bind-Value="selectedBoxID" @bind-Value:after="SetBox" TValue="int?">
         @if (pickedShelf.Boxes != null)
         {
-            <option></option>
+            <option value="">Select...</option>
             @foreach (Box box in pickedShelf.Boxes)
             {
                 <option @key="box.ID" value="@box.ID">@box.Name</option>
             }
         }
     </InputSelect>
-    pickedBox = pickedShelf.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
-    pickedBoxChanged.InvokeAsync(pickedBox);
 }
-
 
 
 
@@ -128,5 +119,20 @@
     {
         pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedStorageID);
         pickedStorageUnitChanged.InvokeAsync(pickedStorageUnit);
+    }
+    private void SetStorageUnit()
+    {
+        pickedShelfUnit = pickedStorageUnit.ShelfUnits.FirstOrDefault(ShelfU => ShelfU.ID == selectedShelfUnitID);
+        pickedShelfUnitChanged.InvokeAsync(pickedShelfUnit);
+    }
+    private void SetBox()
+    {
+        pickedBox = pickedShelfUnit.Boxes.FirstOrDefault(box => box.ID == selectedBoxID);
+        pickedBoxChanged.InvokeAsync(pickedBox);
+    }
+    private void SetShelf()
+    {
+        pickedShelf = pickedShelfUnit.Shelfs.FirstOrDefault(Shelf => Shelf.ID == selectedShelfID);
+        pickedShelfChanged.InvokeAsync(pickedShelf);
     }
 }
