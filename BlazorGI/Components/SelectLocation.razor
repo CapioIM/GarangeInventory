@@ -4,7 +4,7 @@
 @if (Data != null)
 {
     <label for="storage">Storage Unit</label>
-    <InputSelect id="storage" @bind-Value="selectedStorageID" TValue="int?" >
+    <InputSelect id="storage" @bind-Value="selectedStorageID" @bind-Value:after="SetStorage" TValue="int?" >
         <option value="">Select...</option>
         @if (Data.Storages != null)
         {
@@ -14,8 +14,6 @@
             }
         }
     </InputSelect>
-    pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedStorageID);
-    pickedStorageUnitChanged.InvokeAsync(pickedStorageUnit);
 }
 
 <br />
@@ -126,5 +124,9 @@
 
 
 
-
+    private void SetStorage()
+    {
+        pickedStorageUnit = Data.Storages.FirstOrDefault(storag => storag.ID == selectedStorageID);
+        pickedStorageUnitChanged.InvokeAsync(pickedStorageUnit);
+    }
 }
