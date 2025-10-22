@@ -88,34 +88,55 @@
 
     private void SaveItem()
     {
-        newItem.ID = Data.GetMaxID();
-        if (box == null)
+
+        if (newItem.Name == null || storageUnit == null)
         {
-            if(shelf == null)
-            {
-                if(shelfUnit!=null)
-                {
-                    shelfUnit.Items.Add(newItem);
-                    SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelfUnit.Name} !";
-                }
-            }
-            if(shelf != null)
-            {
-                shelf.Items.Add(newItem);
-                SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
-            }
-        }
-        if (box != null)
-        {
-            box.Items.Add(newItem);
-            SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {box.Name} !";
+            if (newItem.Name == null)
+                SuccessStatusMessage = "Please input item name!";
+            if (storageUnit == null)
+                SuccessStatusMessage = "Storage has not been selected";
         }
 
-        if(SuccessStatusMessage == null)
+        if (newItem.Name != null && storageUnit != null)
         {
-            SuccessStatusMessage = $"Failed to save !!!";
+            newItem.ID = Data.GetMaxID();
+            if (box == null)
+            {
+                if (shelf == null)
+                {
+                    if (shelfUnit != null)
+                    {
+                        shelfUnit.Items.Add(newItem);
+                        SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelfUnit.Name} !";
+                    }
+                }
+                if (shelf != null)
+                {
+                    shelf.Items.Add(newItem);
+                    SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
+                }
+            }
+            if (box != null)
+            {
+                box.Items.Add(newItem);
+                SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {box.Name} !";
+            }
+
+            if (SuccessStatusMessage == null)
+            {
+                SuccessStatusMessage = $"Failed to save !!!";
+            }
+            ResetObjects();
         }
+    }
+
+    private void ResetObjects()
+    {
         newItem = new();
+        storageUnit = null;
+        shelfUnit = null;
+        shelf = null;
+        box = null;
     }
 }
 
