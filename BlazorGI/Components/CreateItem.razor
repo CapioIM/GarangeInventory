@@ -4,8 +4,6 @@
 
 @inject Data.DataService Data;
 
-
-
 <p>New item creation page!</p>
 
 <EditForm Model="@newItem" OnValidSubmit="SaveItem">
@@ -84,7 +82,7 @@
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
     private readonly IEnumerable<Category> itemCategory = Enum.GetValues<Category>();
 
-    private string? SuccessStatusMessage { get; set; }
+    private string SuccessStatusMessage { get; set; }
 
     private void SaveItem()
     {
@@ -92,14 +90,21 @@
         if (newItem.Name == null || storageUnit == null)
         {
             if (newItem.Name == null)
+            {
                 SuccessStatusMessage = "Please input item name!";
+                return;
+            }
             if (storageUnit == null)
+            {
                 SuccessStatusMessage = "Storage has not been selected";
+                return;
+            }
         }
 
         if (newItem.Name != null && storageUnit != null)
         {
             newItem.ID = Data.GetMaxID();
+            //Add Item to ShelfUnit or shelf
             if (box == null)
             {
                 if (shelf == null)
@@ -116,6 +121,7 @@
                     SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
                 }
             }
+            //add item to Box
             if (box != null)
             {
                 box.Items.Add(newItem);
@@ -126,11 +132,12 @@
             {
                 SuccessStatusMessage = $"Failed to save !!!";
             }
-            ResetObjects();
+            Data.SaveToFile();
+            ResetForm();
         }
     }
 
-    private void ResetObjects()
+    private void ResetForm()
     {
         newItem = new();
         storageUnit = null;

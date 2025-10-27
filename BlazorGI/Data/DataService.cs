@@ -70,6 +70,11 @@ namespace BlazorGI.Data
             SaveStorageUnits();
         }
 
+        public void SaveToFile()
+        {
+            Serialize.SaveData(_saveData, SerializationAppFilePath.GarageInventory);
+        }
+
         public void RemoveStorageUnit(int storageUnitID)
         {
             StorageUnit storageUnit = Storages.Where(s => s.ID == storageUnitID).First();
@@ -98,7 +103,7 @@ namespace BlazorGI.Data
         /// </summary>
         public void SaveStorageUnits()
         {
-            Serialize.SaveData(_saveData, SerializationAppFilePath.BlazorGI);
+            Serialize.SaveData(SaveData, SerializationAppFilePath.BlazorGI);
         }
 
         /// <summary>
