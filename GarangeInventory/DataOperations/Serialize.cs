@@ -31,9 +31,8 @@ namespace GarangeInventory.DataOperations
                 Console.WriteLine(ex.ToString());
             }
         }
-        public static void SaveData(SaveData saveData, Enum.SerializationAppFilePath blazorGiOrGarageInventory)
+        public static void SaveDataTestData(SaveData saveData)
         {
-            //  string path = GetDataFilePath(blazorGiOrGarageInventory);
             string path = _DATA_FILE_PATH;
             try
             {

@@ -67,7 +67,20 @@
               </Items>
             </Box>
           </Boxes>
-          <Items />
+          <Items>
+            <Item>
+              <Name>62</Name>
+              <ID>62</ID>
+              <Quantity>0</Quantity>
+              <Cost>0</Cost>
+              <Weight>0</Weight>
+              <Expiry xsi:nil="true" />
+              <PurchaseDate xsi:nil="true" />
+              <Size>Large</Size>
+              <ItemCategory>CarParts</ItemCategory>
+              <WeightType>Kilograms</WeightType>
+            </Item>
+          </Items>
         </ShelfUnit>
       </ShelfUnits>
       <Users>
@@ -582,6 +595,17 @@
         </ShelfUnit>
       </ShelfUnits>
       <Users />
+    </StorageUnit>
+    <StorageUnit>
+      <Name>new61</Name>
+      <ID>61</ID>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>1</ID>
+          <Name>Igor</Name>
+        </User>
+      </Users>
     </StorageUnit>
   </storageUnits>
 </SaveData>

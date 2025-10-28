@@ -64,7 +64,7 @@
     <SelectLocation @bind-pickedStorageUnit="storageUnit" @bind-pickedShelfUnit="@shelfUnit" @bind-pickedShelf="shelf" @bind-pickedBox="box"></SelectLocation>
 
     <br />
-    <button type="submit">Save, does nothing for now</button>
+    <button type="submit">Save</button>
 
 </EditForm>
 <br />
@@ -91,7 +91,7 @@
         {
             if (newItem.Name == null)
             {
-                SuccessStatusMessage = "Please input item name!";
+                SuccessStatusMessage = "Item Name is missing!";
                 return;
             }
             if (storageUnit == null)

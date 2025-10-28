@@ -15,12 +15,6 @@ namespace BlazorGI.Data
             set { _saveData = value; }
         }
 
-        List<Item> _unassigned = new();
-        public void AddToUnassigned(Item i)
-        {
-            _unassigned.Add(i);
-        }
-
         private List<StorageUnit> _storages;
 
         public List<StorageUnit> Storages
@@ -67,12 +61,7 @@ namespace BlazorGI.Data
             storageUnit.Name = storageUnitName;
             storageUnit.Users.Add(user);
             Storages.Add(storageUnit);
-            SaveStorageUnits();
-        }
-
-        public void SaveToFile()
-        {
-            Serialize.SaveData(_saveData, SerializationAppFilePath.GarageInventory);
+            SaveToFile();
         }
 
         public void RemoveStorageUnit(int storageUnitID)
@@ -101,9 +90,9 @@ namespace BlazorGI.Data
         /// <summary>
         /// Serialize data
         /// </summary>
-        public void SaveStorageUnits()
+        public void SaveToFile()
         {
-            Serialize.SaveData(SaveData, SerializationAppFilePath.BlazorGI);
+            Serialize.SaveDataToFile(SaveData, SerializationAppFilePath.BlazorGI);
         }
 
         /// <summary>
@@ -116,7 +105,7 @@ namespace BlazorGI.Data
         {
             ShelfUnit shelfUnit = new ShelfUnit(name, amountOfShelfs);
             storage.ShelfUnits.Add(shelfUnit);
-            SaveStorageUnits();
+            SaveToFile();
         }
 
         /// <summary>
