@@ -14,7 +14,12 @@ namespace GarangeInventory
             saveData.storageUnits[0].Users.Add(saveData.users[0]);
             saveData.storageUnits[0].Users.Add(saveData.users[1]);
             saveData.storageUnits[1].Users.Add(saveData.users[1]);
-            Serialize.SaveDataTestData(saveData);
+
+           /* 
+            creates or replaces existing Data File
+           Serialize.SaveDataToFile(saveData,SerializationAppFilePath.GarageInventory);
+           */
+
 
             Console.WriteLine("Search Options\n1 - Expired items,\n2 - By keyword in name");
             int choice = UiMethods.GetUserChoice();

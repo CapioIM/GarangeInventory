@@ -10,6 +10,8 @@ namespace GarangeInventory.DataOperations
         private const string _DATA_FILE_NAME = @"\StorageUnitList.xml";
         private const string _DATA_FILE_PATH = _DATA_FOLDER_PATH + _DATA_FILE_NAME;
         public const string _BLAZOR_FILE_PATH = @"..\TestData\StorageUnitList.xml";
+        private const string _ONE_FOLDER_UP = @"..\";
+        private const string _TEST_DATA = "TestData";
 
         /// <summary>
         /// creates file in text format with values including in List of object
@@ -20,25 +22,22 @@ namespace GarangeInventory.DataOperations
             string path = GetDataFilePath(blazorGiOrGarageInventory);
             try
             {
-                XmlSerializer writer = new XmlSerializer(typeof(SaveData));
-                using (FileStream file = File.Create(path))
+                if (blazorGiOrGarageInventory == Enum.SerializationAppFilePath.BlazorGI)
                 {
-                    writer.Serialize(file, saveData);
+                    string blazorTestFolderPath = _ONE_FOLDER_UP + _TEST_DATA;
+                    if (!Directory.Exists(blazorTestFolderPath))
+                    {
+                        Directory.CreateDirectory(blazorTestFolderPath);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
-        public static void SaveDataTestData(SaveData saveData)
-        {
-            string path = _DATA_FILE_PATH;
-            try
-            {
-                if(!Directory.Exists(_DATA_FOLDER_PATH))
+
+                if (blazorGiOrGarageInventory == Enum.SerializationAppFilePath.GarageInventory)
                 {
-                    Directory.CreateDirectory(_DATA_FOLDER_PATH);
+                    string garageInventoryTestFolderPath = _ONE_FOLDER_UP + _ONE_FOLDER_UP + _ONE_FOLDER_UP + _ONE_FOLDER_UP + _TEST_DATA;
+                    if (!Directory.Exists(garageInventoryTestFolderPath))
+                    {
+                        Directory.CreateDirectory(garageInventoryTestFolderPath);
+                    }
                 }
 
                 XmlSerializer writer = new XmlSerializer(typeof(SaveData));
@@ -77,6 +76,7 @@ namespace GarangeInventory.DataOperations
                 Console.WriteLine(ex.ToString());
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("LoadSaveData failed.---------------------");
+                Console.WriteLine();
                 Console.ResetColor();
             }
             return saveData;
