@@ -1,16 +1,23 @@
 ﻿@using GarangeInventory.Storage
 @inject Data.DataService Data;
+@inject Data.UserService UserData;
 
 @if (Data != null)
 {
     <label for="storage">Storage Unit</label>
-    <InputSelect id="storage" @bind-Value="selectedStorageID" @bind-Value:after="SetStorage" TValue="int?" >
+    <InputSelect id="storage" @bind-Value="selectedStorageID" @bind-Value:after="SetStorage" TValue="int?">
         <option value="">Select...</option>
         @if (Data.Storages != null)
         {
             @foreach (StorageUnit storage in Data.Storages)
             {
-                <option @key="storage.ID" value="@storage.ID">@storage.Name</option>
+                foreach(User user in storage.Users)
+                {
+                    if (user.ID == UserData.User.ID)
+                    {
+                        <option @key="storage.ID" value="@storage.ID">@storage.Name</option>
+                    }
+                }
             }
         }
     </InputSelect>
