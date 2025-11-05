@@ -54,7 +54,7 @@ namespace BlazorGI.Data
         /// </summary>
         /// <param name="storageUnitName">What you want to name this storage unit</param>
         /// <param name="user"> User who have access to this storage unit </param>
-        public void AddStorageUnit(string storageUnitName, User user)
+        public void MakeStorageUnitAddToSaveData(string storageUnitName, User user)
         {
             StorageUnit storageUnit = new StorageUnit();
             storageUnit.ID = GetMaxID();
@@ -83,13 +83,21 @@ namespace BlazorGI.Data
             Serialize.SaveDataToFile(SaveData, SerializationAppFilePath.BlazorGI);
         }
 
+        public Item MakeNewItem()
+        {
+            Item item = new Item();
+            item.ID = GetMaxID();
+            return item;
+        }
+
+
         /// <summary>
         /// Add new Shelf Unit
         /// </summary>
         /// <param name="storage"> which storage to add this shelf unit </param>
         /// <param name="name"> What shelfUnit will be named as </param>
         /// <param name="amountOfShelfs"> How many shelfs are there </param>
-        public void AddShelfUnit(StorageUnit storage, string name, int amountOfShelfs)
+        public void MakeShelfUnitAddToStorageUnit(StorageUnit storage, string name, int amountOfShelfs)
         {
             ShelfUnit shelfUnit = new ShelfUnit(name, amountOfShelfs);
             storage.ShelfUnits.Add(shelfUnit);
@@ -101,7 +109,7 @@ namespace BlazorGI.Data
         /// </summary>
         /// <param name="shelf">Shelf where to add new box</param>
         /// <param name="name"> Name of box </param>
-        public void AddBoxToShelf(Shelf shelf, string name)
+        public void MakeBoxAddToShelf(Shelf shelf, string name)
         {
             Box box = new Box(name);
             shelf.Boxes.Add(box);
@@ -113,7 +121,7 @@ namespace BlazorGI.Data
         /// </summary>
         /// <param name="shelfUnit"> Unit where to add box </param>
         /// <param name="name"> Name of box </param>
-        public void AddBoxToShelfUnit(ShelfUnit shelfUnit, string name)
+        public void MakeBoxAddToShelfUnit(ShelfUnit shelfUnit, string name)
         {
             Box box = new Box(name);
             shelfUnit.Boxes.Add(box);

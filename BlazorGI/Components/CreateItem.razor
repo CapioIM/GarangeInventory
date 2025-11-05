@@ -72,7 +72,7 @@
 @SuccessStatusMessage
 
 @code {
-    Item newItem = new();
+    Item newItem ;
     StorageUnit storageUnit;
     ShelfUnit shelfUnit;
     Shelf shelf;
@@ -83,6 +83,11 @@
     private readonly IEnumerable<Category> itemCategory = Enum.GetValues<Category>();
 
     private string SuccessStatusMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        newItem = Data.MakeNewItem();
+    }
 
     private void SaveItem()
     {
@@ -102,7 +107,7 @@
 
         if (newItem.Name != null && storageUnit != null)
         {
-            newItem.ID = Data.GetMaxID();
+          //  newItem.ID = Data.GetMaxID();
             //Add Item to ShelfUnit or shelf
             if (box == null)
             {
@@ -138,7 +143,7 @@
 
     private void ResetForm()
     {
-        newItem = new();
+        newItem = Data.MakeNewItem();
         storageUnit = null;
         shelfUnit = null;
         shelf = null;

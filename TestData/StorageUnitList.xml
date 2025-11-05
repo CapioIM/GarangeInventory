@@ -101,6 +101,18 @@
                   <ItemCategory>CarParts</ItemCategory>
                   <WeightType>Kilograms</WeightType>
                 </Item>
+                <Item>
+                  <Name>DataService MakeNewItem</Name>
+                  <ID>65</ID>
+                  <Quantity>0</Quantity>
+                  <Cost>0</Cost>
+                  <Weight>0</Weight>
+                  <Expiry xsi:nil="true" />
+                  <PurchaseDate xsi:nil="true" />
+                  <Size>Large</Size>
+                  <ItemCategory>CarParts</ItemCategory>
+                  <WeightType>Kilograms</WeightType>
+                </Item>
               </Items>
             </Box>
           </Boxes>

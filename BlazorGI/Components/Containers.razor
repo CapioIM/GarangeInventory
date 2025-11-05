@@ -24,7 +24,7 @@
     private string addStorageName { get; set; }
     private void AddStorage()
     {
-        Data.AddStorageUnit(addStorageName, userLoggedIn);
+        Data.MakeStorageUnitAddToSaveData(addStorageName, userLoggedIn);
     }
     private void Remove(int ID)
     {
