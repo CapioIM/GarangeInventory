@@ -89,6 +89,18 @@
                   <ItemCategory>CarParts</ItemCategory>
                   <WeightType>Kilograms</WeightType>
                 </Item>
+                <Item>
+                  <Name>save test</Name>
+                  <ID>64</ID>
+                  <Quantity>0</Quantity>
+                  <Cost>0</Cost>
+                  <Weight>0</Weight>
+                  <Expiry xsi:nil="true" />
+                  <PurchaseDate xsi:nil="true" />
+                  <Size>Large</Size>
+                  <ItemCategory>CarParts</ItemCategory>
+                  <WeightType>Kilograms</WeightType>
+                </Item>
               </Items>
             </Box>
           </Boxes>
@@ -607,6 +619,17 @@
         </ShelfUnit>
       </ShelfUnits>
       <Users />
+    </StorageUnit>
+    <StorageUnit>
+      <Name>fad</Name>
+      <ID>63</ID>
+      <ShelfUnits />
+      <Users>
+        <User>
+          <ID>0</ID>
+          <Name>Jurijs</Name>
+        </User>
+      </Users>
     </StorageUnit>
   </storageUnits>
 </SaveData>

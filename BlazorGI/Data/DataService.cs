@@ -76,18 +76,6 @@ namespace BlazorGI.Data
         }
 
         /// <summary>
-        /// Add new ShelfUnit 
-        /// </summary>
-        /// <param name="shelfUnitName"> What is Name of ShelfUnit ( wooden rack on left) </param>
-        /// <param name="storageUnit"> In which StorageUnit shelfUnit is located </param>
-        /// <param name="amountOfShelfsInShelfUnit"> How many shelfs Unit has </param>
-        public void AddShelfUnit(string shelfUnitName, StorageUnit storageUnit, int amountOfShelfsInShelfUnit)
-        {
-            ShelfUnit shelfUnit = new ShelfUnit(shelfUnitName, amountOfShelfsInShelfUnit);
-            storageUnit.ShelfUnits.Add(shelfUnit);
-        }
-
-        /// <summary>
         /// Serialize data
         /// </summary>
         public void SaveToFile()
@@ -117,6 +105,7 @@ namespace BlazorGI.Data
         {
             Box box = new Box(name);
             shelf.Boxes.Add(box);
+            SaveToFile();
         }
 
         /// <summary>
@@ -128,6 +117,7 @@ namespace BlazorGI.Data
         {
             Box box = new Box(name);
             shelfUnit.Boxes.Add(box);
+            SaveToFile();
         }
 
         /// <summary>
