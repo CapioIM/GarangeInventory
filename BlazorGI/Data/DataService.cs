@@ -80,7 +80,10 @@ namespace BlazorGI.Data
         /// </summary>
         public void SaveToFile()
         {
-            Serialize.SaveDataToFile(SaveData, SerializationAppFilePath.BlazorGI);
+            if (_saveData != null)
+            {
+                Serialize.SaveDataToFile(SaveData, SerializationAppFilePath.BlazorGI);
+            }
         }
 
         public Item MakeNewItem()
