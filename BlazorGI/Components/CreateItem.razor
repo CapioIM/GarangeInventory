@@ -7,7 +7,7 @@
 
 <p>New item creation page!</p>
 
-<EditForm Model="@newItem" OnValidSubmit="SaveItem">
+<EditForm Model="@newItem" OnValidSubmit="AddItemToLocation">
     <label for="name">Item Name</label>
     <InputText @bind-Value="newItem.Name"></InputText>
     <br />
@@ -90,7 +90,7 @@
         newItem = Data.MakeNewItem();
     }
 
-    private void SaveItem()
+    private void AddItemToLocation()
     {
         if (newItem.Name == null || storageUnit == null)
         {
