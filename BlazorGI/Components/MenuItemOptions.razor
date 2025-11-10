@@ -1,0 +1,22 @@
+﻿<br />
+<button type="button" onclick="@ItemToBeMoved">Move item</button>
+<br />
+@testMessage
+<br />
+@if (moveItem)
+{
+    <SelectLocation></SelectLocation>
+    @testMessage
+}
+@code {
+    private string testMessage = "testing button doesn't work";
+
+    private bool moveItem = false;
+
+    private void ItemToBeMoved()
+    {
+        moveItem = true;
+        testMessage = "Works";
+    }
+
+}
