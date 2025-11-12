@@ -7,7 +7,7 @@
 
 <p>New item creation page!</p>
 
-<EditForm Model="@newItem" OnValidSubmit="AddItemToLocation">
+<EditForm Model="@newItem" OnValidSubmit="AddItem">
     <label for="name">Item Name</label>
     <InputText @bind-Value="newItem.Name"></InputText>
     <br />
@@ -62,7 +62,9 @@
     <InputText @bind-Value="newItem.Note"></InputText>
     <br />
 
-    <ItemLocationChange @bind-item="newItem" @bind-message="SuccessStatusMessage"></ItemLocationChange>
+    <ItemLocationChange @ref="locationChanger"
+                        @bind-item="newItem"
+                        @bind-message="SuccessStatusMessage"></ItemLocationChange>
     <br />
     <button type="submit">Save</button>
 
@@ -73,7 +75,7 @@
 
 @code {
     Item newItem;
-
+    private ItemLocationChange locationChanger;
 
     private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
@@ -86,9 +88,9 @@
         newItem = Data.MakeNewItem();
     }
 
-    private void AddItemToLocation()
+    private async Task AddItem()
     {
-     ///   ItemLocationChange.AddItemToLocation();                      ***********************************************************
+        await locationChanger.AddItemToLocationAsync();
         ResetForm();
     }
 
