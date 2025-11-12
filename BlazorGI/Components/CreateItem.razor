@@ -7,7 +7,7 @@
 
 <p>New item creation page!</p>
 
-<EditForm Model="@newItem" OnValidSubmit="SaveItem">
+<EditForm Model="@newItem" OnValidSubmit="Save">
     <label for="name">Item Name</label>
     <InputText @bind-Value="newItem.Name"></InputText>
     <br />
@@ -62,7 +62,10 @@
     <InputText @bind-Value="newItem.Note"></InputText>
     <br />
 
-    <SelectLocation @bind-pickedStorageUnit="storageUnit" @bind-pickedShelfUnit="@shelfUnit" @bind-pickedShelf="shelf" @bind-pickedBox="box"></SelectLocation>
+    <SelectLocation @bind-pickedStorageUnit="storageUnit"
+                    @bind-pickedShelfUnit="@shelfUnit"
+                    @bind-pickedShelf="shelf"
+                    @bind-pickedBox="box"></SelectLocation>
 
     <br />
     <button type="submit">Save</button>
@@ -73,7 +76,7 @@
 @SuccessStatusMessage
 
 @code {
-    Item newItem ;
+    Item newItem;
     StorageUnit storageUnit;
     ShelfUnit shelfUnit;
     Shelf shelf;
@@ -90,55 +93,54 @@
         newItem = Data.MakeNewItem();
     }
 
-    private void SaveItem()
+    private void Save()
     {
-        if (newItem.Name == null || storageUnit == null)
+        bool saveItem = SaveItemToLocation();
+        if (saveItem)
         {
-            if (newItem.Name == null)
-            {
-                SuccessStatusMessage = "Item Name is missing!";
-                return;
-            }
-            if (storageUnit == null)
-            {
-                SuccessStatusMessage = "Storage has not been selected";
-                return;
-            }
-        }
-
-        if (newItem.Name != null && storageUnit != null)
-        {
-            //Add Item to ShelfUnit or shelf
-            if (box == null)
-            {
-                if (shelf == null)
-                {
-                    if (shelfUnit != null)
-                    {
-                        shelfUnit.Items.Add(newItem);
-                        SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelfUnit.Name} !";
-                    }
-                }
-                if (shelf != null)
-                {
-                    shelf.Items.Add(newItem);
-                    SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
-                }
-            }
-            //add item to Box
-            if (box != null)
-            {
-                box.Items.Add(newItem);
-                SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {box.Name} !";
-            }
-
-            if (SuccessStatusMessage == null)
-            {
-                SuccessStatusMessage = $"Failed to save !!!";
-            }
             Data.SaveToFile();
             ResetForm();
         }
+    }
+
+    private bool SaveItemToLocation()
+    {
+        bool itemToBeSaved = false;
+        if (newItem.Name == null)
+        {
+            SuccessStatusMessage = "Item Name is missing!";
+            return itemToBeSaved;
+        }
+        if (storageUnit == null || shelfUnit == null)
+        {
+            SuccessStatusMessage = "Storage or shelf unit has not been selected";
+            return itemToBeSaved;
+        }
+
+        itemToBeSaved = true;
+        //add item to Box
+        if (box != null)
+        {
+            box.Items.Add(newItem);
+            SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {box.Name} !";
+            return itemToBeSaved;
+        }
+        //Add Item to  shelf
+        if (shelf != null)
+        {
+            shelf.Items.Add(newItem);
+            SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
+            return itemToBeSaved;
+        }
+        //Add Item to ShelfUnit
+        if (shelfUnit != null)
+        {
+            shelfUnit.Items.Add(newItem);
+            SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelfUnit.Name} !";
+            return itemToBeSaved;
+        }
+        SuccessStatusMessage = $"Failed to save !!!";
+        return itemToBeSaved = false;
     }
 
     private void ResetForm()
