@@ -1,29 +1,19 @@
-﻿@using GarangeInventory.Storage
-
-<br />
-<button type="button" onclick="@SelectLocationWindow">To move item</button>
+﻿<br />
+<button type="button" onclick="@ItemToBeMoved">Move item</button>
 <br />
 @testMessage
 <br />
 @if (moveItem)
 {
     <SelectLocation></SelectLocation>
-    <br />
     @testMessage
-    <br />
 }
 @code {
-    Item newItem;
-    StorageUnit storageUnit;
-    ShelfUnit shelfUnit;
-    Shelf shelf;
-    Box box;
-
     private string testMessage = "testing button doesn't work";
 
     private bool moveItem = false;
 
-    private void SelectLocationWindow()
+    private void ItemToBeMoved()
     {
         moveItem = true;
         testMessage = "Works";
