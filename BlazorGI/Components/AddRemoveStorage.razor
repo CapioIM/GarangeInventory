@@ -10,7 +10,7 @@
     foreach (User user in storage.Users.Where(u => u.ID == userLoggedIn.ID))
     {
             <a href="/storage/@storage.ID">@storage.Name</a>
-            <button class="btn" @onclick="() => Remove(storage.ID) ">Remove</button>
+            <button class="btn" @onclick="() => RemoveStorage(storage.ID) ">Remove</button>
             <p>@storage.ID</p>
             <br />
     }
@@ -26,7 +26,7 @@
     {
         Data.MakeStorageUnitAddToSaveData(addStorageName, userLoggedIn);
     }
-    private void Remove(int ID)
+    private void RemoveStorage(int ID)
     {
         Data.RemoveStorageUnit(ID);
     }
