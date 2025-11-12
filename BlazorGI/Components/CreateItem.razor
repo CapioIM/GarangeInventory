@@ -62,8 +62,7 @@
     <InputText @bind-Value="newItem.Note"></InputText>
     <br />
 
-    <SelectLocation @bind-pickedStorageUnit="storageUnit" @bind-pickedShelfUnit="@shelfUnit" @bind-pickedShelf="shelf" @bind-pickedBox="box"></SelectLocation>
-
+    <ItemLocationChange @bind-item="newItem" @bind-message="SuccessStatusMessage"></ItemLocationChange>
     <br />
     <button type="submit">Save</button>
 
@@ -73,11 +72,8 @@
 @SuccessStatusMessage
 
 @code {
-    Item newItem ;
-    StorageUnit storageUnit;
-    ShelfUnit shelfUnit;
-    Shelf shelf;
-    Box box;
+    Item newItem;
+
 
     private readonly IEnumerable<WeightType> weightTypes = Enum.GetValues<WeightType>();
     private readonly IEnumerable<SizeType> sizeTypes = Enum.GetValues<SizeType>();
@@ -92,62 +88,13 @@
 
     private void AddItemToLocation()
     {
-        if (newItem.Name == null || storageUnit == null)
-        {
-            if (newItem.Name == null)
-            {
-                SuccessStatusMessage = "Item Name is missing!";
-                return;
-            }
-            if (storageUnit == null)
-            {
-                SuccessStatusMessage = "Storage has not been selected";
-                return;
-            }
-        }
-
-        if (newItem.Name != null && storageUnit != null)
-        {
-            //Add Item to ShelfUnit or shelf
-            if (box == null)
-            {
-                if (shelf == null)
-                {
-                    if (shelfUnit != null)
-                    {
-                        shelfUnit.Items.Add(newItem);
-                        SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelfUnit.Name} !";
-                    }
-                }
-                if (shelf != null)
-                {
-                    shelf.Items.Add(newItem);
-                    SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {shelf.Name} !";
-                }
-            }
-            //add item to Box
-            if (box != null)
-            {
-                box.Items.Add(newItem);
-                SuccessStatusMessage = $"{newItem.Name} saved sucessfully to {box.Name} !";
-            }
-
-            if (SuccessStatusMessage == null)
-            {
-                SuccessStatusMessage = $"Failed to save !!!";
-            }
-            Data.SaveToFile();
-            ResetForm();
-        }
+     ///   ItemLocationChange.AddItemToLocation();                      ***********************************************************
+        ResetForm();
     }
 
     private void ResetForm()
     {
         newItem = Data.MakeNewItem();
-        storageUnit = null;
-        shelfUnit = null;
-        shelf = null;
-        box = null;
     }
 }
 

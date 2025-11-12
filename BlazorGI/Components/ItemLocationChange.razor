@@ -1,0 +1,83 @@
+﻿@using GarangeInventory.Storage;
+@inject Data.DataService Data
+
+<SelectLocation @bind-pickedStorageUnit="storageUnit"
+                @bind-pickedShelfUnit="@shelfUnit"
+                @bind-pickedShelf="shelf"
+                @bind-pickedBox="box"></SelectLocation>
+
+@code {
+    [Parameter]
+    public Item item { get; set; }
+    [Parameter]
+    public string message { get; set; }
+
+
+    StorageUnit storageUnit;
+    ShelfUnit shelfUnit;
+    Shelf shelf;
+    Box box;
+
+
+
+    private void AddItemToLocation()
+    {
+        if (item.Name == null || storageUnit == null)
+        {
+            if (item.Name == null)
+            {
+                message = "Item Name is missing!";
+                return;
+            }
+            if (storageUnit == null)
+            {
+                message = "Storage has not been selected";
+                return;
+            }
+        }
+
+        if (item.Name != null && storageUnit != null)
+        {
+            //Add Item to ShelfUnit or shelf
+            if (box == null)
+            {
+                if (shelf == null)
+                {
+                    if (shelfUnit != null)
+                    {
+                        shelfUnit.Items.Add(item);
+                        message = $"{item.Name} saved sucessfully to {shelfUnit.Name} !";
+                    }
+                }
+                if (shelf != null)
+                {
+                    shelf.Items.Add(item);
+                    message = $"{item.Name} saved sucessfully to {shelf.Name} !";
+                }
+            }
+            //add item to Box
+            if (box != null)
+            {
+                box.Items.Add(item);
+                message = $"{item.Name} saved sucessfully to {box.Name} !";
+            }
+
+            if (message == null)
+            {
+                message = $"Failed to save !!!";
+            }
+            Data.SaveToFile();
+            ResetForm();
+
+        }
+    }
+
+    private void ResetForm()
+    {
+        storageUnit = null;
+        shelfUnit = null;
+        shelf = null;
+        box = null;
+    }
+
+}
